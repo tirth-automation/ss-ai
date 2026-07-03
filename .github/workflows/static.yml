@@ -42,11 +42,9 @@ jobs:
           PY
       - name: Save snapshots + data
         run: |
-          git config user.name "aio-bot"
-          git config user.email "aio-bot@users.noreply.github.com"
-          git add data.json snapshots/ || true
-          git commit -m "Rebuild dashboard $(date -u +%F)" || echo "no changes"
-          git push || echo "nothing to push"
+          mkdir -p snapshots
+          echo "data.json rebuilt and bundled into the deploy artifact."
+          echo "Note: snapshot persistence across runs is disabled to avoid double-deploys."
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Upload artifact
