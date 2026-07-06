@@ -75,7 +75,15 @@ def intent(row, df):
         if c is not None and bool(row.get(c)): return name
     return "Other"
 
+def load_pmap():
+    p = os.path.join(HERE, "url_categories.json")
+    if os.path.exists(p):
+        try: return json.load(open(p))
+        except Exception: return {}
+    return {}
+
 def build(df):
+    PMAP = load_pmap()
     C = {k: col(df, *v) for k,v in {
         "kw":["Keyword"], "vol":["Volume"], "pos":["Current position","Position"],
         "kind":["Current position kind"], "serp":["SERP features"],
@@ -89,6 +97,7 @@ def build(df):
         d = today
         if C["upd"] and pd.notna(r[C["upd"]]):
             d = str(pd.to_datetime(r[C["upd"]]).date())
+        pcat = PMAP.get(u) or PMAP.get(u.rstrip("/")) or PMAP.get(u + "/") or "Uncategorized"
         rows.append({
             "k": str(r[C["kw"]]) if C["kw"] else "",
             "v": int(r[C["vol"]]) if C["vol"] and pd.notna(r[C["vol"]]) else 0,
@@ -99,7 +108,7 @@ def build(df):
             "loc": str(r[C["loc"]]) if C["loc"] and pd.notna(r[C["loc"]]) else "Unknown",
             "cc": (str(r[C["cc"]]).upper() if C["cc"] and pd.notna(r[C["cc"]]) else ""),
             "d": d, "u": u, "pa": (u[len(PRE):] if u.startswith(PRE) else u) or "/",
-            "cat": category(u),
+            "cat": category(u), "pcat": pcat,
         })
     return rows
 
@@ -125,6 +134,7 @@ def meta(rows):
     from collections import Counter
     locs=Counter(r["loc"] for r in rows); tl=Counter(r["d"] for r in rows)
     cats=Counter(r["cat"] for r in rows)
+    pcats=Counter(r.get("pcat","Uncategorized") for r in rows)
     return {"target":"www.softwaresuggest.com","is_sample":False,
         "export_date":datetime.date.today().isoformat(),"date":datetime.date.today().isoformat(),
         "max_date":max(tl) if tl else "","total":len(rows),
@@ -134,6 +144,7 @@ def meta(rows):
         "lost7":sum(1 for r in rows if r.get("c7")=="lost"),
         "locs":[{"n":n,"c":c} for n,c in locs.most_common()],
         "cats":[{"n":n,"c":c} for n,c in cats.most_common()],
+        "pcats":[{"n":n,"c":c} for n,c in pcats.most_common()],
         "timeline":[{"d":d,"c":tl[d]} for d in sorted(tl)]}
 
 def main():
