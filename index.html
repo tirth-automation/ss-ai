@@ -105,6 +105,8 @@
   .page a{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--primary);text-decoration:none;max-width:230px;display:inline-block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;vertical-align:middle}
   .page a:hover{text-decoration:underline}
   .cattag{display:inline-block;margin-left:8px;font-size:10px;font-weight:500;color:var(--muted);background:#EEF0F5;padding:2px 6px;border-radius:5px;vertical-align:middle}
+  .pcat{display:inline-block;font-size:11.5px;font-weight:600;color:var(--primary);background:var(--primary-soft);padding:3px 9px;border-radius:7px}
+  .pcat.unc{color:var(--faint);background:#F1F2F6;font-weight:500}
   .num{text-align:right;font-family:'IBM Plex Mono',monospace;font-variant-numeric:tabular-nums}
   .pos{display:inline-flex;align-items:center;justify-content:center;min-width:28px;height:24px;padding:0 7px;border-radius:7px;background:#EEF0F5;font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:12.5px}
   .pos.p1{background:var(--green-soft);color:var(--green)} .pos.p2{background:var(--teal-soft);color:var(--teal)}
@@ -180,6 +182,7 @@
       <input id="q" type="search" placeholder="Search prompts or pages…" autocomplete="off" aria-label="Search"></div>
     <select class="sel" id="loc" aria-label="Filter by location"></select>
     <select class="sel" id="cat" aria-label="Filter by category"></select>
+    <select class="sel" id="pcat" aria-label="Filter by primary category"></select>
     <select class="sel" id="vol" aria-label="Minimum volume">
       <option value="0">Any volume</option><option value="100">100+ vol</option><option value="500">500+ vol</option><option value="1000">1,000+ vol</option><option value="5000">5,000+ vol</option></select>
     <div class="chips" id="chips" role="group" aria-label="Filter">
@@ -197,6 +200,7 @@
     <thead><tr>
       <th data-sort="k" style="width:24%">Prompt</th>
       <th data-sort="pa">Ranking page</th>
+      <th data-sort="pcat">Primary category <span class="arrow">▼</span></th>
       <th class="num" data-sort="v">Volume <span class="arrow">▼</span></th>
       <th class="num" data-sort="p">Pos <span class="arrow">▼</span></th>
       <th data-sort="a">In AIO &amp; 7-day <span class="arrow">▼</span></th>
@@ -230,9 +234,9 @@
 </div>
 
 <script>
-const EMBEDDED = {"meta": {"target": "www.softwaresuggest.com", "total": 0, "cited": 0, "sv": 0, "pos1": 0, "pages": 0, "locs": [], "cats": [], "timeline": [], "export_date": "", "max_date": ""}, "rows": []};
+const EMBEDDED = {"meta": {"target": "www.softwaresuggest.com", "total": 0, "cited": 0, "sv": 0, "pos1": 0, "pages": 0, "locs": [], "cats": [], "pcats": [], "timeline": [], "export_date": "", "max_date": ""}, "rows": []};
 let DATA, META, has7=false;
-let tab="prompts", filter="all", locFilter="", catFilter="", minVol=0, daySel=null;
+let tab="prompts", filter="all", locFilter="", catFilter="", pcatFilter="", minVol=0, daySel=null;
 let sortKey="v",sortDir="desc",page=1; let psort="n",pdir="desc",ppage=1; let lsort="n",ldir="desc";
 let filtered=[]; const PER=25, PPER=20;
 const INTENTS=[["Informational","#0E8C8C"],["Commercial","#C2410C"],["Branded","#4F46E5"],["Transactional","#0E9F6E"],["Navigational","#9333EA"],["Local","#E0345A"],["Other","#9AA3B6"]];
@@ -280,6 +284,9 @@ function init(){
   $("loc").innerHTML=[`<option value="">All locations (${fmt(META.total)})</option>`].concat((META.locs||[]).map(l=>`<option value="${l.n}">${l.n} (${fmt(l.c)})</option>`)).join("");
   // category select
   $("cat").innerHTML=[`<option value="">All categories (${fmt(META.total)})</option>`].concat((META.cats||[]).map(l=>`<option value="${l.n}">${l.n} (${fmt(l.c)})</option>`)).join("");
+  // primary (breadcrumb) category select
+  $("pcat").innerHTML=[`<option value="">All primary categories (${fmt(META.total)})</option>`].concat((META.pcats||[]).map(l=>`<option value="${l.n}">${l.n} (${fmt(l.c)})</option>`)).join("");
+  if(!(META.pcats&&META.pcats.length)){$("pcat").style.display="none";}
 
   let cited=0,p1=0;DATA.forEach(d=>{if(d.a)cited++;if(d.p===1)p1++;});
   document.querySelector('[data-c="cited"]').textContent=fmt(cited);
@@ -291,6 +298,7 @@ function init(){
 function base(d){
   if(locFilter&&d.loc!==locFilter)return false;
   if(catFilter&&d.cat!==catFilter)return false;
+  if(pcatFilter&&(d.pcat||"Uncategorized")!==pcatFilter)return false;
   if(daySel&&d.d!==daySel)return false;
   if(minVol&&(d.v||0)<minVol)return false;
   if(filter==="cited")return !!d.a;
@@ -303,7 +311,7 @@ function compute(){
   const q=$("q").value.trim().toLowerCase();
   filtered=DATA.filter(d=>base(d)&&(!q||d.k.toLowerCase().includes(q)||(d.pa||"").toLowerCase().includes(q)));
   const tv=filtered.reduce((a,d)=>a+(d.v||0),0);
-  const dirty=(filter!=="all"||locFilter||catFilter||daySel||minVol||q);
+  const dirty=(filter!=="all"||locFilter||catFilter||pcatFilter||daySel||minVol||q);
   $("resultbar").innerHTML=`<b>${fmt(filtered.length)}</b> prompts · <b>${fmt(tv)}</b> combined volume${dirty?" · filtered":""}`;
   renderPos(); renderDonut();
   if(tab==="prompts")renderPrompts(); else if(tab==="pages")renderPages(); else renderLocs();
@@ -340,11 +348,12 @@ function renderPrompts(){
     const aio=d.a?`<span class="cited"><span class="pulse"></span>Cited</span>`:`<span class="nocite">—</span>`;
     return `<tr><td class="kw">${d.k}</td>
       <td class="page"><a href="${d.u}" target="_blank" rel="noopener" title="${d.u}">${d.pa}</a>${d.cat?`<span class="cattag">${d.cat}</span>`:""}</td>
+      <td><span class="pcat ${d.pcat&&d.pcat!=="Uncategorized"?"":"unc"}">${d.pcat||"Uncategorized"}</span></td>
       <td class="num">${fmt(d.v)}</td><td class="num"><span class="pos ${pc}">${d.p??"—"}</span></td>
       <td>${aio}${c7badge(d)}</td>
       <td><span class="loccell"><span class="cc">${d.cc||"—"}</span>${d.loc}</span></td>
       <td><span class="tag ${d.in}">${d.in}</span></td></tr>`;}).join("")
-    :`<tr><td colspan="7"><div class="empty"><strong>No prompts match</strong>Adjust search, location, date, volume, or filters.</div></td></tr>`;
+    :`<tr><td colspan="8"><div class="empty"><strong>No prompts match</strong>Adjust search, location, date, volume, or filters.</div></td></tr>`;
   $("pageInfo").textContent=`${v.length?start+1:0}–${Math.min(start+PER,v.length)} of ${fmt(v.length)}`;
   $("pageNum").textContent=`${page} / ${mp}`;$("prev").disabled=page<=1;$("next").disabled=page>=mp;
 }
@@ -373,16 +382,17 @@ function renderLocs(){
     <td><span class="citebar"><span class="track"><span class="fillc" style="width:${Math.round(o.cr*100)}%"></span></span>${Math.round(o.cr*100)}%</span></td></tr>`).join("")
     :`<tr><td colspan="4"><div class="empty"><strong>No locations match</strong></div></td></tr>`;
 }
-function updateClear(){$("clear").style.display=(filter!=="all"||locFilter||catFilter||daySel||minVol||$("q").value)?"inline-block":"none";}
+function updateClear(){$("clear").style.display=(filter!=="all"||locFilter||catFilter||pcatFilter||daySel||minVol||$("q").value)?"inline-block":"none";}
 
 function bindEvents(){
   $("q").addEventListener("input",()=>{page=1;ppage=1;updateClear();compute();});
   $("loc").addEventListener("change",e=>{locFilter=e.target.value;page=1;ppage=1;updateClear();compute();});
   $("cat").addEventListener("change",e=>{catFilter=e.target.value;page=1;ppage=1;updateClear();compute();});
+  $("pcat").addEventListener("change",e=>{pcatFilter=e.target.value;page=1;ppage=1;updateClear();compute();});
   $("vol").addEventListener("change",e=>{minVol=+e.target.value;page=1;ppage=1;updateClear();compute();});
   $("chips").addEventListener("click",e=>{const b=e.target.closest(".chip");if(!b)return;
     document.querySelectorAll(".chip").forEach(c=>c.setAttribute("aria-pressed",c===b));filter=b.dataset.f;page=1;ppage=1;updateClear();compute();});
-  $("clear").addEventListener("click",()=>{filter="all";locFilter="";catFilter="";minVol=0;daySel=null;$("q").value="";$("loc").value="";$("cat").value="";$("vol").value="0";
+  $("clear").addEventListener("click",()=>{filter="all";locFilter="";catFilter="";pcatFilter="";minVol=0;daySel=null;$("q").value="";$("loc").value="";$("cat").value="";$("pcat").value="";$("vol").value="0";
     document.querySelectorAll(".chip").forEach(c=>c.setAttribute("aria-pressed",c.dataset.f==="all"));
     document.querySelectorAll(".tlbar").forEach(x=>x.classList.remove("on"));page=1;ppage=1;updateClear();compute();});
   document.querySelectorAll(".tab").forEach(t=>t.addEventListener("click",()=>{tab=t.dataset.tab;
@@ -403,9 +413,9 @@ function bindEvents(){
   $("next").addEventListener("click",()=>{page++;renderPrompts();});
   $("pPrev").addEventListener("click",()=>{if(ppage>1){ppage--;renderPages();}});
   $("pNext").addEventListener("click",()=>{ppage++;renderPages();});
-  $("csv").addEventListener("click",()=>{const head=["Prompt","Ranking URL","Category","Volume","Position","In AI Overview","7-day citation","Location","Country","Intent","Last checked"];
+  $("csv").addEventListener("click",()=>{const head=["Prompt","Ranking URL","Primary category","URL type","Volume","Position","In AI Overview","7-day citation","Location","Country","Intent","Last checked"];
     const esc=s=>`"${String(s??"").replace(/"/g,'""')}"`;
-    const lines=[head.join(",")].concat(filtered.map(d=>[d.k,d.u,d.cat,d.v,d.p,d.a?"Yes":"No",d.c7||"",d.loc,d.cc,d.in,d.d].map(esc).join(",")));
+    const lines=[head.join(",")].concat(filtered.map(d=>[d.k,d.u,d.pcat||"Uncategorized",d.cat,d.v,d.p,d.a?"Yes":"No",d.c7||"",d.loc,d.cc,d.in,d.d].map(esc).join(",")));
     const blob=new Blob([lines.join("\n")],{type:"text/csv"});const a=document.createElement("a");
     a.href=URL.createObjectURL(blob);a.download=`aio-prompts_${new Date().toISOString().slice(0,10)}.csv`;a.click();URL.revokeObjectURL(a.href);});
 }
