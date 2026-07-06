@@ -86,17 +86,34 @@ def fetch(url):
     return "HTTP 429"
 
 def unique_urls():
+    """Union of every ranking URL we can find — from all exports AND data.json.
+    Reads exports first because the repo's data.json can be stale (rebuilt only
+    at deploy time and not committed back)."""
+    urls = set()
+    # 1) every Ahrefs export in the repo (root and exports/)
+    patterns = ("*.xlsx", "*.xls", "*.csv", "exports/*.xlsx", "exports/*.xls", "exports/*.csv")
+    files = sum([glob.glob(os.path.join(HERE, p)) for p in patterns], [])
+    if files:
+        import pandas as pd
+        for fp in files:
+            try:
+                df = pd.read_excel(fp) if fp.lower().endswith(("xlsx", "xls")) else pd.read_csv(fp)
+            except Exception:
+                continue
+            col = next((c for c in df.columns if c.lower() in ("current url", "url")), None)
+            if col:
+                urls.update(str(u) for u in df[col].dropna())
+    # 2) also include anything already in data.json
     dj = os.path.join(HERE, "data.json")
     if os.path.exists(dj):
-        rows = json.load(open(dj)).get("rows", [])
-        return sorted({r["u"] for r in rows if r.get("u")})
-    import pandas as pd
-    files = sum([glob.glob(os.path.join(HERE, p)) for p in ("*.xlsx","*.csv","exports/*.xlsx","exports/*.csv")], [])
-    if not files: sys.exit("No data.json or export found to read URLs from.")
-    newest = max(files, key=os.path.getmtime)
-    df = pd.read_excel(newest) if newest.endswith(("xlsx","xls")) else pd.read_csv(newest)
-    col = next(c for c in df.columns if c.lower() in ("current url","url"))
-    return sorted({str(u) for u in df[col].dropna()})
+        try:
+            for r in json.load(open(dj)).get("rows", []):
+                if r.get("u"): urls.add(r["u"])
+        except Exception:
+            pass
+    if not urls:
+        sys.exit("No exports or data.json found to read URLs from.")
+    return sorted(urls)
 
 BAD = {"Uncategorized"} | {f"HTTP {c}" for c in (429, 403, 500, 502, 503)} | {"error"}
 
