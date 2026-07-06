@@ -25,6 +25,24 @@ HERE   = os.path.dirname(os.path.abspath(__file__))
 EXPORTS= os.path.join(HERE, "exports")
 SNAPDIR= os.path.join(HERE, "snapshots")
 PRE    = "https://www.softwaresuggest.com"
+CAT_SUFFIX = ("-software","-tools","-system","-systems","-solutions","-app","-apps",
+              "-platform","-platforms","-services","-suite")
+
+def category(u):
+    """Derive the primary page-type category from a URL path."""
+    p = u[len(PRE):] if isinstance(u, str) and u.startswith(PRE) else (u or "")
+    s = [x for x in p.strip("/").split("/") if x]
+    if not s: return "Homepage"
+    first = s[0]; second = s[1] if len(s) > 1 else ""
+    if first == "compare": return "Comparison"
+    if first == "blog": return "Blog"
+    if second == "alternatives": return "Alternatives"
+    if second == "reviews": return "Reviews"
+    if second in ("pricing","features","mobile-app"): return "Vendor sub-page"
+    if any(first.endswith(x) for x in CAT_SUFFIX): return "Category page"
+    if first == "services": return "Services"
+    if len(s) == 1: return "Vendor / product"
+    return "Other"
 
 def newest_export():
     if len(sys.argv) > 1 and os.path.exists(sys.argv[1]):
@@ -81,6 +99,7 @@ def build(df):
             "loc": str(r[C["loc"]]) if C["loc"] and pd.notna(r[C["loc"]]) else "Unknown",
             "cc": (str(r[C["cc"]]).upper() if C["cc"] and pd.notna(r[C["cc"]]) else ""),
             "d": d, "u": u, "pa": (u[len(PRE):] if u.startswith(PRE) else u) or "/",
+            "cat": category(u),
         })
     return rows
 
@@ -105,6 +124,7 @@ def seven_day(rows):
 def meta(rows):
     from collections import Counter
     locs=Counter(r["loc"] for r in rows); tl=Counter(r["d"] for r in rows)
+    cats=Counter(r["cat"] for r in rows)
     return {"target":"www.softwaresuggest.com","is_sample":False,
         "export_date":datetime.date.today().isoformat(),"date":datetime.date.today().isoformat(),
         "max_date":max(tl) if tl else "","total":len(rows),
@@ -113,6 +133,7 @@ def meta(rows):
         "gained7":sum(1 for r in rows if r.get("c7")=="gained"),
         "lost7":sum(1 for r in rows if r.get("c7")=="lost"),
         "locs":[{"n":n,"c":c} for n,c in locs.most_common()],
+        "cats":[{"n":n,"c":c} for n,c in cats.most_common()],
         "timeline":[{"d":d,"c":tl[d]} for d in sorted(tl)]}
 
 def main():
