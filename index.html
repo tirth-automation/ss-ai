@@ -189,6 +189,7 @@
       <button class="chip" data-f="all" aria-pressed="true">All</button>
       <button class="chip" data-f="cited" aria-pressed="false">Cited in AIO <span class="c" data-c="cited"></span></button>
       <button class="chip" data-f="p1" aria-pressed="false">Rank #1 <span class="c" data-c="p1"></span></button>
+      <button class="chip" data-f="review" aria-pressed="false">Review queries <span class="c" data-c="review"></span></button>
     </div>
     <button class="btn" id="csv"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M7 10l5 5 5-5M5 21h14"/></svg>Export CSV</button>
     <button class="clearbtn" id="clear" style="display:none">✕ clear</button>
@@ -288,9 +289,10 @@ function init(){
   $("pcat").innerHTML=[`<option value="">All primary categories (${fmt(META.total)})</option>`].concat((META.pcats||[]).map(l=>`<option value="${l.n}">${l.n} (${fmt(l.c)})</option>`)).join("");
   if(!(META.pcats&&META.pcats.length)){$("pcat").style.display="none";}
 
-  let cited=0,p1=0;DATA.forEach(d=>{if(d.a)cited++;if(d.p===1)p1++;});
+  let cited=0,p1=0,rev=0;DATA.forEach(d=>{if(d.a)cited++;if(d.p===1)p1++;if(d.k&&d.k.toLowerCase().includes("review"))rev++;});
   document.querySelector('[data-c="cited"]').textContent=fmt(cited);
   document.querySelector('[data-c="p1"]').textContent=fmt(p1);
+  document.querySelector('[data-c="review"]').textContent=fmt(rev);
 
   bindEvents(); compute();
 }
@@ -303,6 +305,7 @@ function base(d){
   if(minVol&&(d.v||0)<minVol)return false;
   if(filter==="cited")return !!d.a;
   if(filter==="p1")return d.p===1;
+  if(filter==="review")return d.k.toLowerCase().includes("review");
   if(filter==="gained7")return d.c7==="gained";
   if(filter==="lost7")return d.c7==="lost";
   return true;
