@@ -4,557 +4,245 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Opportunity — SoftwareSuggest AI Citation Tracker</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;450;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --bg: #0f1115;
-    --panel: #171a21;
-    --border: #262a33;
-    --text: #e7e9ee;
-    --muted: #9aa1ad;
-    --accent: #6ea8fe;
-    --high: #2ecc71;
-    --mid: #f1c40f;
-    --low: #7f8c9a;
+  :root{
+    --paper:#F3F4F9;--card:#FFFFFF;--ink:#0E1424;--muted:#646E85;--faint:#9AA3B6;--line:#E7E9F2;
+    --primary:#4F46E5;--primary-2:#7C6CF6;--primary-soft:#EEF0FF;--aio:#B45309;--aio-soft:#FDF3E3;
+    --teal:#0E8C8C;--teal-soft:#E1F4F4;--green:#0E9F6E;--green-soft:#E4F7EF;--rose:#E0345A;--rose-soft:#FCE7EC;
+    --shadow:0 1px 2px rgba(16,23,41,.04),0 12px 30px -16px rgba(16,23,41,.18);--radius:16px;
   }
-  * { box-sizing: border-box; }
-  body {
-    margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    background: var(--bg);
-    color: var(--text);
-    padding: 32px 24px 80px;
-  }
-  .wrap { max-width: 1080px; margin: 0 auto; }
-  h1 { font-size: 22px; margin-bottom: 4px; }
-  .sub { color: var(--muted); font-size: 14px; margin-bottom: 24px; }
-  nav a {
-    color: var(--muted);
-    text-decoration: none;
-    margin-right: 16px;
-    font-size: 14px;
-    padding-bottom: 6px;
-    border-bottom: 2px solid transparent;
-  }
-  nav a.active { color: var(--text); border-color: var(--accent); }
-  nav { margin-bottom: 24px; border-bottom: 1px solid var(--border); padding-bottom: 4px; }
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    background: var(--panel);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    overflow: hidden;
-    font-size: 13.5px;
-  }
-  th, td {
-    padding: 10px 12px;
-    text-align: left;
-    border-bottom: 1px solid var(--border);
-  }
-  th {
-    color: var(--muted);
-    font-weight: 600;
-    text-transform: uppercase;
-    font-size: 11px;
-    letter-spacing: .03em;
-    background: #12141a;
-  }
-  tr:last-child td { border-bottom: none; }
-  tr:hover td { background: #1c2029; }
-  .num { text-align: right; font-variant-numeric: tabular-nums; }
-  .tier {
-    display: inline-block;
-    padding: 2px 8px;
-    border-radius: 12px;
-    font-size: 11px;
-    font-weight: 600;
-  }
-  .tier.high { background: rgba(46,204,113,.15); color: var(--high); }
-  .tier.mid { background: rgba(241,196,15,.15); color: var(--mid); }
-  .tier.low { background: rgba(127,140,154,.15); color: var(--low); }
-  a.page-link { color: var(--accent); text-decoration: none; }
-  a.page-link:hover { text-decoration: underline; }
-  .status { font-size: 12px; padding: 3px 8px; border-radius: 10px; }
-  .status.open { background: rgba(46,204,113,.12); color: var(--high); }
-  .status.contacted { background: rgba(110,168,254,.12); color: var(--accent); }
-  .status.pass { background: rgba(127,140,154,.12); color: var(--low); }
-  footer { margin-top: 20px; color: var(--muted); font-size: 12px; }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;font-size:14px;line-height:1.5;letter-spacing:-0.005em;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1260px;margin:0 auto;padding:0 24px 64px}
+  .hero{margin:0 -24px 26px;padding:34px 24px 30px;background:
+    radial-gradient(900px 280px at 12% -40%,rgba(124,108,246,.18),transparent 60%),
+    radial-gradient(700px 260px at 88% -60%,rgba(14,140,140,.14),transparent 55%),
+    linear-gradient(180deg,#101733,#161E3E);color:#fff;border-bottom-left-radius:26px;border-bottom-right-radius:26px}
+  .hero .inner{max-width:1260px;margin:0 auto;display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap}
+  .mark{display:flex;align-items:center;gap:13px;margin-bottom:14px}
+  .glyph{width:38px;height:38px;border-radius:11px;background:linear-gradient(135deg,var(--primary),var(--primary-2));display:grid;place-items:center;box-shadow:0 8px 20px -6px rgba(79,70,229,.6)}
+  .glyph svg{width:21px;height:21px}
+  .eyebrow{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#A9B2D8;font-weight:600}
+  h1{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:31px;line-height:1.05;margin:5px 0 0;letter-spacing:-0.02em}
+  h1 .sub{color:#8C96C2;font-weight:500}
+  .hmeta{font-family:'IBM Plex Mono',monospace;font-size:12px;color:#A9B2D8;text-align:right;line-height:1.8}
+  .hmeta b{color:#fff;font-weight:600}
+  .badge-src{display:inline-block;margin-top:6px;font-size:10.5px;padding:2px 8px;border-radius:6px;background:rgba(255,255,255,.1);color:#C7CEE8}
+  .insight{margin-top:18px;display:inline-flex;align-items:center;gap:9px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);padding:9px 15px;border-radius:11px;font-size:13px;color:#E7EAF6}
+  .insight b{color:#fff}
+  .insight .ic{width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 0 4px rgba(14,159,110,.25)}
+  .navlinks{margin-top:16px;display:flex;gap:8px;flex-wrap:wrap}
+  .navlink{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:600;color:#fff;text-decoration:none;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);padding:8px 15px;border-radius:10px}
+  .navlink:hover{background:rgba(255,255,255,.2)}
+  .navlink.active{background:#fff;color:var(--ink)}
+
+  .kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:14px}
+  .kpi{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:17px 18px;box-shadow:var(--shadow);position:relative;overflow:hidden;transition:transform .15s ease,box-shadow .15s ease}
+  .kpi:hover{transform:translateY(-2px);box-shadow:0 1px 2px rgba(16,23,41,.04),0 18px 38px -18px rgba(16,23,41,.26)}
+  .kpi .accent{position:absolute;left:0;top:0;bottom:0;width:3px}
+  .kpi .label{font-size:11.5px;color:var(--muted);font-weight:500;margin-bottom:10px}
+  .kpi .val{font-family:'Space Grotesk',sans-serif;font-size:30px;font-weight:600;letter-spacing:-0.02em;line-height:1}
+  .kpi .foot{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--faint);margin-top:9px}
+  .k1 .accent{background:var(--primary)} .k2 .accent{background:var(--aio)} .k3 .accent{background:var(--teal)} .k4 .accent{background:var(--green)}
+
+  .controls{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:14px}
+  .search{flex:1;min-width:180px;position:relative}
+  .search input{width:100%;border:1px solid var(--line);background:var(--card);border-radius:11px;padding:11px 14px 11px 38px;font-family:inherit;font-size:14px;color:var(--ink);box-shadow:var(--shadow);outline:none}
+  .search input:focus{border-color:var(--primary);box-shadow:0 0 0 3px var(--primary-soft)}
+  .search svg{position:absolute;left:12px;top:50%;transform:translateY(-50%);color:var(--faint)}
+  .chips{display:flex;gap:6px;flex-wrap:wrap}
+  .chip{border:1px solid var(--line);background:var(--card);color:var(--muted);font-family:inherit;font-weight:500;font-size:12.5px;padding:8px 13px;border-radius:9px;cursor:pointer;transition:all .12s ease;display:inline-flex;align-items:center;gap:6px}
+  .chip:hover{border-color:#cfd3e0}
+  .chip[aria-pressed="true"]{background:var(--ink);color:#fff;border-color:var(--ink)}
+  .chip .c{font-family:'IBM Plex Mono',monospace;font-size:11px;opacity:.65}
+  .btn{border:1px solid var(--line);background:var(--card);color:var(--ink);font-family:inherit;font-weight:500;font-size:12.5px;padding:9px 14px;border-radius:10px;cursor:pointer;display:inline-flex;align-items:center;gap:7px;box-shadow:var(--shadow)}
+  .btn:hover{border-color:#cfd3e0} .btn svg{width:15px;height:15px}
+  .resultbar{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--muted);margin:2px 2px 12px}
+  .resultbar b{color:var(--ink)}
+
+  .panel{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden}
+  .tablewrap{overflow-x:auto}
+  table{width:100%;border-collapse:collapse;min-width:820px}
+  thead th{font-size:11px;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);font-weight:600;text-align:left;padding:13px 16px;border-bottom:1px solid var(--line);background:#FBFCFE;cursor:pointer;user-select:none;white-space:nowrap;position:sticky;top:0;z-index:2}
+  thead th:hover{color:var(--ink)} thead th.num{text-align:right}
+  thead th .arrow{opacity:0;font-size:9px;margin-left:4px}
+  thead th[data-active="true"]{color:var(--ink)} thead th[data-active="true"] .arrow{opacity:1}
+  tbody td{padding:12px 16px;border-bottom:1px solid var(--line);vertical-align:middle}
+  tbody tr:last-child td{border-bottom:none}
+  tbody tr:hover{background:#FBFBFE}
+  .prod{font-weight:600;max-width:220px}
+  .page a{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--primary);text-decoration:none;max-width:230px;display:inline-block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;vertical-align:middle}
+  .page a:hover{text-decoration:underline}
+  .num{text-align:right;font-family:'IBM Plex Mono',monospace;font-variant-numeric:tabular-nums}
+  .pcat{display:inline-block;font-size:11.5px;font-weight:600;padding:3px 9px;border-radius:7px}
+  .pcat.high{color:var(--green);background:var(--green-soft)}
+  .pcat.low{color:var(--muted);background:#EEF0F5}
+  .status{display:inline-flex;align-items:center;gap:5px;font-size:11.5px;font-weight:600;padding:4px 9px;border-radius:7px;background:var(--aio-soft);color:var(--aio)}
+  .status .pulse{width:6px;height:6px;border-radius:50%;background:var(--aio)}
+  .citebar{display:inline-flex;align-items:center;gap:7px}
+  .citebar .track{width:46px;height:6px;border-radius:4px;background:#EEF0F5;overflow:hidden}
+  .citebar .fillc{height:100%;background:var(--primary);border-radius:4px}
+  .empty{padding:54px 20px;text-align:center;color:var(--muted)}
+  .empty strong{display:block;color:var(--ink);font-family:'Space Grotesk',sans-serif;font-size:16px;margin-bottom:6px}
+  @media (max-width:880px){.kpis{grid-template-columns:repeat(2,1fr)}}
+  @media (max-width:560px){h1{font-size:24px}.wrap{padding:0 14px 48px}.hero{margin:0 -14px 22px;padding:26px 14px 24px}}
+  :focus-visible{outline:2px solid var(--primary);outline-offset:2px}
 </style>
 </head>
 <body>
-<div class="wrap">
-  <h1>AI Overview Prompt Tracker</h1>
-  <div class="sub">Outreach opportunities — SoftwareSuggest pages ranked by AI citation volume</div>
-
-  <nav>
-    <a href="index.html">All prompts</a>
-    <a href="reviews.html">Review prompts</a>
-    <a href="opportunity.html" class="active">Opportunity</a>
-  </nav>
-
-  <table>
-    <thead>
-      <tr>
-        <th>#</th>
-        <th>Product</th>
-        <th>Page</th>
-        <th class="num">Total Citations</th>
-        <th class="num">AI Overviews</th>
-        <th class="num">ChatGPT</th>
-        <th class="num">Gemini</th>
-        <th class="num">Perplexity</th>
-        <th class="num">Copilot</th>
-        <th>Priority</th>
-        <th>Contact status</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>1</td>
-        <td>Vyapar</td>
-        <td><a class="page-link" href="https://www.softwaresuggest.com/vyapar" target="_blank" rel="noopener">softwaresuggest.com/vyapar</a></td>
-        <td class="num">57</td>
-        <td class="num">10</td>
-        <td class="num">14</td>
-        <td class="num">17</td>
-        <td class="num">0</td>
-        <td class="num">0</td>
-        <td><span class="tier high">High priority</span></td>
-        <td><span class="status open">Not contacted</span></td>
-      </tr>
-      <tr>
-        <td>2</td>
-        <td>Petpooja</td>
-        <td><a class="page-link" href="https://www.softwaresuggest.com/petpooja" target="_blank" rel="noopener">softwaresuggest.com/petpooja</a></td>
-        <td class="num">48</td>
-        <td class="num">4</td>
-        <td class="num">6</td>
-        <td class="num">22</td>
-        <td class="num">1</td>
-        <td class="num">0</td>
-        <td><span class="tier high">High priority</span></td>
-        <td><span class="status open">Not contacted</span></td>
-      </tr>
-      <tr>
-        <td>3</td>
-        <td>myBillBook</td>
-        <td><a class="page-link" href="https://www.softwaresuggest.com/mybillbook" target="_blank" rel="noopener">softwaresuggest.com/mybillbook</a></td>
-        <td class="num">27</td>
-        <td class="num">3</td>
-        <td class="num">3</td>
-        <td class="num">17</td>
-        <td class="num">0</td>
-        <td class="num">0</td>
-        <td><span class="tier high">High priority</span></td>
-        <td><span class="status open">Not contacted</span></td>
-      </tr>
-      <tr>
-        <td>4</td>
-        <td>Quick Heal</td>
-        <td><a class="page-link" href="https://www.softwaresuggest.com/quickheal/reviews" target="_blank" rel="noopener">softwaresuggest.com/quickheal/reviews</a></td>
-        <td class="num">24</td>
-        <td class="num">7</td>
-        <td class="num">4</td>
-        <td class="num">7</td>
-        <td class="num">0</td>
-        <td class="num">0</td>
-        <td><span class="tier high">High priority</span></td>
-        <td><span class="status open">Not contacted</span></td>
-      </tr>
-      <tr>
-        <td>5</td>
-        <td>Swipe</td>
-        <td><a class="page-link" href="https://www.softwaresuggest.com/swipe-billing" target="_blank" rel="noopener">softwaresuggest.com/swipe-billing</a></td>
-        <td class="num">23</td>
-        <td class="num">4</td>
-        <td class="num">2</td>
-        <td class="num">9</td>
-        <td class="num">0</td>
-        <td class="num">4</td>
-        <td><span class="tier high">High priority</span></td>
-        <td><span class="status open">Not contacted</span></td>
-      </tr>
-      <tr>
-        <td>6</td>
-        <td>Procentive</td>
-        <td><a class="page-link" href="https://www.softwaresuggest.com/procentive" target="_blank" rel="noopener">softwaresuggest.com/procentive</a></td>
-        <td class="num">20</td>
-        <td class="num">7</td>
-        <td class="num">3</td>
-        <td class="num">4</td>
-        <td class="num">0</td>
-        <td class="num">0</td>
-        <td><span class="tier high">High priority</span></td>
-        <td><span class="status open">Not contacted</span></td>
-      </tr>
-      <tr>
-        <td>7</td>
-        <td>Testbook</td>
-        <td><a class="page-link" href="https://www.softwaresuggest.com/testbook" target="_blank" rel="noopener">softwaresuggest.com/testbook</a></td>
-        <td class="num">14</td>
-        <td class="num">1</td>
-        <td class="num">1</td>
-        <td class="num">11</td>
-        <td class="num">0</td>
-        <td class="num">0</td>
-        <td><span class="tier high">High priority</span></td>
-        <td><span class="status open">Not contacted</span></td>
-      </tr>
-      <tr>
-        <td>8</td>
-        <td>Zbrush</td>
-        <td><a class="page-link" href="https://www.softwaresuggest.com/zbrush" target="_blank" rel="noopener">softwaresuggest.com/zbrush</a></td>
-        <td class="num">13</td>
-        <td class="num">1</td>
-        <td class="num">1</td>
-        <td class="num">5</td>
-        <td class="num">1</td>
-        <td class="num">1</td>
-        <td><span class="tier high">High priority</span></td>
-        <td><span class="status open">Not contacted</span></td>
-      </tr>
-      <tr>
-        <td>9</td>
-        <td>WinMan CA-ERP</td>
-        <td><a class="page-link" href="https://www.softwaresuggest.com/winman-ca-erp" target="_blank" rel="noopener">softwaresuggest.com/winman-ca-erp</a></td>
-        <td class="num">13</td>
-        <td class="num">0</td>
-        <td class="num">1</td>
-        <td class="num">9</td>
-        <td class="num">0</td>
-        <td class="num">0</td>
-        <td><span class="tier high">High priority</span></td>
-        <td><span class="status open">Not contacted</span></td>
-      </tr>
-      <tr>
-        <td>10</td>
-        <td>Truecaller</td>
-        <td><a class="page-link" href="https://www.softwaresuggest.com/truecaller/reviews" target="_blank" rel="noopener">softwaresuggest.com/truecaller/reviews</a></td>
-        <td class="num">12</td>
-        <td class="num">1</td>
-        <td class="num">5</td>
-        <td class="num">0</td>
-        <td class="num">0</td>
-        <td class="num">0</td>
-        <td><span class="tier high">High priority</span></td>
-        <td><span class="status open">Not contacted</span></td>
-      </tr>
-      <tr>
-        <td>11</td>
-        <td>Keka</td>
-        <td><a class="page-link" href="https://www.softwaresuggest.com/keka" target="_blank" rel="noopener">softwaresuggest.com/keka</a></td>
-        <td class="num">11</td>
-        <td class="num">1</td>
-        <td class="num">1</td>
-        <td class="num">7</td>
-        <td class="num">0</td>
-        <td class="num">0</td>
-        <td><span class="tier high">High priority</span></td>
-        <td><span class="status open">Not contacted</span></td>
-      </tr>
-      <tr>
-        <td>12</td>
-        <td>Restaurant365</td>
-        <td><a class="page-link" href="https://www.softwaresuggest.com/restaurant365" target="_blank" rel="noopener">softwaresuggest.com/restaurant365</a></td>
-        <td class="num">10</td>
-        <td class="num">0</td>
-        <td class="num">0</td>
-        <td class="num">6</td>
-        <td class="num">0</td>
-        <td class="num">0</td>
-        <td><span class="tier high">High priority</span></td>
-        <td><span class="status open">Not contacted</span></td>
-      </tr>
-      <tr>
-        <td>13</td>
-        <td>RazorpayX Payroll</td>
-        <td><a class="page-link" href="https://www.softwaresuggest.com/razorpayx-payroll" target="_blank" rel="noopener">softwaresuggest.com/razorpayx-payroll</a></td>
-        <td class="num">8</td>
-        <td class="num">3</td>
-        <td class="num">2</td>
-        <td class="num">2</td>
-        <td class="num">0</td>
-        <td class="num">0</td>
-        <td><span class="tier high">High priority</span></td>
-        <td><span class="status open">Not contacted</span></td>
-      </tr>
-      <tr>
-        <td>14</td>
-        <td>Zoho Workplace</td>
-        <td><a class="page-link" href="https://www.softwaresuggest.com/zoho-workplace" target="_blank" rel="noopener">softwaresuggest.com/zoho-workplace</a></td>
-        <td class="num">8</td>
-        <td class="num">4</td>
-        <td class="num">0</td>
-        <td class="num">2</td>
-        <td class="num">0</td>
-        <td class="num">0</td>
-        <td><span class="tier high">High priority</span></td>
-        <td><span class="status open">Not contacted</span></td>
-      </tr>
-      <tr>
-        <td>15</td>
-        <td>Pocket HRMS</td>
-        <td><a class="page-link" href="https://www.softwaresuggest.com/pocket-hrms" target="_blank" rel="noopener">softwaresuggest.com/pocket-hrms</a></td>
-        <td class="num">8</td>
-        <td class="num">0</td>
-        <td class="num">1</td>
-        <td class="num">5</td>
-        <td class="num">0</td>
-        <td class="num">0</td>
-        <td><span class="tier high">High priority</span></td>
-        <td><span class="status open">Not contacted</span></td>
-      </tr>
-      <tr>
-        <td>16</td>
-        <td>SaarHR</td>
-        <td><a class="page-link" href="https://www.softwaresuggest.com/saarhr" target="_blank" rel="noopener">softwaresuggest.com/saarhr</a></td>
-        <td class="num">38</td>
-        <td class="num">4</td>
-        <td class="num">6</td>
-        <td class="num">10</td>
-        <td class="num">6</td>
-        <td class="num">0</td>
-        <td><span class="tier low">Lower priority</span></td>
-        <td><span class="status open">Not contacted</span></td>
-      </tr>
-      <tr>
-        <td>17</td>
-        <td>Go GST Bill</td>
-        <td><a class="page-link" href="https://www.softwaresuggest.com/go-gst-bill" target="_blank" rel="noopener">softwaresuggest.com/go-gst-bill</a></td>
-        <td class="num">25</td>
-        <td class="num">7</td>
-        <td class="num">3</td>
-        <td class="num">5</td>
-        <td class="num">1</td>
-        <td class="num">0</td>
-        <td><span class="tier low">Lower priority</span></td>
-        <td><span class="status open">Not contacted</span></td>
-      </tr>
-      <tr>
-        <td>18</td>
-        <td>Phyzii Pharma</td>
-        <td><a class="page-link" href="https://www.softwaresuggest.com/phyzii-pharma" target="_blank" rel="noopener">softwaresuggest.com/phyzii-pharma</a></td>
-        <td class="num">23</td>
-        <td class="num">5</td>
-        <td class="num">7</td>
-        <td class="num">5</td>
-        <td class="num">1</td>
-        <td class="num">0</td>
-        <td><span class="tier low">Lower priority</span></td>
-        <td><span class="status open">Not contacted</span></td>
-      </tr>
-      <tr>
-        <td>19</td>
-        <td>Servitium CRM</td>
-        <td><a class="page-link" href="https://www.softwaresuggest.com/servitium-crm" target="_blank" rel="noopener">softwaresuggest.com/servitium-crm</a></td>
-        <td class="num">13</td>
-        <td class="num">2</td>
-        <td class="num">2</td>
-        <td class="num">4</td>
-        <td class="num">1</td>
-        <td class="num">0</td>
-        <td><span class="tier low">Lower priority</span></td>
-        <td><span class="status open">Not contacted</span></td>
-      </tr>
-      <tr>
-        <td>20</td>
-        <td>Zip (Alternatives)</td>
-        <td><a class="page-link" href="https://www.softwaresuggest.com/zip/alternatives" target="_blank" rel="noopener">softwaresuggest.com/zip/alternatives</a></td>
-        <td class="num">12</td>
-        <td class="num">1</td>
-        <td class="num">3</td>
-        <td class="num">4</td>
-        <td class="num">2</td>
-        <td class="num">0</td>
-        <td><span class="tier low">Lower priority</span></td>
-        <td><span class="status open">Not contacted</span></td>
-      </tr>
-      <tr>
-        <td>21</td>
-        <td>SalesTrip SFA</td>
-        <td><a class="page-link" href="https://www.softwaresuggest.com/salestrip-sfa" target="_blank" rel="noopener">softwaresuggest.com/salestrip-sfa</a></td>
-        <td class="num">11</td>
-        <td class="num">1</td>
-        <td class="num">0</td>
-        <td class="num">5</td>
-        <td class="num">0</td>
-        <td class="num">0</td>
-        <td><span class="tier low">Lower priority</span></td>
-        <td><span class="status open">Not contacted</span></td>
-      </tr>
-      <tr>
-        <td>22</td>
-        <td>CallMultiplier</td>
-        <td><a class="page-link" href="https://www.softwaresuggest.com/callmultiplier" target="_blank" rel="noopener">softwaresuggest.com/callmultiplier</a></td>
-        <td class="num">11</td>
-        <td class="num">2</td>
-        <td class="num">2</td>
-        <td class="num">3</td>
-        <td class="num">1</td>
-        <td class="num">0</td>
-        <td><span class="tier low">Lower priority</span></td>
-        <td><span class="status open">Not contacted</span></td>
-      </tr>
-      <tr>
-        <td>23</td>
-        <td>BrokerSumo</td>
-        <td><a class="page-link" href="https://www.softwaresuggest.com/brokersumo/reviews" target="_blank" rel="noopener">softwaresuggest.com/brokersumo/reviews</a></td>
-        <td class="num">11</td>
-        <td class="num">2</td>
-        <td class="num">1</td>
-        <td class="num">3</td>
-        <td class="num">2</td>
-        <td class="num">0</td>
-        <td><span class="tier low">Lower priority</span></td>
-        <td><span class="status open">Not contacted</span></td>
-      </tr>
-      <tr>
-        <td>24</td>
-        <td>AwwApp</td>
-        <td><a class="page-link" href="https://www.softwaresuggest.com/awwapp" target="_blank" rel="noopener">softwaresuggest.com/awwapp</a></td>
-        <td class="num">10</td>
-        <td class="num">0</td>
-        <td class="num">2</td>
-        <td class="num">5</td>
-        <td class="num">2</td>
-        <td class="num">0</td>
-        <td><span class="tier low">Lower priority</span></td>
-        <td><span class="status open">Not contacted</span></td>
-      </tr>
-      <tr>
-        <td>25</td>
-        <td>SnapDownloader</td>
-        <td><a class="page-link" href="https://www.softwaresuggest.com/snapdownloader" target="_blank" rel="noopener">softwaresuggest.com/snapdownloader</a></td>
-        <td class="num">10</td>
-        <td class="num">3</td>
-        <td class="num">3</td>
-        <td class="num">4</td>
-        <td class="num">0</td>
-        <td class="num">0</td>
-        <td><span class="tier low">Lower priority</span></td>
-        <td><span class="status open">Not contacted</span></td>
-      </tr>
-      <tr>
-        <td>26</td>
-        <td>Probe42</td>
-        <td><a class="page-link" href="https://www.softwaresuggest.com/probe42" target="_blank" rel="noopener">softwaresuggest.com/probe42</a></td>
-        <td class="num">10</td>
-        <td class="num">1</td>
-        <td class="num">1</td>
-        <td class="num">5</td>
-        <td class="num">2</td>
-        <td class="num">0</td>
-        <td><span class="tier low">Lower priority</span></td>
-        <td><span class="status open">Not contacted</span></td>
-      </tr>
-      <tr>
-        <td>27</td>
-        <td>Interakt WhatsApp Business</td>
-        <td><a class="page-link" href="https://www.softwaresuggest.com/interakt-whatsapp-business" target="_blank" rel="noopener">softwaresuggest.com/interakt-whatsapp-business</a></td>
-        <td class="num">9</td>
-        <td class="num">1</td>
-        <td class="num">5</td>
-        <td class="num">1</td>
-        <td class="num">0</td>
-        <td class="num">0</td>
-        <td><span class="tier low">Lower priority</span></td>
-        <td><span class="status open">Not contacted</span></td>
-      </tr>
-      <tr>
-        <td>28</td>
-        <td>Tranzact</td>
-        <td><a class="page-link" href="https://www.softwaresuggest.com/tranzact" target="_blank" rel="noopener">softwaresuggest.com/tranzact</a></td>
-        <td class="num">9</td>
-        <td class="num">1</td>
-        <td class="num">2</td>
-        <td class="num">3</td>
-        <td class="num">0</td>
-        <td class="num">0</td>
-        <td><span class="tier low">Lower priority</span></td>
-        <td><span class="status open">Not contacted</span></td>
-      </tr>
-      <tr>
-        <td>29</td>
-        <td>Flexydial</td>
-        <td><a class="page-link" href="https://www.softwaresuggest.com/flexydial" target="_blank" rel="noopener">softwaresuggest.com/flexydial</a></td>
-        <td class="num">9</td>
-        <td class="num">3</td>
-        <td class="num">1</td>
-        <td class="num">2</td>
-        <td class="num">0</td>
-        <td class="num">2</td>
-        <td><span class="tier low">Lower priority</span></td>
-        <td><span class="status open">Not contacted</span></td>
-      </tr>
-      <tr>
-        <td>30</td>
-        <td>BrokerMint</td>
-        <td><a class="page-link" href="https://www.softwaresuggest.com/brokermint" target="_blank" rel="noopener">softwaresuggest.com/brokermint</a></td>
-        <td class="num">9</td>
-        <td class="num">2</td>
-        <td class="num">1</td>
-        <td class="num">0</td>
-        <td class="num">2</td>
-        <td class="num">1</td>
-        <td><span class="tier low">Lower priority</span></td>
-        <td><span class="status open">Not contacted</span></td>
-      </tr>
-      <tr>
-        <td>31</td>
-        <td>Doodly</td>
-        <td><a class="page-link" href="https://www.softwaresuggest.com/doodly" target="_blank" rel="noopener">softwaresuggest.com/doodly</a></td>
-        <td class="num">9</td>
-        <td class="num">1</td>
-        <td class="num">2</td>
-        <td class="num">4</td>
-        <td class="num">0</td>
-        <td class="num">0</td>
-        <td><span class="tier low">Lower priority</span></td>
-        <td><span class="status open">Not contacted</span></td>
-      </tr>
-      <tr>
-        <td>32</td>
-        <td>InstaSuperSave</td>
-        <td><a class="page-link" href="https://www.softwaresuggest.com/instasupersave" target="_blank" rel="noopener">softwaresuggest.com/instasupersave</a></td>
-        <td class="num">8</td>
-        <td class="num">3</td>
-        <td class="num">2</td>
-        <td class="num">1</td>
-        <td class="num">1</td>
-        <td class="num">0</td>
-        <td><span class="tier low">Lower priority</span></td>
-        <td><span class="status open">Not contacted</span></td>
-      </tr>
-      <tr>
-        <td>33</td>
-        <td>Joe Sandbox</td>
-        <td><a class="page-link" href="https://www.softwaresuggest.com/joe-sandbox" target="_blank" rel="noopener">softwaresuggest.com/joe-sandbox</a></td>
-        <td class="num">8</td>
-        <td class="num">0</td>
-        <td class="num">0</td>
-        <td class="num">5</td>
-        <td class="num">3</td>
-        <td class="num">0</td>
-        <td><span class="tier low">Lower priority</span></td>
-        <td><span class="status open">Not contacted</span></td>
-      </tr>
-      <tr>
-        <td>34</td>
-        <td>BatchLeads</td>
-        <td><a class="page-link" href="https://www.softwaresuggest.com/batchleads" target="_blank" rel="noopener">softwaresuggest.com/batchleads</a></td>
-        <td class="num">8</td>
-        <td class="num">2</td>
-        <td class="num">0</td>
-        <td class="num">6</td>
-        <td class="num">0</td>
-        <td class="num">0</td>
-        <td><span class="tier low">Lower priority</span></td>
-        <td><span class="status open">Not contacted</span></td>
-      </tr>
-    </tbody>
-  </table>
-
-  <footer>Data source: Ahrefs Brand Radar export, softwaresuggest.com top pages. Updated 2026-09-19.</footer>
+<div class="hero">
+  <div class="inner">
+    <div>
+      <div class="mark">
+        <span class="glyph"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M18.4 5.6l-2.1 2.1M7.7 16.3l-2.1 2.1"/><circle cx="12" cy="12" r="3.2"/></svg></span>
+        <span class="eyebrow">AI Overview Prompt Tracker</span>
+      </div>
+      <h1>Outreach opportunities <span class="sub">/ ranked by AI citation volume</span></h1>
+      <div class="insight" id="insight"></div>
+      <div class="navlinks">
+        <a class="navlink" href="./index.html">&larr; All prompts</a>
+        <a class="navlink" href="./reviews.html">Review prompts</a>
+        <a class="navlink active" href="./opportunity.html">Opportunity</a>
+      </div>
+    </div>
+    <div class="hmeta">Data source: Ahrefs export<br>softwaresuggest.com pages<br><span class="badge-src">updated 2026-09-19</span></div>
+  </div>
 </div>
+
+<div class="wrap">
+  <section class="kpis" id="kpis"></section>
+
+  <div class="controls">
+    <div class="search"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.2-3.2"/></svg>
+      <input id="q" type="search" placeholder="Search products…" autocomplete="off" aria-label="Search"></div>
+    <div class="chips" id="chips" role="group" aria-label="Filter">
+      <button class="chip" data-f="all" aria-pressed="true">All <span class="c" data-c="all"></span></button>
+      <button class="chip" data-f="high" aria-pressed="false">High priority <span class="c" data-c="high"></span></button>
+      <button class="chip" data-f="low" aria-pressed="false">Lower priority <span class="c" data-c="low"></span></button>
+    </div>
+    <button class="btn" id="csv"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M7 10l5 5 5-5M5 21h14"/></svg>Export CSV</button>
+  </div>
+
+  <div class="resultbar" id="resultbar"></div>
+
+  <div class="panel"><div class="tablewrap"><table>
+    <thead><tr>
+      <th data-sort="rank" style="width:5%">#</th>
+      <th data-sort="name">Product</th>
+      <th data-sort="path">Page</th>
+      <th class="num" data-sort="total">Total citations <span class="arrow">▼</span></th>
+      <th class="num" data-sort="aio">AI Overviews</th>
+      <th class="num" data-sort="chatgpt">ChatGPT</th>
+      <th class="num" data-sort="gemini">Gemini</th>
+      <th data-sort="tier">Priority</th>
+      <th data-sort="status">Contact status</th>
+    </tr></thead><tbody id="rows"></tbody></table></div>
+  </div>
+</div>
+
+<script>
+const LEADS = [
+  {name:"Vyapar",path:"/vyapar",total:57,aio:10,chatgpt:14,gemini:17,tier:"high"},
+  {name:"Petpooja",path:"/petpooja",total:48,aio:4,chatgpt:6,gemini:22,tier:"high"},
+  {name:"myBillBook",path:"/mybillbook",total:27,aio:3,chatgpt:3,gemini:17,tier:"high"},
+  {name:"Quick Heal",path:"/quickheal/reviews",total:24,aio:7,chatgpt:4,gemini:7,tier:"high"},
+  {name:"Swipe",path:"/swipe-billing",total:23,aio:4,chatgpt:2,gemini:9,tier:"high"},
+  {name:"Procentive",path:"/procentive",total:20,aio:7,chatgpt:3,gemini:4,tier:"high"},
+  {name:"Testbook",path:"/testbook",total:14,aio:1,chatgpt:1,gemini:11,tier:"high"},
+  {name:"Zbrush",path:"/zbrush",total:13,aio:1,chatgpt:1,gemini:5,tier:"high"},
+  {name:"WinMan CA-ERP",path:"/winman-ca-erp",total:13,aio:0,chatgpt:1,gemini:9,tier:"high"},
+  {name:"Truecaller",path:"/truecaller/reviews",total:12,aio:1,chatgpt:5,gemini:0,tier:"high"},
+  {name:"Keka",path:"/keka",total:11,aio:1,chatgpt:1,gemini:7,tier:"high"},
+  {name:"Restaurant365",path:"/restaurant365",total:10,aio:0,chatgpt:0,gemini:6,tier:"high"},
+  {name:"RazorpayX Payroll",path:"/razorpayx-payroll",total:8,aio:3,chatgpt:2,gemini:2,tier:"high"},
+  {name:"Zoho Workplace",path:"/zoho-workplace",total:8,aio:4,chatgpt:0,gemini:2,tier:"high"},
+  {name:"Pocket HRMS",path:"/pocket-hrms",total:8,aio:0,chatgpt:1,gemini:5,tier:"high"},
+  {name:"SaarHR",path:"/saarhr",total:38,aio:4,chatgpt:6,gemini:10,tier:"low"},
+  {name:"Go GST Bill",path:"/go-gst-bill",total:25,aio:7,chatgpt:3,gemini:5,tier:"low"},
+  {name:"Phyzii Pharma",path:"/phyzii-pharma",total:23,aio:5,chatgpt:7,gemini:5,tier:"low"},
+  {name:"Servitium CRM",path:"/servitium-crm",total:13,aio:2,chatgpt:2,gemini:4,tier:"low"},
+  {name:"Zip",path:"/zip/alternatives",total:12,aio:1,chatgpt:3,gemini:4,tier:"low"},
+  {name:"SalesTrip SFA",path:"/salestrip-sfa",total:11,aio:1,chatgpt:0,gemini:5,tier:"low"},
+  {name:"CallMultiplier",path:"/callmultiplier",total:11,aio:2,chatgpt:2,gemini:3,tier:"low"},
+  {name:"BrokerSumo",path:"/brokersumo/reviews",total:11,aio:2,chatgpt:1,gemini:3,tier:"low"},
+  {name:"AwwApp",path:"/awwapp",total:10,aio:0,chatgpt:2,gemini:5,tier:"low"},
+  {name:"SnapDownloader",path:"/snapdownloader",total:10,aio:3,chatgpt:3,gemini:4,tier:"low"},
+  {name:"Probe42",path:"/probe42",total:10,aio:1,chatgpt:1,gemini:5,tier:"low"},
+  {name:"Interakt WhatsApp Business",path:"/interakt-whatsapp-business",total:9,aio:1,chatgpt:5,gemini:1,tier:"low"},
+  {name:"Tranzact",path:"/tranzact",total:9,aio:1,chatgpt:2,gemini:3,tier:"low"},
+  {name:"Flexydial",path:"/flexydial",total:9,aio:3,chatgpt:1,gemini:2,tier:"low"},
+  {name:"BrokerMint",path:"/brokermint",total:9,aio:2,chatgpt:1,gemini:0,tier:"low"},
+  {name:"Doodly",path:"/doodly",total:9,aio:1,chatgpt:2,gemini:4,tier:"low"},
+  {name:"InstaSuperSave",path:"/instasupersave",total:8,aio:3,chatgpt:2,gemini:1,tier:"low"},
+  {name:"Joe Sandbox",path:"/joe-sandbox",total:8,aio:0,chatgpt:0,gemini:5,tier:"low"},
+  {name:"BatchLeads",path:"/batchleads",total:8,aio:2,chatgpt:0,gemini:6,tier:"low"},
+];
+LEADS.forEach((d,i)=>{d.rank=i+1;d.status="Not contacted";});
+
+const PRE="https://www.softwaresuggest.com";
+let filter="all", sortKey="total", sortDir="desc";
+const fmt=n=>n==null?"—":Math.round(n).toLocaleString("en-US");
+const $=id=>document.getElementById(id);
+
+function init(){
+  const totalCites=LEADS.reduce((a,d)=>a+d.total,0);
+  const highCount=LEADS.filter(d=>d.tier==="high").length;
+  const avg=totalCites/LEADS.length;
+  $("insight").innerHTML=`<span class="ic"></span><span><b>${fmt(LEADS.length)}</b> products already cited by AI engines on softwaresuggest.com — <b>${fmt(highCount)}</b> are high-priority, funded companies likely to convert into $5,000/mo GEO-SEO retainers.</span>`;
+  const cards=[
+    {c:"k1",label:"Total leads",val:fmt(LEADS.length),foot:"products with AI citations"},
+    {c:"k2",label:"High priority",val:fmt(highCount),foot:"established / funded brands"},
+    {c:"k3",label:"Total citations",val:fmt(totalCites),foot:"across all AI engines"},
+    {c:"k4",label:"Avg. citations / product",val:avg.toFixed(1),foot:"benchmark for outreach"},
+  ];
+  $("kpis").innerHTML=cards.map(c=>`<div class="kpi ${c.c}"><span class="accent"></span><div class="label">${c.label}</div><div class="val">${c.val}</div><div class="foot">${c.foot}</div></div>`).join("");
+  document.querySelector('[data-c="all"]').textContent=fmt(LEADS.length);
+  document.querySelector('[data-c="high"]').textContent=fmt(highCount);
+  document.querySelector('[data-c="low"]').textContent=fmt(LEADS.length-highCount);
+  bindEvents();
+  compute();
+}
+
+function compute(){
+  const q=$("q").value.trim().toLowerCase();
+  let filtered=LEADS.filter(d=>(filter==="all"||d.tier===filter)&&(!q||d.name.toLowerCase().includes(q)));
+  filtered.sort((a,b)=>{let av=a[sortKey],bv=b[sortKey];
+    if(["name","path","tier","status"].includes(sortKey)){av=av||"";bv=bv||"";return sortDir==="asc"?av.localeCompare(bv):bv.localeCompare(av);}
+    return sortDir==="asc"?av-bv:bv-av;});
+  const maxTotal=Math.max(...LEADS.map(d=>d.total));
+  $("resultbar").innerHTML=`<b>${fmt(filtered.length)}</b> leads shown`;
+  $("rows").innerHTML=filtered.length?filtered.map(d=>`<tr>
+    <td>${d.rank}</td>
+    <td class="prod">${d.name}</td>
+    <td class="page"><a href="${PRE}${d.path}" target="_blank" rel="noopener" title="${PRE}${d.path}">softwaresuggest.com${d.path}</a></td>
+    <td class="num"><span class="citebar"><span class="track"><span class="fillc" style="width:${Math.round(d.total/maxTotal*100)}%"></span></span>${fmt(d.total)}</span></td>
+    <td class="num">${fmt(d.aio)}</td>
+    <td class="num">${fmt(d.chatgpt)}</td>
+    <td class="num">${fmt(d.gemini)}</td>
+    <td><span class="pcat ${d.tier}">${d.tier==="high"?"High priority":"Lower priority"}</span></td>
+    <td><span class="status"><span class="pulse"></span>${d.status}</span></td>
+  </tr>`).join("")
+    :`<tr><td colspan="9"><div class="empty"><strong>No leads match</strong>Adjust search or filter.</div></td></tr>`;
+}
+
+function bindEvents(){
+  $("q").addEventListener("input",compute);
+  $("chips").addEventListener("click",e=>{const b=e.target.closest(".chip");if(!b)return;
+    document.querySelectorAll(".chip").forEach(c=>c.setAttribute("aria-pressed",c===b));filter=b.dataset.f;compute();});
+  document.querySelectorAll("th[data-sort]").forEach(th=>th.addEventListener("click",()=>{const k=th.dataset.sort;
+    if(sortKey===k)sortDir=sortDir==="asc"?"desc":"asc";else{sortKey=k;sortDir=["name","path","tier","status"].includes(k)?"asc":"desc";}
+    document.querySelectorAll("th[data-sort]").forEach(t=>{t.dataset.active=(t===th);const a=t.querySelector(".arrow");if(a)a.textContent=sortDir==="asc"?"▲":"▼";});compute();}));
+  $("csv").addEventListener("click",()=>{
+    const head=["Rank","Product","Page","Total citations","AI Overviews","ChatGPT","Gemini","Priority","Contact status"];
+    const esc=s=>`"${String(s??"").replace(/"/g,'""')}"`;
+    const lines=[head.join(",")].concat(LEADS.map(d=>[d.rank,d.name,PRE+d.path,d.total,d.aio,d.chatgpt,d.gemini,d.tier,d.status].map(esc).join(",")));
+    const blob=new Blob([lines.join("\n")],{type:"text/csv"});const a=document.createElement("a");
+    a.href=URL.createObjectURL(blob);a.download=`opportunity-leads_${new Date().toISOString().slice(0,10)}.csv`;a.click();URL.revokeObjectURL(a.href);});
+}
+init();
+</script>
 </body>
 </html>
