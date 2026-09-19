@@ -85,6 +85,7 @@
   .dm .nm{font-weight:600;color:var(--ink);display:block}
   .dm .ti{color:var(--faint);font-size:11px}
   .dm .none{color:var(--faint);font-style:italic}
+  .contactcell{min-width:150px}
   .contactcell a{display:inline-flex;align-items:center;gap:5px;font-size:11.5px;font-weight:600;padding:5px 10px;border-radius:7px;background:var(--primary-soft);color:var(--primary);text-decoration:none;white-space:nowrap}
   .contactcell a:hover{background:#E1E4FF}
   .contactcell .direct{display:block;margin-top:4px;font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:var(--muted)}
@@ -221,6 +222,8 @@ function render(){
     if(d.dm_email) directBits.push(d.dm_email);
     if(d.dm_phone) directBits.push(d.dm_phone);
     const direct=directBits.length?`<span class="direct">${directBits.join(" · ")}</span>`:"";
+    const liQuery=encodeURIComponent((d.dm_name?d.dm_name+" ":"")+d.name+" founder OR CEO OR director");
+    const liUrl="https://www.linkedin.com/search/results/people/?keywords="+liQuery;
     return `<tr>
     <td>${d.rank}</td>
     <td class="prod">${d.name}</td>
@@ -232,7 +235,11 @@ function render(){
     <td class="num">${fmt(d.perplexity)}</td>
     <td><span class="pcat ${d.tier}">${d.tier==="high"?"High":d.tier==="mid"?"Mid":"Low"}</span></td>
     <td>${dm}</td>
-    <td class="contactcell"><a href="https://www.google.com/search?q=${d.search_q}" target="_blank" rel="noopener">Find contact →</a>${direct}</td>
+    <td class="contactcell">
+      <a href="https://www.google.com/search?q=${d.search_q}" target="_blank" rel="noopener">Find contact →</a>
+      <a href="${liUrl}" target="_blank" rel="noopener" style="margin-top:5px;background:#E1E9FF;color:#2557A7;">LinkedIn →</a>
+      ${direct}
+    </td>
   </tr>`;}).join("")
     :`<tr><td colspan="11"><div class="empty"><strong>No leads match</strong>Adjust search or filter.</div></td></tr>`;
   $("pageInfo").textContent=`${filtered.length?start+1:0}–${Math.min(start+PER,filtered.length)} of ${fmt(filtered.length)}`;
@@ -249,9 +256,13 @@ function bindEvents(){
   $("prev").addEventListener("click",()=>{if(page>1){page--;render();}});
   $("next").addEventListener("click",()=>{page++;render();});
   $("csv").addEventListener("click",()=>{
-    const head=["Rank","Product","Page","Total citations","AIO","ChatGPT","Gemini","Perplexity","Tier","Decision Maker","Title","Email","Phone"];
+    const head=["Rank","Product","Page","Total citations","AIO","ChatGPT","Gemini","Perplexity","Tier","Decision Maker","Title","Email","Phone","LinkedIn Search"];
     const esc=s=>`"${String(s??"").replace(/"/g,'""')}"`;
-    const lines=[head.join(",")].concat(LEADS.map(d=>[d.rank,d.name,PRE+d.path,d.total,d.aio,d.chatgpt,d.gemini,d.perplexity,d.tier,d.dm_name,d.dm_title,d.dm_email,d.dm_phone].map(esc).join(",")));
+    const lines=[head.join(",")].concat(LEADS.map(d=>{
+      const liQuery=encodeURIComponent((d.dm_name?d.dm_name+" ":"")+d.name+" founder OR CEO OR director");
+      const liUrl="https://www.linkedin.com/search/results/people/?keywords="+liQuery;
+      return [d.rank,d.name,PRE+d.path,d.total,d.aio,d.chatgpt,d.gemini,d.perplexity,d.tier,d.dm_name,d.dm_title,d.dm_email,d.dm_phone,liUrl].map(esc).join(",");
+    }));
     const blob=new Blob([lines.join("\n")],{type:"text/csv"});const a=document.createElement("a");
     a.href=URL.createObjectURL(blob);a.download=`opportunity-leads-full_${new Date().toISOString().slice(0,10)}.csv`;a.click();URL.revokeObjectURL(a.href);});
 }
