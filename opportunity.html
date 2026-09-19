@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Opportunity — SoftwareSuggest AI Citation Tracker</title>
+<style>
+  :root {
+    --bg: #0f1115;
+    --panel: #171a21;
+    --border: #262a33;
+    --text: #e7e9ee;
+    --muted: #9aa1ad;
+    --accent: #6ea8fe;
+    --high: #2ecc71;
+    --mid: #f1c40f;
+    --low: #7f8c9a;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    padding: 32px 24px 80px;
+  }
+  .wrap { max-width: 1080px; margin: 0 auto; }
+  h1 { font-size: 22px; margin-bottom: 4px; }
+  .sub { color: var(--muted); font-size: 14px; margin-bottom: 24px; }
+  nav a {
+    color: var(--muted);
+    text-decoration: none;
+    margin-right: 16px;
+    font-size: 14px;
+    padding-bottom: 6px;
+    border-bottom: 2px solid transparent;
+  }
+  nav a.active { color: var(--text); border-color: var(--accent); }
+  nav { margin-bottom: 24px; border-bottom: 1px solid var(--border); padding-bottom: 4px; }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+    font-size: 13.5px;
+  }
+  th, td {
+    padding: 10px 12px;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+  }
+  th {
+    color: var(--muted);
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 11px;
+    letter-spacing: .03em;
+    background: #12141a;
+  }
+  tr:last-child td { border-bottom: none; }
+  tr:hover td { background: #1c2029; }
+  .num { text-align: right; font-variant-numeric: tabular-nums; }
+  .tier {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 11px;
+    font-weight: 600;
+  }
+  .tier.high { background: rgba(46,204,113,.15); color: var(--high); }
+  .tier.mid { background: rgba(241,196,15,.15); color: var(--mid); }
+  .tier.low { background: rgba(127,140,154,.15); color: var(--low); }
+  a.page-link { color: var(--accent); text-decoration: none; }
+  a.page-link:hover { text-decoration: underline; }
+  .status { font-size: 12px; padding: 3px 8px; border-radius: 10px; }
+  .status.open { background: rgba(46,204,113,.12); color: var(--high); }
+  .status.contacted { background: rgba(110,168,254,.12); color: var(--accent); }
+  .status.pass { background: rgba(127,140,154,.12); color: var(--low); }
+  footer { margin-top: 20px; color: var(--muted); font-size: 12px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>AI Overview Prompt Tracker</h1>
+  <div class="sub">Outreach opportunities — SoftwareSuggest pages ranked by AI citation volume</div>
+
+  <nav>
+    <a href="index.html">All prompts</a>
+    <a href="reviews.html">Review prompts</a>
+    <a href="opportunity.html" class="active">Opportunity</a>
+  </nav>
+
+  <table>
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Product</th>
+        <th>Page</th>
+        <th class="num">Total Citations</th>
+        <th class="num">AI Overviews</th>
+        <th class="num">ChatGPT</th>
+        <th class="num">Gemini</th>
+        <th class="num">Perplexity</th>
+        <th class="num">Copilot</th>
+        <th>Priority</th>
+        <th>Contact status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td>Vyapar</td>
+        <td><a class="page-link" href="https://www.softwaresuggest.com/vyapar" target="_blank" rel="noopener">softwaresuggest.com/vyapar</a></td>
+        <td class="num">57</td>
+        <td class="num">10</td>
+        <td class="num">14</td>
+        <td class="num">17</td>
+        <td class="num">0</td>
+        <td class="num">0</td>
+        <td><span class="tier high">High priority</span></td>
+        <td><span class="status open">Not contacted</span></td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>Petpooja</td>
+        <td><a class="page-link" href="https://www.softwaresuggest.com/petpooja" target="_blank" rel="noopener">softwaresuggest.com/petpooja</a></td>
+        <td class="num">48</td>
+        <td class="num">4</td>
+        <td class="num">6</td>
+        <td class="num">22</td>
+        <td class="num">1</td>
+        <td class="num">0</td>
+        <td><span class="tier high">High priority</span></td>
+        <td><span class="status open">Not contacted</span></td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>myBillBook</td>
+        <td><a class="page-link" href="https://www.softwaresuggest.com/mybillbook" target="_blank" rel="noopener">softwaresuggest.com/mybillbook</a></td>
+        <td class="num">27</td>
+        <td class="num">3</td>
+        <td class="num">3</td>
+        <td class="num">17</td>
+        <td class="num">0</td>
+        <td class="num">0</td>
+        <td><span class="tier high">High priority</span></td>
+        <td><span class="status open">Not contacted</span></td>
+      </tr>
+      <tr>
+        <td>4</td>
+        <td>Quick Heal</td>
+        <td><a class="page-link" href="https://www.softwaresuggest.com/quickheal/reviews" target="_blank" rel="noopener">softwaresuggest.com/quickheal/reviews</a></td>
+        <td class="num">24</td>
+        <td class="num">7</td>
+        <td class="num">4</td>
+        <td class="num">7</td>
+        <td class="num">0</td>
+        <td class="num">0</td>
+        <td><span class="tier high">High priority</span></td>
+        <td><span class="status open">Not contacted</span></td>
+      </tr>
+      <tr>
+        <td>5</td>
+        <td>Swipe</td>
+        <td><a class="page-link" href="https://www.softwaresuggest.com/swipe-billing" target="_blank" rel="noopener">softwaresuggest.com/swipe-billing</a></td>
+        <td class="num">23</td>
+        <td class="num">4</td>
+        <td class="num">2</td>
+        <td class="num">9</td>
+        <td class="num">0</td>
+        <td class="num">4</td>
+        <td><span class="tier high">High priority</span></td>
+        <td><span class="status open">Not contacted</span></td>
+      </tr>
+      <tr>
+        <td>6</td>
+        <td>Procentive</td>
+        <td><a class="page-link" href="https://www.softwaresuggest.com/procentive" target="_blank" rel="noopener">softwaresuggest.com/procentive</a></td>
+        <td class="num">20</td>
+        <td class="num">7</td>
+        <td class="num">3</td>
+        <td class="num">4</td>
+        <td class="num">0</td>
+        <td class="num">0</td>
+        <td><span class="tier high">High priority</span></td>
+        <td><span class="status open">Not contacted</span></td>
+      </tr>
+      <tr>
+        <td>7</td>
+        <td>Testbook</td>
+        <td><a class="page-link" href="https://www.softwaresuggest.com/testbook" target="_blank" rel="noopener">softwaresuggest.com/testbook</a></td>
+        <td class="num">14</td>
+        <td class="num">1</td>
+        <td class="num">1</td>
+        <td class="num">11</td>
+        <td class="num">0</td>
+        <td class="num">0</td>
+        <td><span class="tier high">High priority</span></td>
+        <td><span class="status open">Not contacted</span></td>
+      </tr>
+      <tr>
+        <td>8</td>
+        <td>Zbrush</td>
+        <td><a class="page-link" href="https://www.softwaresuggest.com/zbrush" target="_blank" rel="noopener">softwaresuggest.com/zbrush</a></td>
+        <td class="num">13</td>
+        <td class="num">1</td>
+        <td class="num">1</td>
+        <td class="num">5</td>
+        <td class="num">1</td>
+        <td class="num">1</td>
+        <td><span class="tier high">High priority</span></td>
+        <td><span class="status open">Not contacted</span></td>
+      </tr>
+      <tr>
+        <td>9</td>
+        <td>WinMan CA-ERP</td>
+        <td><a class="page-link" href="https://www.softwaresuggest.com/winman-ca-erp" target="_blank" rel="noopener">softwaresuggest.com/winman-ca-erp</a></td>
+        <td class="num">13</td>
+        <td class="num">0</td>
+        <td class="num">1</td>
+        <td class="num">9</td>
+        <td class="num">0</td>
+        <td class="num">0</td>
+        <td><span class="tier high">High priority</span></td>
+        <td><span class="status open">Not contacted</span></td>
+      </tr>
+      <tr>
+        <td>10</td>
+        <td>Truecaller</td>
+        <td><a class="page-link" href="https://www.softwaresuggest.com/truecaller/reviews" target="_blank" rel="noopener">softwaresuggest.com/truecaller/reviews</a></td>
+        <td class="num">12</td>
+        <td class="num">1</td>
+        <td class="num">5</td>
+        <td class="num">0</td>
+        <td class="num">0</td>
+        <td class="num">0</td>
+        <td><span class="tier high">High priority</span></td>
+        <td><span class="status open">Not contacted</span></td>
+      </tr>
+      <tr>
+        <td>11</td>
+        <td>Keka</td>
+        <td><a class="page-link" href="https://www.softwaresuggest.com/keka" target="_blank" rel="noopener">softwaresuggest.com/keka</a></td>
+        <td class="num">11</td>
+        <td class="num">1</td>
+        <td class="num">1</td>
+        <td class="num">7</td>
+        <td class="num">0</td>
+        <td class="num">0</td>
+        <td><span class="tier high">High priority</span></td>
+        <td><span class="status open">Not contacted</span></td>
+      </tr>
+      <tr>
+        <td>12</td>
+        <td>Restaurant365</td>
+        <td><a class="page-link" href="https://www.softwaresuggest.com/restaurant365" target="_blank" rel="noopener">softwaresuggest.com/restaurant365</a></td>
+        <td class="num">10</td>
+        <td class="num">0</td>
+        <td class="num">0</td>
+        <td class="num">6</td>
+        <td class="num">0</td>
+        <td class="num">0</td>
+        <td><span class="tier high">High priority</span></td>
+        <td><span class="status open">Not contacted</span></td>
+      </tr>
+      <tr>
+        <td>13</td>
+        <td>RazorpayX Payroll</td>
+        <td><a class="page-link" href="https://www.softwaresuggest.com/razorpayx-payroll" target="_blank" rel="noopener">softwaresuggest.com/razorpayx-payroll</a></td>
+        <td class="num">8</td>
+        <td class="num">3</td>
+        <td class="num">2</td>
+        <td class="num">2</td>
+        <td class="num">0</td>
+        <td class="num">0</td>
+        <td><span class="tier high">High priority</span></td>
+        <td><span class="status open">Not contacted</span></td>
+      </tr>
+      <tr>
+        <td>14</td>
+        <td>Zoho Workplace</td>
+        <td><a class="page-link" href="https://www.softwaresuggest.com/zoho-workplace" target="_blank" rel="noopener">softwaresuggest.com/zoho-workplace</a></td>
+        <td class="num">8</td>
+        <td class="num">4</td>
+        <td class="num">0</td>
+        <td class="num">2</td>
+        <td class="num">0</td>
+        <td class="num">0</td>
+        <td><span class="tier high">High priority</span></td>
+        <td><span class="status open">Not contacted</span></td>
+      </tr>
+      <tr>
+        <td>15</td>
+        <td>Pocket HRMS</td>
+        <td><a class="page-link" href="https://www.softwaresuggest.com/pocket-hrms" target="_blank" rel="noopener">softwaresuggest.com/pocket-hrms</a></td>
+        <td class="num">8</td>
+        <td class="num">0</td>
+        <td class="num">1</td>
+        <td class="num">5</td>
+        <td class="num">0</td>
+        <td class="num">0</td>
+        <td><span class="tier high">High priority</span></td>
+        <td><span class="status open">Not contacted</span></td>
+      </tr>
+      <tr>
+        <td>16</td>
+        <td>SaarHR</td>
+        <td><a class="page-link" href="https://www.softwaresuggest.com/saarhr" target="_blank" rel="noopener">softwaresuggest.com/saarhr</a></td>
+        <td class="num">38</td>
+        <td class="num">4</td>
+        <td class="num">6</td>
+        <td class="num">10</td>
+        <td class="num">6</td>
+        <td class="num">0</td>
+        <td><span class="tier low">Lower priority</span></td>
+        <td><span class="status open">Not contacted</span></td>
+      </tr>
+      <tr>
+        <td>17</td>
+        <td>Go GST Bill</td>
+        <td><a class="page-link" href="https://www.softwaresuggest.com/go-gst-bill" target="_blank" rel="noopener">softwaresuggest.com/go-gst-bill</a></td>
+        <td class="num">25</td>
+        <td class="num">7</td>
+        <td class="num">3</td>
+        <td class="num">5</td>
+        <td class="num">1</td>
+        <td class="num">0</td>
+        <td><span class="tier low">Lower priority</span></td>
+        <td><span class="status open">Not contacted</span></td>
+      </tr>
+      <tr>
+        <td>18</td>
+        <td>Phyzii Pharma</td>
+        <td><a class="page-link" href="https://www.softwaresuggest.com/phyzii-pharma" target="_blank" rel="noopener">softwaresuggest.com/phyzii-pharma</a></td>
+        <td class="num">23</td>
+        <td class="num">5</td>
+        <td class="num">7</td>
+        <td class="num">5</td>
+        <td class="num">1</td>
+        <td class="num">0</td>
+        <td><span class="tier low">Lower priority</span></td>
+        <td><span class="status open">Not contacted</span></td>
+      </tr>
+      <tr>
+        <td>19</td>
+        <td>Servitium CRM</td>
+        <td><a class="page-link" href="https://www.softwaresuggest.com/servitium-crm" target="_blank" rel="noopener">softwaresuggest.com/servitium-crm</a></td>
+        <td class="num">13</td>
+        <td class="num">2</td>
+        <td class="num">2</td>
+        <td class="num">4</td>
+        <td class="num">1</td>
+        <td class="num">0</td>
+        <td><span class="tier low">Lower priority</span></td>
+        <td><span class="status open">Not contacted</span></td>
+      </tr>
+      <tr>
+        <td>20</td>
+        <td>Zip (Alternatives)</td>
+        <td><a class="page-link" href="https://www.softwaresuggest.com/zip/alternatives" target="_blank" rel="noopener">softwaresuggest.com/zip/alternatives</a></td>
+        <td class="num">12</td>
+        <td class="num">1</td>
+        <td class="num">3</td>
+        <td class="num">4</td>
+        <td class="num">2</td>
+        <td class="num">0</td>
+        <td><span class="tier low">Lower priority</span></td>
+        <td><span class="status open">Not contacted</span></td>
+      </tr>
+      <tr>
+        <td>21</td>
+        <td>SalesTrip SFA</td>
+        <td><a class="page-link" href="https://www.softwaresuggest.com/salestrip-sfa" target="_blank" rel="noopener">softwaresuggest.com/salestrip-sfa</a></td>
+        <td class="num">11</td>
+        <td class="num">1</td>
+        <td class="num">0</td>
+        <td class="num">5</td>
+        <td class="num">0</td>
+        <td class="num">0</td>
+        <td><span class="tier low">Lower priority</span></td>
+        <td><span class="status open">Not contacted</span></td>
+      </tr>
+      <tr>
+        <td>22</td>
+        <td>CallMultiplier</td>
+        <td><a class="page-link" href="https://www.softwaresuggest.com/callmultiplier" target="_blank" rel="noopener">softwaresuggest.com/callmultiplier</a></td>
+        <td class="num">11</td>
+        <td class="num">2</td>
+        <td class="num">2</td>
+        <td class="num">3</td>
+        <td class="num">1</td>
+        <td class="num">0</td>
+        <td><span class="tier low">Lower priority</span></td>
+        <td><span class="status open">Not contacted</span></td>
+      </tr>
+      <tr>
+        <td>23</td>
+        <td>BrokerSumo</td>
+        <td><a class="page-link" href="https://www.softwaresuggest.com/brokersumo/reviews" target="_blank" rel="noopener">softwaresuggest.com/brokersumo/reviews</a></td>
+        <td class="num">11</td>
+        <td class="num">2</td>
+        <td class="num">1</td>
+        <td class="num">3</td>
+        <td class="num">2</td>
+        <td class="num">0</td>
+        <td><span class="tier low">Lower priority</span></td>
+        <td><span class="status open">Not contacted</span></td>
+      </tr>
+      <tr>
+        <td>24</td>
+        <td>AwwApp</td>
+        <td><a class="page-link" href="https://www.softwaresuggest.com/awwapp" target="_blank" rel="noopener">softwaresuggest.com/awwapp</a></td>
+        <td class="num">10</td>
+        <td class="num">0</td>
+        <td class="num">2</td>
+        <td class="num">5</td>
+        <td class="num">2</td>
+        <td class="num">0</td>
+        <td><span class="tier low">Lower priority</span></td>
+        <td><span class="status open">Not contacted</span></td>
+      </tr>
+      <tr>
+        <td>25</td>
+        <td>SnapDownloader</td>
+        <td><a class="page-link" href="https://www.softwaresuggest.com/snapdownloader" target="_blank" rel="noopener">softwaresuggest.com/snapdownloader</a></td>
+        <td class="num">10</td>
+        <td class="num">3</td>
+        <td class="num">3</td>
+        <td class="num">4</td>
+        <td class="num">0</td>
+        <td class="num">0</td>
+        <td><span class="tier low">Lower priority</span></td>
+        <td><span class="status open">Not contacted</span></td>
+      </tr>
+      <tr>
+        <td>26</td>
+        <td>Probe42</td>
+        <td><a class="page-link" href="https://www.softwaresuggest.com/probe42" target="_blank" rel="noopener">softwaresuggest.com/probe42</a></td>
+        <td class="num">10</td>
+        <td class="num">1</td>
+        <td class="num">1</td>
+        <td class="num">5</td>
+        <td class="num">2</td>
+        <td class="num">0</td>
+        <td><span class="tier low">Lower priority</span></td>
+        <td><span class="status open">Not contacted</span></td>
+      </tr>
+      <tr>
+        <td>27</td>
+        <td>Interakt WhatsApp Business</td>
+        <td><a class="page-link" href="https://www.softwaresuggest.com/interakt-whatsapp-business" target="_blank" rel="noopener">softwaresuggest.com/interakt-whatsapp-business</a></td>
+        <td class="num">9</td>
+        <td class="num">1</td>
+        <td class="num">5</td>
+        <td class="num">1</td>
+        <td class="num">0</td>
+        <td class="num">0</td>
+        <td><span class="tier low">Lower priority</span></td>
+        <td><span class="status open">Not contacted</span></td>
+      </tr>
+      <tr>
+        <td>28</td>
+        <td>Tranzact</td>
+        <td><a class="page-link" href="https://www.softwaresuggest.com/tranzact" target="_blank" rel="noopener">softwaresuggest.com/tranzact</a></td>
+        <td class="num">9</td>
+        <td class="num">1</td>
+        <td class="num">2</td>
+        <td class="num">3</td>
+        <td class="num">0</td>
+        <td class="num">0</td>
+        <td><span class="tier low">Lower priority</span></td>
+        <td><span class="status open">Not contacted</span></td>
+      </tr>
+      <tr>
+        <td>29</td>
+        <td>Flexydial</td>
+        <td><a class="page-link" href="https://www.softwaresuggest.com/flexydial" target="_blank" rel="noopener">softwaresuggest.com/flexydial</a></td>
+        <td class="num">9</td>
+        <td class="num">3</td>
+        <td class="num">1</td>
+        <td class="num">2</td>
+        <td class="num">0</td>
+        <td class="num">2</td>
+        <td><span class="tier low">Lower priority</span></td>
+        <td><span class="status open">Not contacted</span></td>
+      </tr>
+      <tr>
+        <td>30</td>
+        <td>BrokerMint</td>
+        <td><a class="page-link" href="https://www.softwaresuggest.com/brokermint" target="_blank" rel="noopener">softwaresuggest.com/brokermint</a></td>
+        <td class="num">9</td>
+        <td class="num">2</td>
+        <td class="num">1</td>
+        <td class="num">0</td>
+        <td class="num">2</td>
+        <td class="num">1</td>
+        <td><span class="tier low">Lower priority</span></td>
+        <td><span class="status open">Not contacted</span></td>
+      </tr>
+      <tr>
+        <td>31</td>
+        <td>Doodly</td>
+        <td><a class="page-link" href="https://www.softwaresuggest.com/doodly" target="_blank" rel="noopener">softwaresuggest.com/doodly</a></td>
+        <td class="num">9</td>
+        <td class="num">1</td>
+        <td class="num">2</td>
+        <td class="num">4</td>
+        <td class="num">0</td>
+        <td class="num">0</td>
+        <td><span class="tier low">Lower priority</span></td>
+        <td><span class="status open">Not contacted</span></td>
+      </tr>
+      <tr>
+        <td>32</td>
+        <td>InstaSuperSave</td>
+        <td><a class="page-link" href="https://www.softwaresuggest.com/instasupersave" target="_blank" rel="noopener">softwaresuggest.com/instasupersave</a></td>
+        <td class="num">8</td>
+        <td class="num">3</td>
+        <td class="num">2</td>
+        <td class="num">1</td>
+        <td class="num">1</td>
+        <td class="num">0</td>
+        <td><span class="tier low">Lower priority</span></td>
+        <td><span class="status open">Not contacted</span></td>
+      </tr>
+      <tr>
+        <td>33</td>
+        <td>Joe Sandbox</td>
+        <td><a class="page-link" href="https://www.softwaresuggest.com/joe-sandbox" target="_blank" rel="noopener">softwaresuggest.com/joe-sandbox</a></td>
+        <td class="num">8</td>
+        <td class="num">0</td>
+        <td class="num">0</td>
+        <td class="num">5</td>
+        <td class="num">3</td>
+        <td class="num">0</td>
+        <td><span class="tier low">Lower priority</span></td>
+        <td><span class="status open">Not contacted</span></td>
+      </tr>
+      <tr>
+        <td>34</td>
+        <td>BatchLeads</td>
+        <td><a class="page-link" href="https://www.softwaresuggest.com/batchleads" target="_blank" rel="noopener">softwaresuggest.com/batchleads</a></td>
+        <td class="num">8</td>
+        <td class="num">2</td>
+        <td class="num">0</td>
+        <td class="num">6</td>
+        <td class="num">0</td>
+        <td class="num">0</td>
+        <td><span class="tier low">Lower priority</span></td>
+        <td><span class="status open">Not contacted</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <footer>Data source: Ahrefs Brand Radar export, softwaresuggest.com top pages. Updated 2026-09-19.</footer>
+</div>
+</body>
+</html>
