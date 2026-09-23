@@ -220,12 +220,11 @@ function render(){
   const maxTotal=Math.max(...LEADS.map(d=>d.total));
   $("rows").innerHTML=slice.length?slice.map(d=>{
     const dm=d.dm_name?`<span class="dm"><span class="nm">${d.dm_name}</span><span class="ti">${d.dm_title||""}</span></span>`:`<span class="dm none" id="dm-${d.uid}">Not publicly documented</span> <button class="enrich-btn" data-uid="${d.uid}" style="margin-top:4px;display:inline-flex;align-items:center;gap:4px;font-size:11px;font-weight:600;padding:4px 9px;border-radius:7px;background:var(--primary-soft);color:var(--primary);border:none;cursor:pointer">🔍 Enrich via Apollo</button>`;
-    const directBits=[];
-    if(d.dm_email) directBits.push(d.dm_email);
-    if(d.dm_phone) directBits.push(d.dm_phone);
-    const direct=directBits.length?`<span class="direct">${directBits.join(" · ")}</span>`:"";
     const liQuery=encodeURIComponent((d.dm_name?d.dm_name+" ":"")+d.name+" founder OR CEO OR director");
     const liUrl="https://www.linkedin.com/search/results/people/?keywords="+liQuery;
+    const emailDisplay = d.dm_email
+      ? `<a href="mailto:${d.dm_email}" style="font-weight:600;color:var(--primary);text-decoration:none;word-break:break-all">${d.dm_email}</a>${d.dm_phone?`<span class="direct" style="display:block;margin-top:3px">${d.dm_phone}</span>`:""}`
+      : `<span style="color:var(--faint);font-size:12px">No email yet</span>`;
     return `<tr>
     <td>${d.rank}</td>
     <td class="prod">${d.name}</td>
@@ -237,11 +236,7 @@ function render(){
     <td class="num">${fmt(d.perplexity)}</td>
     <td><span class="pcat ${d.tier}">${d.tier==="high"?"High":d.tier==="mid"?"Mid":"Low"}</span>${d.fundable?'<span class="pcat" style="background:var(--green-soft);color:var(--green);margin-left:4px">💰 $2k+/mo</span>':''}${d.enterprise_flag?'<span class="pcat" style="background:#F1F2F6;color:var(--faint);margin-left:4px" title="Large/public company — has budget but unlikely to respond to cold outreach from a small agency">🏢 Enterprise</span>':''}</td>
     <td>${dm}</td>
-    <td class="contactcell">
-      <a href="https://www.google.com/search?q=${d.search_q}" target="_blank" rel="noopener">Find contact →</a>
-      <a href="${liUrl}" target="_blank" rel="noopener" style="margin-top:5px;background:#E1E9FF;color:#2557A7;">LinkedIn →</a>
-      ${direct}
-    </td>
+    <td class="contactcell">${emailDisplay}</td>
     <td><a href="${d.proposal_path}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:5px;font-size:11.5px;font-weight:600;padding:5px 10px;border-radius:7px;background:var(--aio-soft);color:var(--aio);text-decoration:none;white-space:nowrap">View proposal →</a></td>
   </tr>`;}).join("")
     :`<tr><td colspan="12"><div class="empty"><strong>No leads match</strong>Adjust search or filter.</div></td></tr>`;
