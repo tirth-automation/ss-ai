@@ -71,6 +71,22 @@
   .terms{font-size:13px;color:var(--muted)}
   .terms li{margin-bottom:8px}
 
+  .pkg3{display:flex;flex-wrap:wrap;gap:14px;margin-top:16px}
+  .pkg{flex:1 1 30%;min-width:230px;border-radius:14px;padding:22px 20px;position:relative}
+  .pkg.light{background:var(--paper);border:1px solid var(--line)}
+  .pkg.dark{background:linear-gradient(160deg,#161E3E,#0E1424);color:#fff}
+  .pkg .badge{position:absolute;top:14px;right:14px;background:#FF6B4A;color:#fff;font-size:10px;font-weight:700;padding:4px 9px;border-radius:20px;letter-spacing:.03em}
+  .pkg .pname{font-family:'Space Grotesk',sans-serif;font-size:16px;font-weight:700;margin-bottom:10px}
+  .pkg .pprice{font-family:'Space Grotesk',sans-serif;font-size:22px;font-weight:700;margin-bottom:2px}
+  .pkg .pcadence{font-size:10.5px;text-transform:uppercase;letter-spacing:.05em;opacity:.65;margin-bottom:10px}
+  .pkg .pdesc{font-size:12px;opacity:.8;margin-bottom:14px;min-height:44px}
+  .pkg ul{list-style:none;margin:0 0 14px;padding:0}
+  .pkg li{font-size:12px;margin-bottom:7px;padding-left:18px;position:relative}
+  .pkg li::before{content:"✓";position:absolute;left:0;color:#FF6B4A;font-weight:700}
+  .pkg .pfor{font-size:10px;text-transform:uppercase;letter-spacing:.04em;opacity:.6;text-align:center}
+  .pkg.recommended{border:2px solid var(--primary)}
+  .pkg .rec-tag{font-size:10px;font-weight:700;color:var(--primary);text-transform:uppercase;letter-spacing:.05em;margin-bottom:8px}
+
   .signblock{margin-top:28px}
   .signrow{margin-bottom:24px}
   .signrow:last-child{margin-bottom:0}
@@ -167,20 +183,57 @@
 
   <div class="section">
     <div class="secnum">4. RECOMMENDED ENGAGEMENT &amp; INVESTMENT</div>
-    <h2>Recommended plan for Petpooja</h2>
-    <p class="body-text">You're already one of the most-cited products in your category. This tier is built to defend and extend that lead before a competitor closes the gap.</p>
-    <div class="plan">
-      <div class="name">Dominate</div>
-      <div class="price">Starting from $2,000<span style="font-size:14px;font-weight:500;color:var(--muted)"> /month</span></div>
-      <ul>
-        <li>5 AI content assets / month</li>
-        <li>2 AI-optimized video reviews</li>
-        <li>Advanced Prompt Strategy</li>
-        <li>SaaS Entity Optimization</li>
-        <li>Monthly Strategy Workshops</li>
-        <li>Complete AI Visibility Strategist</li>
-        <li>Priority Support Access</li>
-      </ul>
+    <h2>Three ways to engage — Petpooja</h2>
+    <p class="body-text">Based on Petpooja's current citation volume, we'd recommend starting at Dominate — but all three tiers are outlined below so you can choose what fits.</p>
+    <div class="pkg3">
+      <div class="pkg light">
+        
+        <div class="pname">Launch</div>
+        <div class="pprice">₹2,38,587</div>
+        <div class="pcadence">One-time</div>
+        <div class="pdesc">For SaaS teams taking their first real look at AI visibility.</div>
+        <ul>
+          <li>1 AI-focused content asset</li>
+          <li>AI Visibility Audit</li>
+          <li>Buyer Prompt Research</li>
+          <li>Competitor Visibility Analysis</li>
+          <li>AI Presence Scorecard</li>
+          <li>Strategic Action Recommendation</li>
+        </ul>
+        <div class="pfor">Best for — Early-stage SaaS</div>
+      </div><div class="pkg dark">
+        <div class="badge">MOST POPULAR</div>
+        <div class="pname">Scale</div>
+        <div class="pprice">₹4,77,173</div>
+        <div class="pcadence">Per month · 3-month minimum</div>
+        <div class="pdesc">For software companies actively building category presence.</div>
+        <ul>
+          <li>2–3 AI content assets / month</li>
+          <li>8 AI-optimized articles</li>
+          <li>AI Visibility Tracking</li>
+          <li>Prompt Performance Monitoring</li>
+          <li>Comparison Content Strategy</li>
+          <li>AI Brand Mention Tracking</li>
+          <li>Full-time Account Manager</li>
+        </ul>
+        <div class="pfor">Best for — Growth-stage vendors</div>
+      </div><div class="pkg light recommended">
+        <div class="rec-tag">★ Recommended for you</div>
+        <div class="pname">Dominate</div>
+        <div class="pprice">₹9,54,345</div>
+        <div class="pcadence">Per month · 6-month minimum</div>
+        <div class="pdesc">For brands competing in crowded, high-stakes categories.</div>
+        <ul>
+          <li>5 AI content assets / month</li>
+          <li>2 AI-optimized video reviews</li>
+          <li>Advanced Prompt Strategy</li>
+          <li>SaaS Entity Optimization</li>
+          <li>Monthly Strategy Workshops</li>
+          <li>Complete AI Visibility Strategist</li>
+          <li>Priority Support Access</li>
+        </ul>
+        <div class="pfor">Best for — Enterprise SaaS &amp; marketplaces</div>
+      </div>
     </div>
   </div>
 
