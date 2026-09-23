@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AEO/GEO Visibility Proposal — Vyapar</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;450;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{--ink:#0E1424;--muted:#646E85;--faint:#9AA3B6;--line:#E7E9F2;--paper:#F7F8FB;
+  --primary:#4F46E5;--primary-2:#7C6CF6;--primary-soft:#EEF0FF;--green:#0E9F6E;--green-soft:#E4F7EF;
+  --aio:#B45309;--aio-soft:#FDF3E3;}
+  *{box-sizing:border-box}
+  body{margin:0;background:#fff;color:var(--ink);font-family:'Inter',system-ui,sans-serif;font-size:14.5px;line-height:1.65}
+  .wrap{max-width:820px;margin:0 auto;padding:0 0 60px}
+
+  .letterhead{padding:36px 44px 26px;border-bottom:2px solid var(--ink);display:flex;justify-content:space-between;align-items:flex-start;gap:20px}
+  .lh-brand{font-family:'Space Grotesk',sans-serif;font-size:17px;font-weight:700;letter-spacing:-0.01em}
+  .lh-brand span{color:var(--primary)}
+  .lh-tagline{font-size:11.5px;color:var(--muted);margin-top:2px}
+  .lh-meta{text-align:right;font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--muted);line-height:1.9}
+  .lh-meta b{color:var(--ink)}
+
+  .titleblock{padding:34px 44px 30px;border-bottom:1px solid var(--line)}
+  .doctype{font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--primary);font-weight:600;margin-bottom:10px}
+  h1{font-family:'Space Grotesk',sans-serif;font-size:26px;font-weight:700;margin:0 0 14px;letter-spacing:-0.015em;line-height:1.25}
+  .prepared-for{font-size:13.5px;color:var(--muted)}
+  .prepared-for b{color:var(--ink)}
+
+  .section{padding:32px 44px;border-bottom:1px solid var(--line)}
+  .section:last-of-type{border-bottom:none}
+  .secnum{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--primary);font-weight:600;letter-spacing:.06em;margin-bottom:6px}
+  h2{font-family:'Space Grotesk',sans-serif;font-size:18px;font-weight:600;margin:0 0 14px}
+  p.body-text{color:var(--ink);margin:0 0 14px}
+  p.body-text:last-child{margin-bottom:0}
+
+  .statgrid{display:flex;flex-wrap:wrap;gap:12px;margin:16px 0 4px}
+  .stat{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:14px 16px;flex:1 1 160px;min-width:140px}
+  .stat .n{font-family:'Space Grotesk',sans-serif;font-size:24px;font-weight:600}
+  .stat .l{font-size:11px;color:var(--muted);margin-top:4px}
+  .platbars{margin-top:20px}
+  .platbar-row{display:flex;align-items:center;gap:12px;margin-bottom:10px}
+  .platbar-row:last-child{margin-bottom:0}
+  .platbar-label{width:110px;font-size:12.5px;color:var(--muted);flex-shrink:0}
+  .platbar-track{flex:1;height:20px;background:var(--paper);border-radius:6px;overflow:hidden;position:relative}
+  .platbar-fill{height:100%;border-radius:6px;display:flex;align-items:center;justify-content:flex-end;padding-right:8px;min-width:28px}
+  .platbar-fill span{font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:600;color:#fff}
+  .methodnote{font-size:11.5px;color:var(--faint);margin-top:14px;font-style:italic}
+
+  .preview{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:20px 22px;margin-top:8px}
+  .preview .tag{font-family:'IBM Plex Mono',monospace;font-size:10.5px;text-transform:uppercase;letter-spacing:.08em;color:var(--faint);margin-bottom:12px}
+  .qblock{margin-bottom:16px}
+  .qblock:last-child{margin-bottom:0}
+  .qblock .prompt{font-style:italic;color:var(--muted);margin-bottom:6px}
+  .qblock .answer{font-size:14px}
+  .pill{display:inline-block;background:var(--aio-soft);color:var(--aio);font-size:11px;font-weight:600;padding:2px 8px;border-radius:6px;margin-left:4px}
+
+  .pillars{display:flex;flex-wrap:wrap;gap:14px;margin-top:8px}
+  .pillar{border:1px solid var(--line);border-radius:12px;padding:16px 18px;flex:1 1 45%;min-width:220px}
+  .pillar .num{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--faint)}
+  .pillar h3{font-family:'Space Grotesk',sans-serif;font-size:15px;margin:4px 0 6px}
+  .pillar p{font-size:13px;color:var(--muted);margin:0}
+
+  .plan{border:2px solid var(--primary);border-radius:16px;padding:24px 26px;background:var(--primary-soft);margin-top:8px}
+  .plan .name{font-family:'IBM Plex Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--primary);font-weight:600}
+  .plan .price{font-family:'Space Grotesk',sans-serif;font-size:24px;font-weight:700;margin:6px 0 2px}
+  .plan .cadence{font-size:12.5px;color:var(--muted);margin-bottom:12px}
+  .plan ul{margin:14px 0 0;padding-left:20px}
+  .plan li{margin-bottom:6px;font-size:13.5px}
+
+  .terms{font-size:13px;color:var(--muted)}
+  .terms li{margin-bottom:8px}
+
+  .signblock{margin-top:28px}
+  .signrow{margin-bottom:24px}
+  .signrow:last-child{margin-bottom:0}
+  .signrow .sl{font-size:11px;color:var(--faint);text-transform:uppercase;letter-spacing:.06em;margin-bottom:32px}
+  .signline{border-top:1px solid var(--ink);padding-top:6px;font-size:12.5px;color:var(--muted);max-width:320px}
+
+  .cta{text-align:center;padding:40px 44px}
+  .cta a{display:inline-block;background:var(--primary);color:#fff;text-decoration:none;font-weight:600;padding:14px 30px;border-radius:12px;font-size:15px}
+  .footer{padding:20px 44px;font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:var(--faint);text-align:center;background:var(--paper)}
+  * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .plan, .preview, .pillar, .stat, .signblock { page-break-inside: avoid; }
+  .section { page-break-inside: avoid; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="letterhead">
+    <div>
+      <div class="lh-brand">SoftwareSuggest <span>AEO/GEO</span></div>
+      <div class="lh-tagline">AI Visibility &amp; Generative Engine Optimization</div>
+    </div>
+    <div class="lh-meta">
+      Ref: <b>SS-AEO-H-0001</b><br>
+      Date: <b>September 23, 2026</b><br>
+      Valid until: <b>October 23, 2026</b>
+    </div>
+  </div>
+
+  <div class="titleblock">
+    <div class="doctype">Proposal &middot; Confidential</div>
+    <h1>AI Search Visibility Assessment &amp; Engagement Proposal for Vyapar</h1>
+    <div class="prepared-for">Prepared for: <b>Vyapar</b> (Attn: Sumit Agarwal, Co-founder &amp; CEO) &middot; Prepared by: <b>SoftwareSuggest AEO/GEO Team</b></div>
+  </div>
+
+  <div class="section">
+    <div class="secnum">EXECUTIVE SUMMARY</div>
+    <h2>Your product is already part of how AI answers buyer questions</h2>
+    <p class="body-text">Independent tracking of softwaresuggest.com's listing pages shows that <b>Vyapar</b> (softwaresuggest.com/vyapar) has been cited <b>57 times</b> across AI Overviews, ChatGPT, Gemini, Perplexity and Copilot to date. This places Vyapar among the products already surfacing inside AI-generated answers &mdash; the layer an increasing share of B2B buyers now consult before they ever reach a traditional search results page or vendor comparison site.</p>
+    <p class="body-text">This proposal outlines the current state of that visibility, the mechanics behind it, and a recommended engagement to protect and expand Vyapar's presence as AI search continues to grow as a buyer-research channel.</p>
+  </div>
+
+  <div class="section">
+    <div class="secnum">1. CURRENT AI VISIBILITY ASSESSMENT</div>
+    <h2>Where Vyapar stands today</h2>
+    <p class="body-text">The figures below reflect citation activity captured for softwaresuggest.com/vyapar across major AI answer engines.</p>
+    <div class="statgrid">
+      <div class="stat"><div class="n">57</div><div class="l">Total AI citations</div></div>
+      <div class="stat"><div class="n">10</div><div class="l">Google AI Overviews</div></div>
+      <div class="stat"><div class="n">1</div><div class="l">ChatGPT</div></div>
+      <div class="stat"><div class="n">14</div><div class="l">Gemini</div></div>
+    </div>
+    <div class="platbars">
+      <div class="platbar-row"><div class="platbar-label">AI Overviews</div><div class="platbar-track"><div class="platbar-fill" style="width:59%;background:#B45309"><span>10</span></div></div></div>
+      <div class="platbar-row"><div class="platbar-label">ChatGPT</div><div class="platbar-track"><div class="platbar-fill" style="width:10%;background:#0E9F6E"><span>1</span></div></div></div>
+      <div class="platbar-row"><div class="platbar-label">Gemini</div><div class="platbar-track"><div class="platbar-fill" style="width:82%;background:#4F46E5"><span>14</span></div></div></div>
+      <div class="platbar-row"><div class="platbar-label">Perplexity</div><div class="platbar-track"><div class="platbar-fill" style="width:100%;background:#7C6CF6"><span>17</span></div></div></div>
+    </div>
+    <div class="methodnote">Source: Ahrefs Brand Radar citation tracking for softwaresuggest.com. Figures reflect point-in-time data collected September 23, 2026 and are subject to change as AI platforms refresh their indexes.</div>
+  </div>
+
+  <div class="section">
+    <div class="secnum">2. REPRESENTATIVE QUERY PATTERNS</div>
+    <h2>The kind of buyer questions this visibility touches</h2>
+    <p class="body-text">The examples below illustrate common buyer-research query patterns for this category. They are representative constructions, not verified individual prompts, and are included to contextualize how citation activity translates into real buyer touchpoints.</p>
+    <div class="preview">
+      <div class="qblock">
+        <div class="prompt">&ldquo;Vyapar vs competitors comparison&rdquo;</div>
+        <div class="answer">A buyer asking Google AI Overview this today would likely see a structured, cited answer &mdash; and with <b>Vyapar</b> already appearing <span class="pill">57 times</span> across tracked AI platforms, staying visible in exactly this kind of query is what the plan below protects and grows.</div>
+      </div>
+      <div class="qblock">
+        <div class="prompt">&ldquo;top software like Vyapar in 2026&rdquo;</div>
+        <div class="answer">A buyer asking ChatGPT this today would likely see a structured, cited answer &mdash; and with <b>Vyapar</b> already appearing <span class="pill">57 times</span> across tracked AI platforms, staying visible in exactly this kind of query is what the plan below protects and grows.</div>
+      </div>
+      <div class="qblock">
+        <div class="prompt">&ldquo;best Vyapar alternative for small business&rdquo;</div>
+        <div class="answer">A buyer asking Gemini this today would likely see a structured, cited answer &mdash; and with <b>Vyapar</b> already appearing <span class="pill">57 times</span> across tracked AI platforms, staying visible in exactly this kind of query is what the plan below protects and grows.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="secnum">3. PROPOSED ENGAGEMENT METHODOLOGY</div>
+    <h2>How we protect and grow this visibility</h2>
+    <p class="body-text">Our approach is structured around four phases, applied specifically to Vyapar's category and buyer-intent data:</p>
+    <div class="pillars">
+      <div class="pillar"><div class="num">01</div><h3>Diagnose</h3><p>Establish a full baseline of how Vyapar shows up &mdash; or doesn't &mdash; across today's AI platforms, and identify where competitors are winning citations instead.</p></div>
+      <div class="pillar"><div class="num">02</div><h3>Create</h3><p>Produce structured, source-worthy content aligned to the specific queries AI systems retrieve most for this category.</p></div>
+      <div class="pillar"><div class="num">03</div><h3>Reinforce</h3><p>Strengthen the entity clarity and trust signals AI models weigh when deciding whether a brand is safe to recommend.</p></div>
+      <div class="pillar"><div class="num">04</div><h3>Track</h3><p>Report monthly, in plain language, on exactly where Vyapar is named, paraphrased, or omitted across tracked platforms.</p></div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="secnum">4. RECOMMENDED ENGAGEMENT &amp; INVESTMENT</div>
+    <h2>Recommended plan for Vyapar</h2>
+    <p class="body-text">You're already one of the most-cited products in your category. This tier is built to defend and extend that lead before a competitor closes the gap.</p>
+    <div class="plan">
+      <div class="name">Dominate</div>
+      <div class="price">Starting from $2,000<span style="font-size:14px;font-weight:500;color:var(--muted)"> /month</span></div>
+      <ul>
+        <li>5 AI content assets / month</li>
+        <li>2 AI-optimized video reviews</li>
+        <li>Advanced Prompt Strategy</li>
+        <li>SaaS Entity Optimization</li>
+        <li>Monthly Strategy Workshops</li>
+        <li>Complete AI Visibility Strategist</li>
+        <li>Priority Support Access</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="secnum">5. TERMS &amp; NEXT STEPS</div>
+    <h2>How to proceed</h2>
+    <ul class="terms">
+      <li>This proposal is valid for 30 days from the date above (September 23, 2026 &ndash; October 23, 2026). Citation figures and recommended tier may be revised on renewal, reflecting updated tracking data.</li>
+      <li>Engagement begins with a scoping call to confirm objectives, category keywords, and reporting cadence.</li>
+      <li>Billing and specific deliverable schedules will be confirmed in a separate engagement agreement prior to commencement.</li>
+    </ul>
+    <div class="signblock">
+      <div class="signrow">
+        <div class="sl">Prepared By</div>
+        <div class="signline">SoftwareSuggest AEO/GEO Team &middot; September 23, 2026</div>
+      </div>
+      <div class="signrow">
+        <div class="sl">Accepted By (Client)</div>
+        <div class="signline">Name, Title &amp; Date</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cta">
+    <a href="https://www.softwaresuggest.com/aeo-geo-visibility" target="_blank" rel="noopener">Talk to an AI Visibility Strategist</a>
+    <div style="margin-top:14px;font-size:12.5px;color:var(--faint)">support@softwaresuggest.com &middot; softwaresuggest.com/aeo-geo-visibility</div>
+  </div>
+
+  <div class="footer">Reference SS-AEO-H-0001 &middot; Prepared by the SoftwareSuggest AEO/GEO Team &middot; This document is confidential and intended solely for Vyapar.</div>
+</div>
+</body>
+</html>
