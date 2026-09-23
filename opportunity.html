@@ -244,12 +244,20 @@ function render(){
   const start=(page-1)*PER, slice=filtered.slice(start,start+PER);
   const maxTotal=Math.max(...LEADS.map(d=>d.total));
   $("rows").innerHTML=slice.length?slice.map(d=>{
-    const dm=d.dm_name?`<span class="dm"><span class="nm">${d.dm_name}</span><span class="ti">${d.dm_title||""}</span></span>`:`<span class="dm none" id="dm-${d.uid}">Not publicly documented</span> <button class="enrich-btn" data-uid="${d.uid}" style="margin-top:4px;display:inline-flex;align-items:center;gap:4px;font-size:11px;font-weight:600;padding:4px 9px;border-radius:7px;background:var(--primary-soft);color:var(--primary);border:none;cursor:pointer">🔍 Enrich via Apollo</button>`;
+    const dmNameBlock = d.dm_name
+      ? `<span class="nm">${d.dm_name}</span><span class="ti">${d.dm_title||""}</span>`
+      : `<span class="none">Not publicly documented</span>`;
+    const enrichBtn = !d.dm_email
+      ? `<button class="enrich-btn" data-uid="${d.uid}" style="margin-top:4px;display:inline-flex;align-items:center;gap:4px;font-size:11px;font-weight:600;padding:4px 9px;border-radius:7px;background:var(--primary-soft);color:var(--primary);border:none;cursor:pointer">🔍 Enrich via Apollo</button>`
+      : "";
+    const dm=`<span class="dm" id="dm-${d.uid}">${dmNameBlock}</span> ${enrichBtn}`;
     const liQuery=encodeURIComponent((d.dm_name?d.dm_name+" ":"")+d.name+" founder OR CEO OR director");
     const liUrl="https://www.linkedin.com/search/results/people/?keywords="+liQuery;
     const emailDisplay = d.dm_email
-      ? `<a href="mailto:${d.dm_email}" style="font-weight:600;color:var(--primary);text-decoration:none;word-break:break-all">${d.dm_email}</a>${d.dm_phone?`<span class="direct" style="display:block;margin-top:3px">${d.dm_phone}</span>`:""}`
-      : `<span style="color:var(--faint);font-size:12px">No email yet</span>`;
+      ? `<a href="mailto:${d.dm_email}" style="font-weight:600;color:var(--primary);text-decoration:none;word-break:break-all">${d.dm_email}</a>${d.dm_phone?`<span class="direct" style="display:block;margin-top:3px">${d.dm_phone}</span>`:""}${d.dm_linkedin?`<a href="${d.dm_linkedin}" target="_blank" rel="noopener" style="display:block;margin-top:3px;font-size:11px;color:#2557A7">LinkedIn profile →</a>`:""}`
+      : (d.dm_linkedin
+          ? `<a href="${d.dm_linkedin}" target="_blank" rel="noopener" style="font-size:11.5px;color:#2557A7">LinkedIn profile →</a><span style="display:block;font-size:11px;color:var(--faint);margin-top:2px">No email yet</span>`
+          : `<span style="color:var(--faint);font-size:12px">No email yet</span>`);
     return `<tr>
     <td>${d.rank}</td>
     <td class="prod">${d.name}</td>
