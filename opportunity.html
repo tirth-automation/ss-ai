@@ -239,15 +239,6 @@ const TIER_INFO = {
   },
 };
 
-const PACKAGES = [
-  { name: "Launch", price: "₹2,38,587", cadence: "One-time", tag: "Best for — Early-stage SaaS",
-    items: ["1 AI-focused content asset", "AI Visibility Audit", "Buyer Prompt Research", "Competitor Visibility Analysis", "AI Presence Scorecard", "Strategic Action Recommendation"] },
-  { name: "Scale", price: "₹4,77,173", cadence: "Per month · 3-month minimum", tag: "Best for — Growth-stage vendors (Most Popular)",
-    items: ["2–3 AI content assets / month", "8 AI-optimized articles", "AI Visibility Tracking", "Prompt Performance Monitoring", "Comparison Content Strategy", "AI Brand Mention Tracking", "Full-time Account Manager"] },
-  { name: "Dominate", price: "₹9,54,345", cadence: "Per month · 6-month minimum", tag: "Best for — Enterprise SaaS & marketplaces (Recommended)",
-    items: ["5 AI content assets / month", "2 AI-optimized video reviews", "Advanced Prompt Strategy", "SaaS Entity Optimization", "Monthly Strategy Workshops", "Complete AI Visibility Strategist", "Priority Support Access"] },
-];
-
 function pdfUrlFor(d){
   return SITE_BASE + d.proposal_path.replace("proposals/", "proposals-pdf/").replace(".html", ".pdf");
 }
@@ -256,27 +247,17 @@ function buildEmailContent(d){
   const proposalUrl = SITE_BASE + d.proposal_path;
   const greeting = d.dm_name ? `Hi ${d.dm_name.split(" ")[0]},` : "Hi,";
   const subject = `${d.name} is already showing up in AI answers — quick visibility snapshot`;
-  const intro = `I pulled a quick AI-visibility snapshot for ${d.name}'s SoftwareSuggest listing (softwaresuggest.com${d.path}) — it's already being cited ${d.total} time(s) across AI Overviews, ChatGPT, Gemini and Perplexity.`;
-
-  let planSection;
-  if (d.tier === "high") {
-    const pkgBlocks = PACKAGES.map(p => {
-      const itemsLines = p.items.map(x => `    • ${x}`).join("\n");
-      return `${p.name} — ${p.price} (${p.cadence})\n${itemsLines}\n  ${p.tag}`;
-    }).join("\n\n");
-    planSection = `You're already one of the most-cited products in your category — here are three ways to engage, with Dominate as our recommendation:\n\n${pkgBlocks}`;
-  } else {
-    const ti = TIER_INFO[d.tier] || TIER_INFO.low;
-    const includesLines = ti.includes.map(x => `  • ${x}`).join("\n");
-    planSection = `${ti.pitch}\n\nRecommended plan — ${ti.plan} (${ti.priceLine}):\n${includesLines}`;
-  }
-
+  const ti = TIER_INFO[d.tier] || TIER_INFO.low;
+  const includesLines = ti.includes.map(x => `  • ${x}`).join("\n");
   const bodyLines = [
     greeting,
     "",
-    intro,
+    `I pulled a quick AI-visibility snapshot for ${d.name}'s SoftwareSuggest listing (softwaresuggest.com${d.path}) — it's already being cited ${d.total} time(s) across AI Overviews, ChatGPT, Gemini and Perplexity.`,
     "",
-    planSection,
+    ti.pitch,
+    "",
+    `Recommended plan — ${ti.plan} (${ti.priceLine}):`,
+    includesLines,
     "",
     `Full breakdown attached as a PDF, also viewable at ${proposalUrl}`,
     "",
