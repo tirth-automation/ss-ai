@@ -102,6 +102,95 @@
   @media (max-width:880px){.kpis{grid-template-columns:repeat(2,1fr)}}
   @media (max-width:560px){h1{font-size:24px}.wrap{padding:0 14px 48px}.hero{margin:0 -14px 22px;padding:26px 14px 24px}}
   :focus-visible{outline:2px solid var(--primary);outline-offset:2px}
+
+  /* ---------- team workflow additions ---------- */
+  #leadtable{min-width:1850px}
+  select.sel{border:1px solid var(--line);background:var(--card);border-radius:11px;padding:10px 30px 10px 12px;font-family:inherit;font-size:12.5px;color:var(--ink);box-shadow:var(--shadow);cursor:pointer;outline:none;appearance:none;background-image:url("data:image/svg+xml,%3Csvg width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%239AA3B6' stroke-width='3' stroke-linecap='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 11px center}
+  .syncbadge{display:inline-flex;align-items:center;gap:6px;font-size:11.5px;font-weight:600;padding:7px 11px;border-radius:9px;background:#EEF0F5;color:var(--muted);white-space:nowrap}
+  .syncbadge i{width:7px;height:7px;border-radius:50%;background:#C5CAD8;display:inline-block}
+  .syncbadge.shared{background:var(--green-soft);color:var(--green)} .syncbadge.shared i{background:var(--green)}
+  .syncbadge.local{background:var(--aio-soft);color:var(--aio)} .syncbadge.local i{background:var(--aio)}
+  .syncbadge.saving i{background:var(--primary)}
+
+  .sumpanel{padding:20px 22px;margin-bottom:16px;display:flex;gap:30px;flex-wrap:wrap;overflow:visible}
+  .sumcol{flex:1 1 400px;min-width:300px}
+  .sumhead{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:12px}
+  .sumtitle{font-family:'Space Grotesk',sans-serif;font-size:15px;font-weight:600}
+  .sumtitle .hint{font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:var(--faint);font-weight:400;margin-left:8px}
+  .scope{display:inline-flex;background:#E9EBF4;border-radius:9px;padding:3px;gap:2px}
+  .scope button{border:none;background:none;font-family:inherit;font-size:12px;padding:5px 11px;border-radius:7px;cursor:pointer;color:var(--muted)}
+  .scope button[aria-pressed="true"]{background:#fff;color:var(--ink);box-shadow:0 1px 3px rgba(16,23,41,.1);font-weight:600}
+  .pipebar{display:flex;height:12px;border-radius:7px;overflow:hidden;background:#EEF0F5;margin-bottom:14px}
+  .pipebar span{display:block;height:100%}
+  .tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+  .tile{border:1px solid var(--line);border-radius:12px;padding:10px 12px;background:#fff;cursor:pointer;text-align:left;font-family:inherit}
+  .tile:hover{border-color:#cfd3e0}
+  .tile.on{outline:2px solid var(--primary)}
+  .tile .tn{font-family:'Space Grotesk',sans-serif;font-size:22px;font-weight:600;line-height:1;color:var(--ink)}
+  .tile .tl{font-size:11.5px;color:var(--muted);margin-top:6px;display:flex;align-items:center;gap:6px}
+  .dot{width:8px;height:8px;border-radius:50%;display:inline-block;flex:none}
+  .statrow{display:flex;justify-content:space-between;align-items:baseline;padding:7px 0;border-bottom:1px dashed var(--line);font-size:13px;color:var(--muted)}
+  .statrow b{font-family:'IBM Plex Mono',monospace;color:var(--ink);font-size:13px}
+  .statrow b small{font-weight:400;color:var(--faint);margin-left:6px}
+  .tier-table{width:100%;min-width:0;margin-top:14px;font-size:12px;border-collapse:collapse}
+  .tier-table thead th{position:static;cursor:default;padding:6px 8px;background:transparent;font-size:10.5px;border-bottom:1px solid var(--line)}
+  .tier-table tbody td{padding:7px 8px;border-bottom:1px solid var(--line)}
+  .tier-table td.num,.tier-table th.num{text-align:right}
+
+  .status-sel{appearance:none;border:none;border-radius:8px;padding:6px 10px;font-family:inherit;font-size:12px;font-weight:600;cursor:pointer;outline:none;min-width:130px}
+  .s-notcontacted{background:#EEF0F5;color:var(--muted)}
+  .s-sent{background:#E6EEFF;color:#2557A7}
+  .s-replied{background:#F1E8FF;color:#6B3FD1}
+  .s-meeting{background:var(--teal-soft);color:var(--teal)}
+  .s-won{background:var(--green-soft);color:var(--green)}
+  .s-lost{background:var(--rose-soft);color:var(--rose)}
+  .byline{display:block;margin-top:4px;font-size:10.5px;color:var(--faint)}
+  .note-input{width:170px;border:1px solid transparent;background:#F6F7FB;border-radius:8px;padding:7px 9px;font-family:inherit;font-size:12px;color:var(--ink);outline:none}
+  .note-input:focus{border-color:var(--primary);background:#fff}
+
+  td.dm-cell{min-width:240px;max-width:270px}
+  .dm .nm{font-weight:600;color:var(--ink);display:block}
+  .dm .none{color:var(--faint);font-style:italic}
+  .dom{display:block;font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:var(--faint);margin-top:2px}
+  .acts{display:flex;gap:5px;flex-wrap:wrap;margin-top:6px}
+  .mini{border:none;border-radius:7px;padding:4px 9px;font-family:inherit;font-size:11px;font-weight:600;cursor:pointer;background:var(--primary-soft);color:var(--primary)}
+  .mini.ghost{background:#F1F2F6;color:var(--muted)}
+  .mini:disabled{opacity:.55;cursor:default}
+  .others{margin-top:7px;font-size:11.5px}
+  .others summary{cursor:pointer;color:var(--primary);font-weight:600}
+  .oc{padding:6px 0;border-bottom:1px dashed var(--line);line-height:1.45}
+  .oc:last-child{border-bottom:none}
+  .oc .ti{color:var(--faint)}
+  .oc a{color:#2557A7;text-decoration:none}
+  .oc .mini{margin-left:4px}
+
+  .role{display:inline-block;font-size:11px;font-weight:700;padding:3px 9px;border-radius:7px;white-space:nowrap}
+  .role.ceo{background:var(--primary-soft);color:var(--primary)}
+  .role.mkt{background:var(--aio-soft);color:var(--aio)}
+  .role.fin{background:var(--green-soft);color:var(--green)}
+  .role.ops{background:var(--teal-soft);color:var(--teal)}
+  .role.oth{background:#EEF0F5;color:var(--muted)}
+  .desig .ti{display:block;margin-top:4px;font-size:11.5px;color:var(--muted);max-width:190px}
+
+  .contactcell{min-width:250px;max-width:300px}
+  .contactcell .em{font-weight:600;color:var(--primary);text-decoration:none;word-break:break-all;font-size:12.5px}
+  .contactcell .etag{display:block;width:max-content;margin-top:4px;font-size:10px;font-weight:700;padding:1px 6px;border-radius:5px}
+  .etag.ok{background:var(--green-soft);color:var(--green)}
+  .etag.maybe{background:var(--aio-soft);color:var(--aio)}
+  .contactcell a.em,.contactcell a.li{background:none;padding:0;border-radius:0;white-space:normal;font-weight:600}
+  .contactcell a.em{display:inline;word-break:normal;overflow-wrap:anywhere}
+  .contactcell a.li{display:block}
+  .contactcell a.em:hover,.contactcell a.li:hover{background:none;text-decoration:underline}
+  .contactcell .li{display:block;margin-top:4px;font-size:11.5px;color:#2557A7;text-decoration:none}
+  .contactcell .ph{display:block;margin-top:3px;font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:var(--muted)}
+  .contactcell .noemail{color:var(--faint);font-size:12px}
+  .contactcell .mo{display:block;margin-top:5px;font-size:10.5px;color:var(--faint)}
+  .contactcell .warn{display:block;margin-top:5px;font-size:11px;color:var(--aio);background:var(--aio-soft);border-radius:6px;padding:4px 7px}
+
+  .toast-wrap{position:fixed;right:18px;bottom:18px;z-index:2000;display:flex;flex-direction:column;gap:8px;max-width:360px}
+  .toast{background:#0E1424;color:#fff;border-radius:11px;padding:11px 14px;font-size:12.5px;line-height:1.45;box-shadow:0 10px 30px rgba(0,0,0,.25)}
+  .toast.err{background:#B42343} .toast.warn{background:#8A5200}
+  @media (max-width:880px){.tiles{grid-template-columns:repeat(2,1fr)}}
 </style>
 </head>
 <body>
@@ -127,7 +216,6 @@
 
   function tryUnlock(){
     if(input.value === CORRECT){
-      sessionStorage.setItem("opp_unlocked", "1");
       gate.style.display = "none";
     } else {
       err.style.display = "block";
@@ -136,11 +224,7 @@
     }
   }
 
-  if(sessionStorage.getItem("opp_unlocked") === "1"){
-    gate.style.display = "none";
-  } else {
-    setTimeout(function(){ input.focus(); }, 100);
-  }
+  setTimeout(function(){ input.focus(); }, 100);
 
   btn.addEventListener("click", tryUnlock);
   input.addEventListener("keydown", function(e){ if(e.key === "Enter") tryUnlock(); });
@@ -168,6 +252,8 @@
 <div class="wrap">
   <section class="kpis" id="kpis"></section>
 
+  <section class="panel sumpanel" id="summary" aria-label="Pipeline summary"></section>
+
   <div class="controls">
     <div class="search"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.2-3.2"/></svg>
       <input id="q" type="search" placeholder="Search products…" autocomplete="off" aria-label="Search"></div>
@@ -178,13 +264,17 @@
       <button class="chip" data-f="mid" aria-pressed="false">Mid (5–9) <span class="c" data-c="mid"></span></button>
       <button class="chip" data-f="low" aria-pressed="false">Low (1–4) <span class="c" data-c="low"></span></button>
       <button class="chip" data-f="named" aria-pressed="false">Has named contact <span class="c" data-c="named"></span></button>
+      <button class="chip" data-f="email" aria-pressed="false">Has email <span class="c" data-c="email"></span></button>
     </div>
+    <select class="sel" id="statusFilter" aria-label="Filter by status"></select>
+    <span class="syncbadge" id="syncbadge"><i></i><span>Checking sync…</span></span>
+    <button class="btn" id="syncbtn" title="Pull the latest changes from your team">↻ Sync</button>
     <button class="btn" id="csv"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M7 10l5 5 5-5M5 21h14"/></svg>Export CSV</button>
   </div>
 
   <div class="resultbar" id="resultbar"></div>
 
-  <div class="panel"><div class="tablewrap"><table>
+  <div class="panel"><div class="tablewrap"><table id="leadtable">
     <thead><tr>
       <th data-sort="rank" style="width:4%">#</th>
       <th data-sort="name">Product</th>
@@ -196,7 +286,10 @@
       <th class="num" data-sort="perplexity">Perplexity</th>
       <th data-sort="tier">Tier</th>
       <th data-sort="dm_name">Decision maker</th>
+      <th data-sort="dm_title">Designation</th>
       <th>Contact</th>
+      <th data-sort="status">Status</th>
+      <th>Notes</th>
       <th>Proposal</th>
       <th>Download PDF</th>
       <th>Send Email</th>
@@ -211,12 +304,34 @@ const RAW = [{"name": "Vyapar", "path": "/vyapar", "total": 57, "aio": 10, "chat
 const PRE="https://www.softwaresuggest.com";
 const SITE_BASE="https://tirth-automation.github.io/ss-ai/";
 const WORKER_URL="https://apollo-proxy.aeogeo.workers.dev";
-const LEADS = RAW.map((d,i)=>({ ...d, rank:i+1, uid:i }));
-let filter="all", sortKey="total", sortDir="desc", page=1;
+const DASH_KEY="aeogeo"; // same as the page password; the Worker checks it too
+const HDRS={"Content-Type":"application/json","X-Auth":DASH_KEY};
+
+const STATUSES=[["Not contacted","notcontacted"],["Email sent","sent"],["Replied","replied"],["Meeting scheduled","meeting"],["Won","won"],["Not interested","lost"]];
+const STATUS_CLASS=Object.fromEntries(STATUSES);
+const STATUS_ORDER=Object.fromEntries(STATUSES.map(([n],i)=>[n,i]));
+const STATUS_COLOR={"Not contacted":"#C5CAD8","Email sent":"#4F7BE8","Replied":"#8B5CF6","Meeting scheduled":"#0E8C8C","Won":"#0E9F6E","Not interested":"#E0345A"};
+const FIELDS=["status","notes","domain","dm_name","dm_title","dm_email","dm_email_status","dm_phone","dm_linkedin","others","matched_org","match_quality","enriched_at","updated_by","updated_at"];
+const LS_STATE="ss_ai_opp_state_v1", LS_EDITOR="ss_ai_editor_v1";
+
+const LEADS = RAW.map((d,i)=>({
+  ...d, rank:i+1, uid:i,
+  status:"Not contacted", notes:"", domain:"", others:[], matched_org:null, match_quality:"",
+  dm_email_status:"", dm_linkedin:d.dm_linkedin||"",
+}));
+
+let filter="all", statusFilterVal="", scope="all", sortKey="total", sortDir="desc", page=1;
 const PER=30;
+let filtered=[];
+
 const fmt=n=>n==null?"—":Math.round(n).toLocaleString("en-US");
 const $=id=>document.getElementById(id);
-let filtered=[];
+const esc=s=>String(s==null?"":s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;").replace(/'/g,"&#39;");
+const safeUrl=u=>/^https?:\/\//i.test(u||"")?u:"";
+const cleanDomain=s=>String(s||"").trim().toLowerCase().replace(/^https?:\/\//,"").replace(/^www\./,"").split(/[\/?#]/)[0];
+const leadByUid=uid=>LEADS.find(x=>x.uid===uid);
+const shortDate=iso=>{try{return new Date(iso).toLocaleDateString("en-GB",{day:"numeric",month:"short"});}catch(e){return "";}};
+const ls={get(k){try{return localStorage.getItem(k);}catch(e){return null;}},set(k,v){try{localStorage.setItem(k,v);}catch(e){}}};
 
 const TIER_INFO = {
   high: {
@@ -239,6 +354,15 @@ const TIER_INFO = {
   },
 };
 
+const PACKAGES = [
+  { name: "Launch", price: "₹2,38,587", cadence: "One-time", tag: "Best for — Early-stage SaaS",
+    items: ["1 AI-focused content asset", "AI Visibility Audit", "Buyer Prompt Research", "Competitor Visibility Analysis", "AI Presence Scorecard", "Strategic Action Recommendation"] },
+  { name: "Scale", price: "₹4,77,173", cadence: "Per month · 3-month minimum", tag: "Best for — Growth-stage vendors (Most Popular)",
+    items: ["2–3 AI content assets / month", "8 AI-optimized articles", "AI Visibility Tracking", "Prompt Performance Monitoring", "Comparison Content Strategy", "AI Brand Mention Tracking", "Full-time Account Manager"] },
+  { name: "Dominate", price: "₹9,54,345", cadence: "Per month · 6-month minimum", tag: "Best for — Enterprise SaaS & marketplaces (Recommended)",
+    items: ["5 AI content assets / month", "2 AI-optimized video reviews", "Advanced Prompt Strategy", "SaaS Entity Optimization", "Monthly Strategy Workshops", "Complete AI Visibility Strategist", "Priority Support Access"] },
+];
+
 function pdfUrlFor(d){
   return SITE_BASE + d.proposal_path.replace("proposals/", "proposals-pdf/").replace(".html", ".pdf");
 }
@@ -247,17 +371,27 @@ function buildEmailContent(d){
   const proposalUrl = SITE_BASE + d.proposal_path;
   const greeting = d.dm_name ? `Hi ${d.dm_name.split(" ")[0]},` : "Hi,";
   const subject = `${d.name} is already showing up in AI answers — quick visibility snapshot`;
-  const ti = TIER_INFO[d.tier] || TIER_INFO.low;
-  const includesLines = ti.includes.map(x => `  • ${x}`).join("\n");
+  const intro = `I pulled a quick AI-visibility snapshot for ${d.name}'s SoftwareSuggest listing (softwaresuggest.com${d.path}) — it's already being cited ${d.total} time(s) across AI Overviews, ChatGPT, Gemini and Perplexity.`;
+
+  let planSection;
+  if (d.tier === "high") {
+    const pkgBlocks = PACKAGES.map(p => {
+      const itemsLines = p.items.map(x => `    • ${x}`).join("\n");
+      return `${p.name} — ${p.price} (${p.cadence})\n${itemsLines}\n  ${p.tag}`;
+    }).join("\n\n");
+    planSection = `You're already one of the most-cited products in your category — here are three ways to engage, with Dominate as our recommendation:\n\n${pkgBlocks}`;
+  } else {
+    const ti = TIER_INFO[d.tier] || TIER_INFO.low;
+    const includesLines = ti.includes.map(x => `  • ${x}`).join("\n");
+    planSection = `${ti.pitch}\n\nRecommended plan — ${ti.plan} (${ti.priceLine}):\n${includesLines}`;
+  }
+
   const bodyLines = [
     greeting,
     "",
-    `I pulled a quick AI-visibility snapshot for ${d.name}'s SoftwareSuggest listing (softwaresuggest.com${d.path}) — it's already being cited ${d.total} time(s) across AI Overviews, ChatGPT, Gemini and Perplexity.`,
+    intro,
     "",
-    ti.pitch,
-    "",
-    `Recommended plan — ${ti.plan} (${ti.priceLine}):`,
-    includesLines,
+    planSection,
     "",
     `Full breakdown attached as a PDF, also viewable at ${proposalUrl}`,
     "",
@@ -269,185 +403,485 @@ function buildEmailContent(d){
   return { subject, body: bodyLines.join("\n") };
 }
 
+
+
+/* ================= team state: shared via the Worker, with a this-device fallback ================= */
+let STATE={};
+try{STATE=JSON.parse(ls.get(LS_STATE)||"{}")||{};}catch(e){STATE={};}
+let pending={};
+let flushTimer=null, flushing=false;
+
+function applyEntry(d,e){
+  for(const k of FIELDS){ if(e[k]!==undefined) d[k]=e[k]; }
+  if(!STATUS_CLASS[d.status]) d.status="Not contacted";
+  if(!Array.isArray(d.others)) d.others=[];
+}
+function applyAllState(){ LEADS.forEach(d=>{ const s=STATE[d.path]; if(s) applyEntry(d,s); }); }
+function persistLocal(){ ls.set(LS_STATE,JSON.stringify(STATE)); }
+
+function getEditor(){
+  let n=ls.get(LS_EDITOR);
+  if(!n){
+    n=(window.prompt("Your name? (the team will see who made each update)")||"").trim()||"Team";
+    ls.set(LS_EDITOR,n);
+  }
+  return n;
+}
+
+function setSync(mode){
+  const el=$("syncbadge"); if(!el) return;
+  el.className="syncbadge "+mode;
+  el.querySelector("span").textContent={shared:"Shared with team ✓",local:"Saved on this device only",saving:"Saving…",checking:"Checking sync…"}[mode]||"";
+  el.title=mode==="local"
+    ?"Team sync isn't active (Worker/KV not set up or unreachable). Changes are kept in this browser and upload automatically once sync works."
+    :(mode==="shared"?"Status, notes and contacts are shared with everyone who opens this page.":"");
+}
+
+function updateLead(d,patch){
+  const full={...patch,updated_by:getEditor(),updated_at:new Date().toISOString()};
+  applyEntry(d,full);
+  STATE[d.path]={...(STATE[d.path]||{}),...full};
+  pending[d.path]={...(pending[d.path]||{}),...full};
+  persistLocal();
+  scheduleFlush();
+}
+
+function scheduleFlush(){
+  setSync("saving");
+  clearTimeout(flushTimer);
+  flushTimer=setTimeout(flush,900);
+}
+
+async function flush(){
+  if(flushing){ scheduleFlush(); return; }
+  const entries=pending;
+  if(!Object.keys(entries).length) return;
+  pending={}; flushing=true;
+  try{
+    const r=await fetch(WORKER_URL+"/state",{method:"POST",headers:HDRS,body:JSON.stringify({entries})});
+    if(!r.ok) throw new Error("HTTP "+r.status);
+    setSync(Object.keys(pending).length?"saving":"shared");
+  }catch(e){
+    for(const [p,v] of Object.entries(entries)) pending[p]={...v,...(pending[p]||{})};
+    setSync("local");
+  }finally{ flushing=false; }
+}
+
+async function loadRemote(){
+  try{
+    const r=await fetch(WORKER_URL+"/state",{headers:HDRS,cache:"no-store"});
+    if(!r.ok) throw new Error("HTTP "+r.status);
+    const remote=(await r.json()).state||{};
+    const merged={};
+    for(const p of new Set([...Object.keys(remote),...Object.keys(STATE)])){
+      const rem=remote[p]||{}, loc=STATE[p]||{};
+      for(const k of Object.keys(loc)){ if(rem[k]===undefined){ (pending[p]=pending[p]||{})[k]=loc[k]; } }
+      merged[p]={...loc,...rem};
+    }
+    for(const p of Object.keys(pending)) merged[p]={...(merged[p]||{}),...pending[p]};
+    STATE=merged; persistLocal(); applyAllState();
+    if(Object.keys(pending).length){ scheduleFlush(); } else { setSync("shared"); }
+    return true;
+  }catch(e){ setSync("local"); return false; }
+}
+
+async function refreshFromRemote(){
+  const ae=document.activeElement;
+  if(ae&&ae.classList&&ae.classList.contains("note-input")) return;
+  if(await loadRemote()){ refreshAll(); }
+}
+
+function toast(msg,kind){
+  let w=document.querySelector(".toast-wrap");
+  if(!w){ w=document.createElement("div"); w.className="toast-wrap"; document.body.appendChild(w); }
+  const t=document.createElement("div"); t.className="toast "+(kind||""); t.textContent=msg; w.appendChild(t);
+  setTimeout(()=>t.remove(),kind==="err"?9000:5500);
+}
+
+/* ================= Apollo enrichment ================= */
+async function callWorker(path,body){
+  try{
+    const r=await fetch(WORKER_URL+path,{method:"POST",headers:HDRS,body:JSON.stringify(body)});
+    let data={}; try{data=await r.json();}catch(e){}
+    if(!r.ok&&!data.error) data.error="Worker returned HTTP "+r.status;
+    return data;
+  }catch(e){ return {error:"Could not reach the Worker — check your internet and that it is deployed."}; }
+}
+
+async function enrichLead(d){
+  let data=await callWorker("/enrich",{company_name:d.name,domain:d.domain||""});
+  if(data.needs_domain){
+    const hint=(data.candidates&&data.candidates.length)
+      ?"\n\nApollo's closest matches (probably NOT the same company):\n"+data.candidates.map(c=>"• "+c.name+" — "+c.domain).join("\n"):"";
+    const typed=window.prompt(`I couldn't confidently find "${d.name}" in Apollo.\n\nType the company's website domain (for example ${d.name.toLowerCase().replace(/[^a-z0-9]/g,"")}.com) and I'll look up their decision-makers.${hint}`,d.domain||"");
+    const dom=cleanDomain(typed);
+    if(!dom){ toast("Skipped — no domain entered for "+d.name+".","warn"); return; }
+    updateLead(d,{domain:dom});
+    data=await callWorker("/enrich",{company_name:d.name,domain:dom});
+    if(data.needs_domain){ toast("Apollo still couldn't find "+dom+".","warn"); return; }
+  }
+  if(data.error){ toast("Apollo lookup failed: "+data.error,"err"); return; }
+  const now=new Date().toISOString();
+  const org=data.matched_org||null;
+  if(!data.dm_name){
+    updateLead(d,{matched_org:org,match_quality:data.match_quality||"",enriched_at:now,domain:d.domain||(org&&org.domain)||""});
+    toast(data.message||("No decision-makers found in Apollo for "+d.name+"."),"warn");
+    return;
+  }
+  updateLead(d,{
+    dm_name:data.dm_name, dm_title:data.dm_title||"", dm_email:data.dm_email||"", dm_email_status:data.dm_email_status||"",
+    dm_linkedin:data.dm_linkedin||"", others:data.others||[], matched_org:org, match_quality:data.match_quality||"",
+    enriched_at:now, domain:d.domain||(org&&org.domain)||"",
+  });
+  if(!data.dm_email) toast("Found "+data.dm_name+" ("+(data.dm_title||"")+") but Apollo has no email for them — try “Get email” on another contact.","warn");
+}
+
+async function revealOther(d,i){
+  const o=d.others[i]; if(!o||!o.id) return;
+  const res=await callWorker("/reveal",{person_id:o.id,domain:d.domain||(d.matched_org&&d.matched_org.domain)||""});
+  if(res.error){ toast("Couldn't get email: "+res.error,"err"); return; }
+  const others=d.others.map((x,k)=>k===i?{...x,name:res.name||x.name,title:res.title||x.title,linkedin:res.linkedin||x.linkedin,email:res.email||"",email_status:res.email_status||""}:x);
+  updateLead(d,{others});
+  if(!res.email) toast("Apollo has no email for "+o.name+".","warn");
+}
+
+function makePrimary(d,i){
+  const o=d.others[i]; if(!o) return;
+  const old={id:"",name:d.dm_name,title:d.dm_title,linkedin:d.dm_linkedin,email:d.dm_email,email_status:d.dm_email_status};
+  const others=d.others.filter((_,k)=>k!==i);
+  if(old.name) others.unshift(old);
+  updateLead(d,{dm_name:o.name,dm_title:o.title,dm_email:o.email||"",dm_email_status:o.email_status||"",dm_linkedin:o.linkedin||"",others});
+}
+
+/* ================= send-email preview (opens your mail app) ================= */
 function showSendModal(d){
   const { subject, body } = buildEmailContent(d);
-  const overlay = document.createElement("div");
-  overlay.style.cssText = "position:fixed;inset:0;background:rgba(14,20,36,.55);z-index:1000;display:flex;align-items:center;justify-content:center;padding:20px";
-  overlay.innerHTML = `
+  const warnings=[];
+  if(d.match_quality==="similar") warnings.push("Apollo matched this company by a similar name — double-check the address belongs to the right company.");
+  if(d.dm_email_status && d.dm_email_status!=="verified") warnings.push("Apollo marks this email as unverified.");
+  const overlay=document.createElement("div");
+  overlay.style.cssText="position:fixed;inset:0;background:rgba(14,20,36,.55);z-index:1000;display:flex;align-items:center;justify-content:center;padding:20px";
+  overlay.innerHTML=`
     <div style="background:#fff;border-radius:16px;max-width:520px;width:100%;max-height:85vh;overflow-y:auto;padding:28px 30px;font-family:'Inter',sans-serif">
       <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--faint);text-transform:uppercase;letter-spacing:.08em;margin-bottom:6px">Preview before sending</div>
-      <h3 style="font-family:'Space Grotesk',sans-serif;margin:0 0 16px;font-size:18px">${d.name}</h3>
-      <div style="font-size:12.5px;color:var(--muted);margin-bottom:4px">To</div>
-      <div style="font-size:14px;margin-bottom:14px;font-weight:600">${d.dm_email}</div>
+      <h3 style="font-family:'Space Grotesk',sans-serif;margin:0 0 16px;font-size:18px">${esc(d.name)}</h3>
+      ${warnings.map(w=>`<div style="background:var(--aio-soft);color:var(--aio);border-radius:8px;padding:8px 11px;font-size:12.5px;margin-bottom:12px">⚠ ${esc(w)}</div>`).join("")}
+      <div style="font-size:12.5px;color:var(--muted);margin-bottom:4px">To${d.dm_name?` — ${esc(d.dm_name)}${d.dm_title?`, ${esc(d.dm_title)}`:""}`:""}</div>
+      <div style="font-size:14px;margin-bottom:14px;font-weight:600">${esc(d.dm_email)}</div>
       <div style="font-size:12.5px;color:var(--muted);margin-bottom:4px">Subject</div>
-      <div style="font-size:14px;margin-bottom:14px">${subject}</div>
+      <div style="font-size:14px;margin-bottom:14px">${esc(subject)}</div>
       <div style="font-size:12.5px;color:var(--muted);margin-bottom:4px">Message</div>
-      <div style="font-size:13.5px;white-space:pre-wrap;background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:14px;margin-bottom:14px">${body}</div>
-      <div style="font-size:12.5px;color:var(--muted);margin-bottom:16px">📎 Remember to attach: ${d.proposal_path.split("/").pop().replace(".html",".pdf")} (use the Download PDF button, then drag it into the email that opens)</div>
-      <div id="send-status" style="font-size:13px;color:var(--muted);margin-bottom:14px;display:none"></div>
+      <div style="font-size:13.5px;white-space:pre-wrap;background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:14px;margin-bottom:14px">${esc(body)}</div>
+      <div style="font-size:12.5px;color:var(--muted);margin-bottom:6px">📎 Remember to attach: ${esc(d.proposal_path.split("/").pop().replace(".html",".pdf"))} (use the Download PDF button, then drag it into the email that opens)</div>
+      ${d.status==="Not contacted"?`<div style="font-size:12px;color:var(--faint);margin-bottom:16px">Status will be set to “Email sent” — change it in the table if you don't end up sending.</div>`:`<div style="margin-bottom:16px"></div>`}
       <div style="display:flex;gap:10px;justify-content:flex-end">
         <button id="send-cancel" style="padding:10px 18px;border-radius:10px;border:1px solid var(--line);background:#fff;font-family:inherit;font-size:13.5px;cursor:pointer">Cancel</button>
         <button id="send-confirm" style="padding:10px 18px;border-radius:10px;border:none;background:var(--primary);color:#fff;font-family:inherit;font-weight:600;font-size:13.5px;cursor:pointer">Open in Mail App</button>
       </div>
     </div>`;
   document.body.appendChild(overlay);
-
-  overlay.querySelector("#send-cancel").onclick = () => overlay.remove();
-  overlay.addEventListener("click", (e) => { if (e.target === overlay) overlay.remove(); });
-
-  overlay.querySelector("#send-confirm").onclick = () => {
-    const mailtoUrl = `mailto:${encodeURIComponent(d.dm_email)}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    window.location.href = mailtoUrl;
-    d.contact_status = "Opened";
+  overlay.querySelector("#send-cancel").onclick=()=>overlay.remove();
+  overlay.addEventListener("click",e=>{ if(e.target===overlay) overlay.remove(); });
+  overlay.querySelector("#send-confirm").onclick=()=>{
+    const mailtoUrl=`mailto:${encodeURIComponent(d.dm_email)}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    if(d.status==="Not contacted") updateLead(d,{status:"Email sent"});
     overlay.remove();
-    render();
+    refreshAll();
+    window.location.href=mailtoUrl;
   };
 }
 
-function init(){
+/* ================= summary ================= */
+function renderSummary(){
+  const total=LEADS.length;
+  const fundable=LEADS.filter(d=>d.fundable).length;
   const totalCites=LEADS.reduce((a,d)=>a+d.total,0);
-  const highCount=LEADS.filter(d=>d.tier==="high").length;
-  const namedCount=LEADS.filter(d=>d.dm_name).length;
-  const fundableCount=LEADS.filter(d=>d.fundable).length;
-  $("insight").innerHTML=`<span class="ic"></span><span><b>${fmt(LEADS.length)}</b> products are already cited by AI engines on softwaresuggest.com. <b>${fmt(fundableCount)}</b> are realistic $2,000+/mo prospects (mid/high tier, excluding free tools); every row has a one-click contact search and a personalized proposal.</span>`;
+  const named=LEADS.filter(d=>d.dm_name).length;
+  const withEmail=LEADS.filter(d=>d.dm_email).length;
+  const contactedAll=LEADS.filter(d=>d.status!=="Not contacted").length;
+
+  $("insight").innerHTML=`<span class="ic"></span><span><b>${fmt(total)}</b> products are cited by AI engines on softwaresuggest.com · <b>${fmt(fundable)}</b> are realistic $2,000+/mo prospects · <b>${fmt(withEmail)}</b> have a decision-maker email · <b>${fmt(contactedAll)}</b> contacted so far.</span>`;
+
   const cards=[
-    {c:"k1",label:"Total cited products",val:fmt(LEADS.length),foot:"across all AI engines"},
-    {c:"k2",label:"Can pay $2,000+/mo",val:fmt(fundableCount),foot:"mid/high tier, free tools excluded"},
+    {c:"k1",label:"Total cited products",val:fmt(total),foot:"across all AI engines"},
+    {c:"k2",label:"Can pay $2,000+/mo",val:fmt(fundable),foot:"mid/high tier, free tools excluded"},
     {c:"k3",label:"Total citations",val:fmt(totalCites),foot:"summed across products"},
-    {c:"k4",label:"Named decision-makers",val:fmt(namedCount),foot:"verified via public research"},
+    {c:"k4",label:"Contacts with email",val:fmt(withEmail),foot:`${fmt(named)} named decision-makers`},
   ];
   $("kpis").innerHTML=cards.map(c=>`<div class="kpi ${c.c}"><span class="accent"></span><div class="label">${c.label}</div><div class="val">${c.val}</div><div class="foot">${c.foot}</div></div>`).join("");
-  document.querySelector('[data-c="all"]').textContent=fmt(LEADS.length);
-  document.querySelector('[data-c="fundable"]').textContent=fmt(fundableCount);
-  document.querySelector('[data-c="high"]').textContent=fmt(highCount);
-  document.querySelector('[data-c="mid"]').textContent=fmt(LEADS.filter(d=>d.tier==="mid").length);
-  document.querySelector('[data-c="low"]').textContent=fmt(LEADS.filter(d=>d.tier==="low").length);
-  document.querySelector('[data-c="named"]').textContent=fmt(namedCount);
-  bindEvents();
-  compute();
+
+  const set=scope==="fundable"?LEADS.filter(d=>d.fundable):LEADS;
+  const counts=Object.fromEntries(STATUSES.map(([n])=>[n,0]));
+  set.forEach(d=>{counts[d.status]++;});
+  const n=set.length||1;
+  const contacted=set.length-counts["Not contacted"];
+  const responded=counts["Replied"]+counts["Meeting scheduled"]+counts["Won"];
+  const meetings=counts["Meeting scheduled"]+counts["Won"];
+  const emails=set.filter(d=>d.dm_email).length;
+  const pct=(a,b)=>b?Math.round(a/b*100)+"%":"—";
+
+  const bar=STATUSES.map(([nm])=>counts[nm]?`<span style="width:${counts[nm]/n*100}%;background:${STATUS_COLOR[nm]}" title="${nm}: ${counts[nm]}"></span>`:"").join("");
+  const tiles=STATUSES.map(([nm])=>`<button class="tile${statusFilterVal===nm?" on":""}" data-status="${esc(nm)}"><div class="tn">${fmt(counts[nm])}</div><div class="tl"><i class="dot" style="background:${STATUS_COLOR[nm]}"></i>${esc(nm)}</div></button>`).join("");
+
+  const tierRows=["high","mid","low"].map(t=>{
+    const s=set.filter(d=>d.tier===t);
+    const em=s.filter(d=>d.dm_email).length;
+    const ct=s.filter(d=>d.status!=="Not contacted").length;
+    const rs=s.filter(d=>["Replied","Meeting scheduled","Won"].includes(d.status)).length;
+    const wn=s.filter(d=>d.status==="Won").length;
+    return `<tr><td>${t==="high"?"High (10+)":t==="mid"?"Mid (5–9)":"Low (1–4)"}</td><td class="num">${fmt(s.length)}</td><td class="num">${fmt(em)}</td><td class="num">${fmt(ct)}</td><td class="num">${fmt(rs)}</td><td class="num">${fmt(wn)}</td></tr>`;
+  }).join("");
+
+  $("summary").innerHTML=`
+    <div class="sumcol">
+      <div class="sumhead"><div class="sumtitle">Outreach pipeline<span class="hint">click a status to filter the table</span></div>
+        <div class="scope"><button data-scope="all" aria-pressed="${scope==="all"}">All leads</button><button data-scope="fundable" aria-pressed="${scope==="fundable"}">$2k+/mo only</button></div></div>
+      <div class="pipebar">${bar}</div>
+      <div class="tiles">${tiles}</div>
+    </div>
+    <div class="sumcol">
+      <div class="sumhead"><div class="sumtitle">Coverage &amp; results<span class="hint">${scope==="fundable"?"$2k+/mo leads":"all leads"}</span></div></div>
+      <div class="statrow"><span>Leads in view</span><b>${fmt(set.length)}</b></div>
+      <div class="statrow"><span>Decision-maker email found</span><b>${fmt(emails)}<small>${pct(emails,set.length)}</small></b></div>
+      <div class="statrow"><span>Contacted</span><b>${fmt(contacted)}<small>${pct(contacted,set.length)}</small></b></div>
+      <div class="statrow"><span>Responded (replied / meeting / won)</span><b>${fmt(responded)}<small>${pct(responded,contacted)} reply rate</small></b></div>
+      <div class="statrow"><span>Meetings booked or won</span><b>${fmt(meetings)}</b></div>
+      <table class="tier-table"><thead><tr><th>Tier</th><th class="num">Leads</th><th class="num">Email</th><th class="num">Contacted</th><th class="num">Responded</th><th class="num">Won</th></tr></thead><tbody>${tierRows}</tbody></table>
+    </div>`;
+
+  const setC=(k,v)=>{const el=document.querySelector(`[data-c="${k}"]`); if(el) el.textContent=fmt(v);};
+  setC("all",total); setC("fundable",fundable);
+  setC("high",LEADS.filter(d=>d.tier==="high").length); setC("mid",LEADS.filter(d=>d.tier==="mid").length); setC("low",LEADS.filter(d=>d.tier==="low").length);
+  setC("named",named); setC("email",withEmail);
+}
+
+function fillStatusFilter(){
+  $("statusFilter").innerHTML=`<option value="">All statuses</option>`+STATUSES.map(([n])=>`<option value="${esc(n)}">${esc(n)}</option>`).join("");
+  $("statusFilter").value=statusFilterVal;
+}
+
+function refreshAll(){ renderSummary(); compute(); }
+
+/* ================= table ================= */
+function roleOf(title){
+  const t=String(title||"").toLowerCase();
+  if(!t) return null;
+  if(/\b(ceo|chief executive|founder|co-?founder|owner|managing director|md|president)\b/.test(t)) return ["CEO / Founder","ceo"];
+  if(/\b(cmo|chief marketing|chief growth)\b|marketing|growth|seo|brand|digital/.test(t)) return ["Marketing","mkt"];
+  if(/\b(cfo|chief financial)\b|finance/.test(t)) return ["Finance","fin"];
+  if(/\b(cto|coo|chief operating|chief technology|chief product)\b|product|operations/.test(t)) return ["Ops / Tech","ops"];
+  return ["Other","oth"];
 }
 
 function compute(){
   const q=$("q").value.trim().toLowerCase();
   filtered=LEADS.filter(d=>{
+    if(statusFilterVal&&d.status!==statusFilterVal) return false;
     if(filter==="named"&&!d.dm_name) return false;
+    if(filter==="email"&&!d.dm_email) return false;
     if(filter==="fundable"&&!d.fundable) return false;
-    if(!["all","named","fundable"].includes(filter)&&d.tier!==filter) return false;
-    if(q&&!d.name.toLowerCase().includes(q)) return false;
+    if(["high","mid","low"].includes(filter)&&d.tier!==filter) return false;
+    if(q&&!(d.name.toLowerCase().includes(q)||(d.dm_name||"").toLowerCase().includes(q)||(d.dm_email||"").toLowerCase().includes(q))) return false;
     return true;
   });
-  filtered.sort((a,b)=>{let av=a[sortKey],bv=b[sortKey];
-    if(["name","path","tier","dm_name"].includes(sortKey)){av=av||"";bv=bv||"";return sortDir==="asc"?av.localeCompare(bv):bv.localeCompare(av);}
-    return sortDir==="asc"?av-bv:bv-av;});
-  const mp=Math.max(1,Math.ceil(filtered.length/PER));if(page>mp)page=mp;
+  const STR_KEYS=["name","path","tier","dm_name","dm_title"];
+  filtered.sort((a,b)=>{
+    let r=0;
+    if(sortKey==="status"){ r=STATUS_ORDER[a.status]-STATUS_ORDER[b.status]; if(sortDir==="desc") r=-r; }
+    else if(STR_KEYS.includes(sortKey)){
+      const av=String(a[sortKey]||"").toLowerCase(), bv=String(b[sortKey]||"").toLowerCase();
+      if(!av&&bv) return 1; if(av&&!bv) return -1;
+      r=av.localeCompare(bv); if(sortDir==="desc") r=-r;
+    } else { r=(a[sortKey]||0)-(b[sortKey]||0); if(sortDir==="desc") r=-r; }
+    return r||(b.total-a.total)||(a.rank-b.rank);
+  });
+  const mp=Math.max(1,Math.ceil(filtered.length/PER)); if(page>mp) page=mp;
   $("resultbar").innerHTML=`<b>${fmt(filtered.length)}</b> leads shown`;
   render();
+}
+
+function otherRow(d,o,i){
+  const li=safeUrl(o.linkedin);
+  const action=o.email
+    ?`<a href="mailto:${esc(o.email)}">${esc(o.email)}</a> <button class="mini primary-btn" data-uid="${d.uid}" data-i="${i}">Use as primary</button>`
+    :(o.id?`<button class="mini reveal-btn" data-uid="${d.uid}" data-i="${i}">Get email</button>`:"");
+  return `<div class="oc"><b>${esc(o.name)}</b> <span class="ti">${esc(o.title)}</span>${li?` <a href="${esc(li)}" target="_blank" rel="noopener">in</a>`:""} ${action}</div>`;
+}
+
+function cellDM(d){
+  const name=d.dm_name?`<span class="nm">${esc(d.dm_name)}</span>`:`<span class="none">Not documented</span>`;
+  const dom=d.domain?`<span class="dom">${esc(d.domain)}</span>`:"";
+  const acts=[
+    d.dm_email?`<button class="mini ghost enrich-btn" data-uid="${d.uid}" data-re="1">↻ Re-enrich</button>`:`<button class="mini enrich-btn" data-uid="${d.uid}">🔍 Enrich via Apollo</button>`,
+    `<button class="mini ghost domain-btn" data-uid="${d.uid}">✎ ${d.domain?"Edit":"Set"} domain</button>`,
+  ].join("");
+  const others=d.others&&d.others.length
+    ?`<details class="others"><summary>${d.others.length} other contact${d.others.length>1?"s":""} (CMO / CFO…)</summary>${d.others.map((o,i)=>otherRow(d,o,i)).join("")}</details>`:"";
+  return `<span class="dm">${name}${dom}</span><div class="acts">${acts}</div>${others}`;
+}
+
+function cellDesignation(d){
+  const r=roleOf(d.dm_title);
+  if(!r) return `<span class="none" style="color:var(--faint)">—</span>`;
+  return `<span class="role ${r[1]}">${r[0]}</span><span class="ti">${esc(d.dm_title)}</span>`;
+}
+
+function cellContact(d){
+  const org=d.matched_org;
+  const li=safeUrl(d.dm_linkedin);
+  let out="";
+  if(d.dm_email){
+    const tag=d.dm_email_status==="verified"?`<span class="etag ok">verified</span>`:(d.dm_email_status?`<span class="etag maybe">unverified</span>`:"");
+    out+=`<a class="em" href="mailto:${esc(d.dm_email)}">${esc(d.dm_email)}</a>${tag}`;
+  } else {
+    out+=`<span class="noemail">${d.enriched_at?"Apollo has no email for this contact":"No email yet"}</span>`;
+  }
+  if(d.dm_phone) out+=`<span class="ph">${esc(d.dm_phone)}</span>`;
+  if(li) out+=`<a class="li" href="${esc(li)}" target="_blank" rel="noopener">LinkedIn profile →</a>`;
+  if(org&&org.domain){
+    if(d.match_quality==="similar") out+=`<span class="warn">⚠ Matched “${esc(org.name)}” (${esc(org.domain)}) — check it's the right company</span>`;
+    else out+=`<span class="mo">Apollo: ${esc(org.name||"")}${org.name?" · ":""}${esc(org.domain)}</span>`;
+  }
+  return out;
+}
+
+function cellStatus(d){
+  const by=(d.status!=="Not contacted"&&d.updated_at)?`<span class="byline">${esc(d.updated_by||"")}${d.updated_by?" · ":""}${esc(shortDate(d.updated_at))}</span>`:"";
+  return `<select class="status-sel s-${STATUS_CLASS[d.status]}" data-uid="${d.uid}" aria-label="Status for ${esc(d.name)}">${STATUSES.map(([n])=>`<option value="${esc(n)}"${n===d.status?" selected":""}>${esc(n)}</option>`).join("")}</select>${by}`;
 }
 
 function render(){
   const mp=Math.max(1,Math.ceil(filtered.length/PER));
   const start=(page-1)*PER, slice=filtered.slice(start,start+PER);
   const maxTotal=Math.max(...LEADS.map(d=>d.total));
-  $("rows").innerHTML=slice.length?slice.map(d=>{
-    const dmNameBlock = d.dm_name
-      ? `<span class="nm">${d.dm_name}</span><span class="ti">${d.dm_title||""}</span>`
-      : `<span class="none">Not publicly documented</span>`;
-    const enrichBtn = !d.dm_email
-      ? `<button class="enrich-btn" data-uid="${d.uid}" style="margin-top:4px;display:inline-flex;align-items:center;gap:4px;font-size:11px;font-weight:600;padding:4px 9px;border-radius:7px;background:var(--primary-soft);color:var(--primary);border:none;cursor:pointer">🔍 Enrich via Apollo</button>`
-      : "";
-    const dm=`<span class="dm" id="dm-${d.uid}">${dmNameBlock}</span> ${enrichBtn}`;
-    const liQuery=encodeURIComponent((d.dm_name?d.dm_name+" ":"")+d.name+" founder OR CEO OR director");
-    const liUrl="https://www.linkedin.com/search/results/people/?keywords="+liQuery;
-    const emailDisplay = d.dm_email
-      ? `<a href="mailto:${d.dm_email}" style="font-weight:600;color:var(--primary);text-decoration:none;word-break:break-all">${d.dm_email}</a>${d.dm_phone?`<span class="direct" style="display:block;margin-top:3px">${d.dm_phone}</span>`:""}${d.dm_linkedin?`<a href="${d.dm_linkedin}" target="_blank" rel="noopener" style="display:block;margin-top:3px;font-size:11px;color:#2557A7">LinkedIn profile →</a>`:""}`
-      : (d.dm_linkedin
-          ? `<a href="${d.dm_linkedin}" target="_blank" rel="noopener" style="font-size:11.5px;color:#2557A7">LinkedIn profile →</a><span style="display:block;font-size:11px;color:var(--faint);margin-top:2px">No email yet</span>`
-          : `<span style="color:var(--faint);font-size:12px">No email yet</span>`);
-    return `<tr>
+  const pdf=d=>d.proposal_path.replace("proposals/","proposals-pdf/").replace(".html",".pdf");
+  $("rows").innerHTML=slice.length?slice.map(d=>`<tr>
     <td>${d.rank}</td>
-    <td class="prod">${d.name}</td>
-    <td class="page"><a href="${PRE}${d.path}" target="_blank" rel="noopener" title="${PRE}${d.path}">softwaresuggest.com${d.path}</a></td>
+    <td class="prod">${esc(d.name)}</td>
+    <td class="page"><a href="${PRE}${esc(d.path)}" target="_blank" rel="noopener" title="${PRE}${esc(d.path)}">softwaresuggest.com${esc(d.path)}</a></td>
     <td class="num"><span class="citebar"><span class="track"><span class="fillc" style="width:${Math.round(d.total/maxTotal*100)}%"></span></span>${fmt(d.total)}</span></td>
     <td class="num">${fmt(d.aio)}</td>
     <td class="num">${fmt(d.chatgpt)}</td>
     <td class="num">${fmt(d.gemini)}</td>
     <td class="num">${fmt(d.perplexity)}</td>
     <td><span class="pcat ${d.tier}">${d.tier==="high"?"High":d.tier==="mid"?"Mid":"Low"}</span>${d.fundable?'<span class="pcat" style="background:var(--green-soft);color:var(--green);margin-left:4px">💰 $2k+/mo</span>':''}${d.enterprise_flag?'<span class="pcat" style="background:#F1F2F6;color:var(--faint);margin-left:4px" title="Large/public company — has budget but unlikely to respond to cold outreach from a small agency">🏢 Enterprise</span>':''}</td>
-    <td>${dm}</td>
-    <td class="contactcell">${emailDisplay}</td>
-    <td><a href="${d.proposal_path.replace("proposals/","proposals-pdf/").replace(".html",".pdf")}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:5px;font-size:11.5px;font-weight:600;padding:5px 10px;border-radius:7px;background:var(--aio-soft);color:var(--aio);text-decoration:none;white-space:nowrap">View proposal (PDF) →</a></td>
-    <td><a href="${d.proposal_path.replace("proposals/","proposals-pdf/").replace(".html",".pdf")}" download style="display:inline-flex;align-items:center;gap:5px;font-size:11.5px;font-weight:600;padding:5px 10px;border-radius:7px;background:#F1F2F6;color:var(--ink);text-decoration:none;white-space:nowrap">⬇ Download PDF</a></td>
+    <td class="dm-cell">${cellDM(d)}</td>
+    <td class="desig">${cellDesignation(d)}</td>
+    <td class="contactcell">${cellContact(d)}</td>
+    <td>${cellStatus(d)}</td>
+    <td><input class="note-input" data-uid="${d.uid}" value="${esc(d.notes)}" placeholder="Add note…" maxlength="500" aria-label="Notes for ${esc(d.name)}"></td>
+    <td><a href="${esc(pdf(d))}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:5px;font-size:11.5px;font-weight:600;padding:5px 10px;border-radius:7px;background:var(--aio-soft);color:var(--aio);text-decoration:none;white-space:nowrap">View proposal (PDF) →</a></td>
+    <td><a href="${esc(pdf(d))}" download style="display:inline-flex;align-items:center;gap:5px;font-size:11.5px;font-weight:600;padding:5px 10px;border-radius:7px;background:#F1F2F6;color:var(--ink);text-decoration:none;white-space:nowrap">⬇ Download PDF</a></td>
     <td>${d.dm_email
-      ? `<button class="send-email-btn" data-uid="${d.uid}" style="display:inline-flex;align-items:center;gap:5px;font-size:11.5px;font-weight:600;padding:5px 10px;border-radius:7px;background:var(--green-soft);color:var(--green);border:none;cursor:pointer;white-space:nowrap">${d.contact_status==='Opened'?'↺ Reopen Mail':'✉️ Send Email'}</button>`
-      : `<span style="font-size:11px;color:var(--faint)">Enrich first</span>`}</td>
-  </tr>`;}).join("")
-    :`<tr><td colspan="14"><div class="empty"><strong>No leads match</strong>Adjust search or filter.</div></td></tr>`;
+      ?`<button class="send-email-btn" data-uid="${d.uid}" style="display:inline-flex;align-items:center;gap:5px;font-size:11.5px;font-weight:600;padding:5px 10px;border-radius:7px;background:var(--green-soft);color:var(--green);border:none;cursor:pointer;white-space:nowrap">${d.status==="Not contacted"?"✉️ Send Email":"↺ Email again"}</button>`
+      :`<span style="font-size:11px;color:var(--faint)">Enrich first</span>`}</td>
+  </tr>`).join("")
+    :`<tr><td colspan="17"><div class="empty"><strong>No leads match</strong>Adjust search or filter.</div></td></tr>`;
   $("pageInfo").textContent=`${filtered.length?start+1:0}–${Math.min(start+PER,filtered.length)} of ${fmt(filtered.length)}`;
-  $("pageNum").textContent=`${page} / ${mp}`;$("prev").disabled=page<=1;$("next").disabled=page>=mp;
+  $("pageNum").textContent=`${page} / ${mp}`; $("prev").disabled=page<=1; $("next").disabled=page>=mp;
+}
+
+/* ================= events ================= */
+function csvCell(s,guard){
+  let v=String(s==null?"":s);
+  if(guard&&/^[=+\-@]/.test(v)) v="'"+v;
+  return `"${v.replace(/"/g,'""')}"`;
+}
+
+function exportCsv(){
+  const head=["Rank","Product","SoftwareSuggest page","Citations","AIO","ChatGPT","Gemini","Perplexity","Tier","Can pay $2000+/mo","Decision maker","Designation","Role group","Email","Email status","Phone","LinkedIn","Company domain","Apollo matched company","Other contacts","Status","Notes","Last updated by","Last updated at","Proposal PDF"];
+  const rows=LEADS.map(d=>{
+    const r=roleOf(d.dm_title);
+    const others=(d.others||[]).map(o=>[o.name,o.title,o.email].filter(Boolean).join(" / ")).join(" ; ");
+    return [
+      [d.rank],[d.name],[PRE+d.path],[d.total],[d.aio],[d.chatgpt],[d.gemini],[d.perplexity],[d.tier],[d.fundable?"Yes":"No"],
+      [d.dm_name,1],[d.dm_title,1],[r?r[0]:""],[d.dm_email],[d.dm_email_status],[d.dm_phone],[d.dm_linkedin],[d.domain,1],
+      [d.matched_org?d.matched_org.name:"",1],[others,1],[d.status],[d.notes,1],[d.updated_by,1],[d.updated_at],[SITE_BASE+d.proposal_path.replace("proposals/","proposals-pdf/").replace(".html",".pdf")],
+    ].map(([v,g])=>csvCell(v,g)).join(",");
+  });
+  const blob=new Blob([[head.map(h=>csvCell(h)).join(",")].concat(rows).join("\n")],{type:"text/csv"});
+  const a=document.createElement("a"); a.href=URL.createObjectURL(blob);
+  a.download=`opportunity-leads_${new Date().toISOString().slice(0,10)}.csv`; a.click(); URL.revokeObjectURL(a.href);
 }
 
 function bindEvents(){
   $("q").addEventListener("input",()=>{page=1;compute();});
-  $("rows").addEventListener("click", async (e)=>{
-    const sendBtn = e.target.closest(".send-email-btn");
-    if(sendBtn){
-      const uid = +sendBtn.dataset.uid;
-      const lead = LEADS.find(x=>x.uid===uid);
-      if(lead) showSendModal(lead);
+
+  $("rows").addEventListener("click",async e=>{
+    const t=e.target.closest("button"); if(!t) return;
+    const d=leadByUid(+t.dataset.uid); if(!d) return;
+    if(t.classList.contains("send-email-btn")){ showSendModal(d); return; }
+    if(t.classList.contains("enrich-btn")){
+      getEditor(); // ask "your name" first (once), before any other prompt
+      if(t.dataset.re&&!window.confirm("Re-enrich replaces the saved contact for "+d.name+" and uses 1 Apollo credit. Continue?")) return;
+      t.disabled=true; t.textContent="Looking up…";
+      await enrichLead(d); refreshAll(); return;
+    }
+    if(t.classList.contains("domain-btn")){
+      getEditor();
+      const typed=window.prompt(`Website domain for ${d.name} (e.g. company.com).\nThis makes the Apollo lookup exact.`,d.domain||"");
+      if(typed===null) return;
+      const dom=cleanDomain(typed);
+      updateLead(d,{domain:dom}); refreshAll();
+      if(dom&&!d.dm_email){ await enrichLead(d); refreshAll(); }
       return;
     }
-    const btn=e.target.closest(".enrich-btn");
-    if(!btn) return;
-    const uid=+btn.dataset.uid;
-    const lead=LEADS.find(x=>x.uid===uid);
-    if(!lead) return;
-    btn.disabled=true;
-    btn.textContent="Enriching…";
-    try{
-      const r=await fetch(WORKER_URL+"/enrich",{
-        method:"POST",
-        headers:{"Content-Type":"application/json"},
-        body:JSON.stringify({company_name:lead.name}),
-      });
-      const data=await r.json();
-      if(data.error){
-        btn.textContent="Error — retry";
-        btn.disabled=false;
-        console.error("Enrich error:", data.error);
-        return;
-      }
-      lead.dm_name=data.dm_name||"";
-      lead.dm_title=data.dm_title||"";
-      lead.dm_email=data.dm_email||"";
-      lead.dm_linkedin=data.dm_linkedin||"";
-      if(!lead.dm_name){
-        btn.textContent="No match found";
-      } else {
-        render();
-      }
-    }catch(err){
-      btn.textContent="Error — retry";
-      btn.disabled=false;
-      console.error(err);
+    if(t.classList.contains("reveal-btn")){
+      t.disabled=true; t.textContent="Looking up…";
+      await revealOther(d,+t.dataset.i); refreshAll(); return;
     }
+    if(t.classList.contains("primary-btn")){ makePrimary(d,+t.dataset.i); refreshAll(); return; }
   });
-  $("chips").addEventListener("click",e=>{const b=e.target.closest(".chip");if(!b)return;
-    document.querySelectorAll(".chip").forEach(c=>c.setAttribute("aria-pressed",c===b));filter=b.dataset.f;page=1;compute();});
-  document.querySelectorAll("th[data-sort]").forEach(th=>th.addEventListener("click",()=>{const k=th.dataset.sort;
-    if(sortKey===k)sortDir=sortDir==="asc"?"desc":"asc";else{sortKey=k;sortDir=["name","path","tier","dm_name"].includes(k)?"asc":"desc";}
-    document.querySelectorAll("th[data-sort]").forEach(t=>{t.dataset.active=(t===th);const a=t.querySelector(".arrow");if(a)a.textContent=sortDir==="asc"?"▲":"▼";});render();}));
+
+  $("rows").addEventListener("change",e=>{
+    const el=e.target;
+    const d=leadByUid(+el.dataset.uid); if(!d) return;
+    if(el.classList.contains("status-sel")){ updateLead(d,{status:el.value}); refreshAll(); }
+    else if(el.classList.contains("note-input")){ updateLead(d,{notes:el.value.slice(0,500)}); }
+  });
+
+  $("chips").addEventListener("click",e=>{
+    const b=e.target.closest(".chip"); if(!b) return;
+    document.querySelectorAll(".chip").forEach(c=>c.setAttribute("aria-pressed",c===b));
+    filter=b.dataset.f; page=1; compute();
+  });
+
+  $("statusFilter").addEventListener("change",e=>{ statusFilterVal=e.target.value; page=1; refreshAll(); });
+
+  $("summary").addEventListener("click",e=>{
+    const s=e.target.closest("[data-scope]");
+    if(s){ scope=s.dataset.scope; renderSummary(); return; }
+    const tile=e.target.closest(".tile");
+    if(tile){ statusFilterVal=(statusFilterVal===tile.dataset.status)?"":tile.dataset.status; $("statusFilter").value=statusFilterVal; page=1; refreshAll(); }
+  });
+
+  document.querySelectorAll("th[data-sort]").forEach(th=>th.addEventListener("click",()=>{
+    const k=th.dataset.sort;
+    if(sortKey===k) sortDir=sortDir==="asc"?"desc":"asc";
+    else{ sortKey=k; sortDir=["name","path","tier","dm_name","dm_title","status","rank"].includes(k)?"asc":"desc"; }
+    document.querySelectorAll("th[data-sort]").forEach(t=>{t.dataset.active=(t===th);const a=t.querySelector(".arrow");if(a)a.textContent=sortDir==="asc"?"▲":"▼";});
+    compute();
+  }));
+
   $("prev").addEventListener("click",()=>{if(page>1){page--;render();}});
   $("next").addEventListener("click",()=>{page++;render();});
-  $("csv").addEventListener("click",()=>{
-    const head=["Rank","Product","Page","Total citations","AIO","ChatGPT","Gemini","Perplexity","Tier","Can pay $2000+/mo","Decision Maker","Title","Email","Phone","LinkedIn Search","Proposal"];
-    const esc=s=>`"${String(s??"").replace(/"/g,'""')}"`;
-    const lines=[head.join(",")].concat(LEADS.map(d=>{
-      const liQuery=encodeURIComponent((d.dm_name?d.dm_name+" ":"")+d.name+" founder OR CEO OR director");
-      const liUrl="https://www.linkedin.com/search/results/people/?keywords="+liQuery;
-      return [d.rank,d.name,PRE+d.path,d.total,d.aio,d.chatgpt,d.gemini,d.perplexity,d.tier,d.fundable?"Yes":"No",d.dm_name,d.dm_title,d.dm_email,d.dm_phone,liUrl,d.proposal_path].map(esc).join(",");
-    }));
-    const blob=new Blob([lines.join("\n")],{type:"text/csv"});const a=document.createElement("a");
-    a.href=URL.createObjectURL(blob);a.download=`opportunity-leads-full_${new Date().toISOString().slice(0,10)}.csv`;a.click();URL.revokeObjectURL(a.href);});
+  $("csv").addEventListener("click",exportCsv);
+  $("syncbtn").addEventListener("click",async ()=>{ setSync("checking"); if(await loadRemote()){ refreshAll(); toast("Synced with the team.","") ; } else { toast("Couldn't reach team sync — your changes stay on this device.","warn"); } });
+
+  document.addEventListener("visibilitychange",()=>{ if(!document.hidden) refreshFromRemote(); });
+  window.addEventListener("pagehide",()=>{
+    const entries=pending;
+    if(Object.keys(entries).length){ try{ fetch(WORKER_URL+"/state",{method:"POST",headers:HDRS,body:JSON.stringify({entries}),keepalive:true}); }catch(e){} }
+  });
+}
+
+function init(){
+  applyAllState();
+  fillStatusFilter();
+  bindEvents();
+  setSync("checking");
+  refreshAll();
+  loadRemote().then(ok=>{ if(ok) refreshAll(); });
 }
 init();
 </script>
