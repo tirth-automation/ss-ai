@@ -330,7 +330,9 @@ td.draft-cell{min-width:268px;max-width:320px}
 .dp-box{margin-top:6px;border:1px solid var(--line);border-radius:var(--r);background:var(--sunken);padding:12px 14px;max-height:300px;overflow:auto}
 .dp-label{font-size:11.5px;font-weight:600;color:var(--ink-3);margin-bottom:3px}
 .dp-subject{font-weight:600;font-size:13px;line-height:1.4;margin-bottom:12px;color:var(--ink)}
-.dp-body{white-space:pre-wrap;font-size:12.5px;line-height:1.55;color:var(--ink-2)}
+.dp-body{font-size:12.5px;line-height:1.55;color:var(--ink-2)}
+.dp-body a{color:var(--accent);text-decoration:underline}
+.dp-body strong{font-weight:700;color:var(--ink)}
 </style>
 </head>
 <body>
@@ -507,12 +509,14 @@ const shortDate=iso=>{try{return new Date(iso).toLocaleDateString("en-GB",{day:"
 const ls={get(k){try{return localStorage.getItem(k);}catch(e){return null;}},set(k,v){try{localStorage.setItem(k,v);}catch(e){}}};
 
 /* ================= email draft (same template for every product) ================= */
+// Returns the subject, a plain-text version, and a formatted (HTML) version with the links and bold text.
 function buildEmailContent(d, contact){
   const first = contact && contact.name ? String(contact.name).trim().split(" ")[0] : "";
   const greeting = first ? `Hi ${first},` : "Hi,";
   const name = d.name;
   const times = `${d.total} ${d.total === 1 ? "time" : "times"}`;
   const subject = `${name}’s AI Visibility on SoftwareSuggest`;
+
   const body = [
     greeting,
     "",
@@ -525,11 +529,26 @@ function buildEmailContent(d, contact){
     "At SoftwareSuggest, we’re helping SaaS companies improve their AI visibility through targeted content creation, buyer prompt research, competitor analysis, and ongoing visibility tracking.",
     "",
     `Based on our initial assessment, we’ve put together a tailored proposal for ${name}, outlining the recommended approach and potential areas for improvement.`,
+    "",
     "I’ve attached the PDF with the details for your review.",
     "",
     `Would you be open to a quick 15-minute call next week? I’d be happy to walk you through the findings and discuss how we can help ${name} strengthen its AI presence.`,
   ].join("\n");
-  return { subject, body };
+
+  // Gmail-friendly structure: one <div> per line, and <div><br></div> for the blank lines.
+  const line = h => `<div>${h}</div>`, gap = "<div><br></div>", N = esc(name);
+  const html = [
+    line(esc(greeting)), gap,
+    line(`Greetings from <a href="${PRE}">SoftwareSuggest</a>!`), gap,
+    line(`I ran a quick AI visibility check for <a href="${PRE}${esc(d.path)}">${N}’s SoftwareSuggest listing</a> and found that it’s already being cited <strong>${times} across Google AI Overviews, ChatGPT, Gemini, and Perplexity.</strong>`), gap,
+    line(`That’s a promising starting point, and there’s an opportunity to build on this visibility and strengthen ${N}’s presence in AI-generated recommendations.`), gap,
+    line("At SoftwareSuggest, we’re helping SaaS companies improve their AI visibility through targeted content creation, buyer prompt research, competitor analysis, and ongoing visibility tracking."), gap,
+    line(`Based on our initial assessment, we’ve put together a tailored proposal for ${N}, outlining the recommended approach and potential areas for improvement.`), gap,
+    line("I’ve <strong>attached the PDF</strong> with the details for your review."), gap,
+    line(`Would you be open to a <strong>quick 15-minute call next week</strong>? I’d be happy to walk you through the findings and discuss how we can help ${N} strengthen its AI presence.`),
+  ].join("");
+
+  return { subject, body, html };
 }
 
 
@@ -848,7 +867,7 @@ function cellDraft(d){
     +`<button class="copy-draft-btn" type="button" data-uid="${d.uid}" title="Copies only the message">${ic("copy",14)}Copy draft</button>`
     +`<button class="copy-subject-btn" type="button" data-uid="${d.uid}" title="Copies only the subject line">${ic("copy",14)}Copy subject</button></div>`
     +`<details class="dpreview"><summary>${ic("eye",14)}Preview</summary>`
-    +`<div class="dp-box"><div class="dp-label">Subject</div><div class="dp-subject">${esc(m.subject)}</div><div class="dp-label">Draft</div><div class="dp-body">${esc(m.body)}</div></div></details>`;
+    +`<div class="dp-box"><div class="dp-label">Subject</div><div class="dp-subject">${esc(m.subject)}</div><div class="dp-label">Draft</div><div class="dp-body">${previewHtml(m.html)}</div></div></details>`;
 }
 
 // keep the preview in step with the person chosen in "Address the draft to"
@@ -857,9 +876,61 @@ function updateDraftPreview(sel){
   const m=draftFor(d,+sel.value);
   const s=td.querySelector(".dp-subject"), b=td.querySelector(".dp-body");
   if(s) s.textContent=m.subject;
-  if(b) b.textContent=m.body;
+  if(b) b.innerHTML=previewHtml(m.html);
 }
 
+
+// Copies the draft as formatted text (links + bold) with a plain-text twin, so it pastes into Gmail looking right.
+// We hand the browser exactly our own HTML. Copying by "selecting text on the page" would drag the page's own
+// colours and fonts along (a grey background, the Inter font…), so that is never used for the draft.
+async function copyRich(html,text,okMsg){
+  let ok=false;
+  // 1) copy event: we decide exactly what goes on the clipboard (works in every browser, needs no permission)
+  const holder=document.createElement("span");
+  holder.textContent="copy"; holder.style.cssText="position:fixed;top:0;left:-9999px;opacity:0";
+  document.body.appendChild(holder);
+  const onCopy=e=>{ if(!e.clipboardData) return; e.preventDefault(); e.clipboardData.setData("text/html",html); e.clipboardData.setData("text/plain",text); };
+  document.addEventListener("copy",onCopy,true);
+  try{
+    const range=document.createRange(); range.selectNodeContents(holder);
+    const sel=window.getSelection(); sel.removeAllRanges(); sel.addRange(range);
+    ok=!!document.execCommand("copy");
+    sel.removeAllRanges();
+  }catch(e){ ok=false; }
+  document.removeEventListener("copy",onCopy,true);
+  holder.remove();
+  // 2) the modern clipboard API, if the first way isn't allowed
+  if(!ok){
+    try{
+      if(navigator.clipboard&&navigator.clipboard.write&&window.ClipboardItem){
+        await navigator.clipboard.write([new ClipboardItem({"text/html":new Blob([html],{type:"text/html"}),"text/plain":new Blob([text],{type:"text/plain"})})]);
+        ok=true;
+      }
+    }catch(e){ ok=false; }
+  }
+  if(ok) toast(okMsg||"Copied ✓","");
+  else toast("Couldn't copy automatically. Select the text in the preview and press Ctrl+C.","warn");
+  return ok;
+}
+
+// If someone selects text in the preview and presses Ctrl+C themselves, copy it clean too:
+// the links and bold text, but none of the page's background, fonts or colours.
+document.addEventListener("copy",e=>{
+  const sel=window.getSelection();
+  if(!sel||sel.isCollapsed||!sel.rangeCount||!e.clipboardData) return;
+  const n=sel.anchorNode&&(sel.anchorNode.nodeType===1?sel.anchorNode:sel.anchorNode.parentElement);
+  if(!n||!n.closest||!n.closest(".dp-body")) return;
+  const wrap=document.createElement("div");
+  wrap.appendChild(sel.getRangeAt(0).cloneContents());
+  wrap.querySelectorAll("[style]").forEach(x=>x.removeAttribute("style"));
+  wrap.querySelectorAll("a").forEach(a=>{ a.removeAttribute("target"); a.removeAttribute("rel"); });
+  e.preventDefault();
+  e.clipboardData.setData("text/html",wrap.innerHTML);
+  e.clipboardData.setData("text/plain",sel.toString());
+});
+
+// in the preview, links open in a new tab
+const previewHtml=h=>h.replace(/<a /g,'<a target="_blank" rel="noopener" ');
 /* ================= summary ================= */
 function renderSummary(){
   const total=LEADS.length;
@@ -1147,7 +1218,7 @@ function bindEvents(){
       const targets=draftTargets(d), pick=t.closest("td").querySelector(".draft-to");
       const m=draftFor(d,pick?+pick.value:defaultTargetIndex(targets));
       if(t.classList.contains("copy-subject-btn")) copyText(m.subject,"Subject copied. Paste it into the subject line.");
-      else copyText(m.body,"Draft copied. Paste it into your email and attach the PDF.");
+      else copyRich(m.html,m.body,"Draft copied with its links and bold text. Paste it into your email and attach the PDF.");
       return;
     }
     if(t.classList.contains("enrich-btn")){
