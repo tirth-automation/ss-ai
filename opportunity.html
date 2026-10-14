@@ -496,71 +496,30 @@ const leadByUid=uid=>LEADS.find(x=>x.uid===uid);
 const shortDate=iso=>{try{return new Date(iso).toLocaleDateString("en-GB",{day:"numeric",month:"short"});}catch(e){return "";}};
 const ls={get(k){try{return localStorage.getItem(k);}catch(e){return null;}},set(k,v){try{localStorage.setItem(k,v);}catch(e){}}};
 
-const TIER_INFO = {
-  high: {
-    plan: "Dominate",
-    priceLine: "Starting from $2,000/month",
-    pitch: "You're already one of the most-cited products in your category — this plan is built to defend and extend that lead before a competitor closes the gap.",
-    includes: ["5 AI content assets / month", "2 AI-optimized video reviews", "Advanced Prompt Strategy", "Monthly Strategy Workshops", "Priority Support Access"],
-  },
-  mid: {
-    plan: "Scale",
-    priceLine: "$5,000/month",
-    pitch: "You're already showing up in AI answers — this plan turns that early signal into consistent, category-wide citation share.",
-    includes: ["2–3 AI content assets / month", "8 AI-optimized articles", "AI Visibility Tracking", "Full-time Account Manager"],
-  },
-  low: {
-    plan: "Launch",
-    priceLine: "$2,500 one-time",
-    pitch: "You have early, unoptimized AI citations — the highest-leverage moment to establish signals that compound over time.",
-    includes: ["AI Visibility Audit", "Buyer Prompt Research", "Competitor Visibility Analysis", "AI Presence Scorecard"],
-  },
-};
-
-const PACKAGES = [
-  { name: "Launch", price: "₹2,38,587", cadence: "One-time", tag: "Best for — Early-stage SaaS",
-    items: ["1 AI-focused content asset", "AI Visibility Audit", "Buyer Prompt Research", "Competitor Visibility Analysis", "AI Presence Scorecard", "Strategic Action Recommendation"] },
-  { name: "Scale", price: "₹4,77,173", cadence: "Per month · 3-month minimum", tag: "Best for — Growth-stage vendors (Most Popular)",
-    items: ["2–3 AI content assets / month", "8 AI-optimized articles", "AI Visibility Tracking", "Prompt Performance Monitoring", "Comparison Content Strategy", "AI Brand Mention Tracking", "Full-time Account Manager"] },
-  { name: "Dominate", price: "₹9,54,345", cadence: "Per month · 6-month minimum", tag: "Best for — Enterprise SaaS & marketplaces (Recommended)",
-    items: ["5 AI content assets / month", "2 AI-optimized video reviews", "Advanced Prompt Strategy", "SaaS Entity Optimization", "Monthly Strategy Workshops", "Complete AI Visibility Strategist", "Priority Support Access"] },
-];
-
-function pdfUrlFor(d){
-  return SITE_BASE + d.proposal_path.replace("proposals/", "proposals-pdf/").replace(".html", ".pdf");
-}
-
+/* ================= email draft (same template for every product) ================= */
 function buildEmailContent(d, contact){
   const first = contact && contact.name ? String(contact.name).trim().split(" ")[0] : "";
   const greeting = first ? `Hi ${first},` : "Hi,";
-  const subject = `${d.name} is already showing up in AI answers — quick visibility snapshot`;
-  const intro = `I pulled a quick AI-visibility snapshot for ${d.name}'s SoftwareSuggest listing (softwaresuggest.com${d.path}) — it's already being cited ${d.total} time(s) across AI Overviews, ChatGPT, Gemini and Perplexity.`;
-
-  let planSection;
-  if (d.tier === "high") {
-    const pkgBlocks = PACKAGES.map(p => {
-      const itemsLines = p.items.map(x => `    • ${x}`).join("\n");
-      return `${p.name} — ${p.price} (${p.cadence})\n${itemsLines}\n  ${p.tag}`;
-    }).join("\n\n");
-    planSection = `You're already one of the most-cited products in your category — here are three ways to engage, with Dominate as our recommendation:\n\n${pkgBlocks}`;
-  } else {
-    const ti = TIER_INFO[d.tier] || TIER_INFO.low;
-    const includesLines = ti.includes.map(x => `  • ${x}`).join("\n");
-    planSection = `${ti.pitch}\n\nRecommended plan — ${ti.plan} (${ti.priceLine}):\n${includesLines}`;
-  }
-
-  const bodyLines = [
+  const name = d.name;
+  const times = `${d.total} ${d.total === 1 ? "time" : "times"}`;
+  const subject = `${name}’s AI Visibility on SoftwareSuggest`;
+  const body = [
     greeting,
     "",
-    intro,
+    "Greetings from SoftwareSuggest!",
     "",
-    planSection,
+    `I ran a quick AI visibility check for ${name}’s SoftwareSuggest listing and found that it’s already being cited ${times} across Google AI Overviews, ChatGPT, Gemini, and Perplexity.`,
     "",
-    "Here is the attached PDF with the full breakdown and the recommended plan.",
+    `That’s a promising starting point, and there’s an opportunity to build on this visibility and strengthen ${name}’s presence in AI-generated recommendations.`,
     "",
-    "Happy to walk through it if useful — let me know a good time.",
-  ];
-  return { subject, body: bodyLines.join("\n") };
+    "At SoftwareSuggest, we’re helping SaaS companies improve their AI visibility through targeted content creation, buyer prompt research, competitor analysis, and ongoing visibility tracking.",
+    "",
+    `Based on our initial assessment, we’ve put together a tailored proposal for ${name}, outlining the recommended approach and potential areas for improvement.`,
+    "I’ve attached the PDF with the details for your review.",
+    "",
+    `Would you be open to a quick 15-minute call next week? I’d be happy to walk you through the findings and discuss how we can help ${name} strengthen its AI presence.`,
+  ].join("\n");
+  return { subject, body };
 }
 
 
