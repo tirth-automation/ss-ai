@@ -494,6 +494,48 @@ td.draft-cell{min-width:268px;max-width:320px}
 .fit-first{background:#E2F4EB;color:#127A56}.fit-good{background:var(--accent-soft);color:var(--accent)}.fit-later{background:#FDF3E3;color:#B45309}.fit-low{background:#EBEDF1;color:#4B566A}
 .why{margin-top:5px;font-size:12px;line-height:1.45;color:var(--ink-3)}
 @media (max-width:900px){.pl-bar{grid-template-columns:1fr}}
+
+/* ===== Pitch list: cleaner layout (no wrapping or overlapping buttons) ===== */
+.pitch-view{padding:18px 20px 10px}
+.pl-bar{display:block;margin-bottom:14px}
+.pl-sel{display:block;max-width:380px;margin-bottom:14px}
+.pl-steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;counter-reset:st}
+.pl-steps li{counter-increment:st;position:relative;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 14px 12px 48px;font-size:12.5px;line-height:1.5;color:var(--ink-2);min-height:64px}
+.pl-steps li::before{content:counter(st);position:absolute;left:14px;top:12px;width:24px;height:24px;border-radius:50%;background:var(--accent);color:#fff;font-size:12px;font-weight:700;display:grid;place-items:center}
+.pl-steps b{display:block;color:var(--ink);font-size:13px;margin-bottom:1px}
+.pitch-hook{border-radius:12px;padding:12px 16px;border-left:4px solid var(--accent);margin-bottom:14px}
+.pitch-list{min-width:1060px;border-collapse:separate;border-spacing:0;table-layout:fixed;width:100%}
+.pitch-list th{text-align:left}
+.pitch-list th:nth-child(1){width:60px;text-align:center}
+.pitch-list th:nth-child(5){width:178px}
+.pitch-list th:nth-child(6){width:312px}
+.pitch-list td{padding:16px 12px;vertical-align:top;border-bottom:1px solid var(--line)}
+.pl-row.is-first td{background:linear-gradient(90deg,rgba(18,122,86,.06),transparent 70%)}
+.pl-row.is-first td:first-child{box-shadow:inset 3px 0 0 #127A56}
+.pl-rank{text-align:center}
+.rank-badge{display:inline-grid;place-items:center;width:30px;height:30px;border-radius:50%;background:var(--sunken);border:1px solid var(--line);font-size:13px;font-weight:700;color:var(--ink-2)}
+.is-first .rank-badge{background:#E2F4EB;border-color:#BFE3D2;color:#127A56}
+.pl-name{display:block;font-size:14.5px;font-weight:700;line-height:1.3;color:var(--accent);text-decoration:none;overflow-wrap:anywhere}
+.pl-name:hover{text-decoration:underline}
+.pl-prod .q-page{display:block;margin-top:3px}
+.pl-site{display:inline-flex;align-items:center;gap:5px;margin-top:7px;font-size:12px;color:var(--ink-2);text-decoration:none;overflow-wrap:anywhere}
+.pl-site:hover{color:var(--accent);text-decoration:underline}
+.pl-total{display:flex;align-items:center;gap:8px;font-size:26px;font-weight:700;line-height:1;letter-spacing:-.02em;color:var(--ink)}
+.pl-cites .eng-mini{margin-top:9px;display:flex;flex-wrap:wrap;gap:5px}
+.pl-fit .why{margin-top:7px}
+.btn-row{display:flex;gap:8px;flex-wrap:wrap}
+.btn-s,.pitch-acts button{display:inline-flex;align-items:center;justify-content:center;gap:6px;height:34px;padding:0 13px;border:1px solid var(--line-2);border-radius:9px;background:var(--surface);color:var(--ink-2);font:inherit;font-size:12.5px;font-weight:600;line-height:1;white-space:nowrap;cursor:pointer;transition:background .12s,border-color .12s}
+.btn-s:hover,.pitch-acts button:hover{background:var(--sunken);border-color:#C9CFDB;filter:none}
+.btn-s svg,.pitch-acts button svg{flex:none}
+.btn-p,.pitch-acts .pitch-copy{background:var(--accent);border-color:var(--accent);color:#fff}
+.btn-p:hover,.pitch-acts .pitch-copy:hover{background:#2C47BF;border-color:#2C47BF}
+.pitch-acts{gap:8px}
+.pitch-table td:last-child{min-width:300px}
+.pitch-table td:first-child{min-width:150px}
+.pl-preview td{background:var(--sunken)!important;padding-top:6px!important}
+@media (max-width:1180px){.pl-steps{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:640px){.pl-steps{grid-template-columns:1fr}}
+
 </style>
 <script>try{if(!/[?&]lock=1(&|$)/.test(location.search)&&(localStorage.getItem("ss_ai_unlocked_v1")==="1"||/[?&]key=aeogeo(&|$)/.test(location.search)))document.write("<style>#pw-gate{display:none!important}</style>")}catch(e){}</script>
 </head>
@@ -882,6 +924,13 @@ function proposalCtx(p,key){
 }
 
 /* ---- the pitch list: who to pitch first, and why ---- */
+const SVG=(d)=>`<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${d}</svg>`;
+const ICO={file:SVG('<path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h4"/>'),
+  dl:SVG('<path d="M12 4v11"/><path d="m7 11 5 5 5-5"/><path d="M5 20h14"/>'),
+  copy:SVG('<rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/>'),
+  eye:SVG('<path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/>'),
+  mail:SVG('<rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/>'),
+  link:SVG('<path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/>')};
 let plKey="accountingsoftware";
 function plRank(items){
   return items.map(p=>{ const eng=[p.a,p.c,p.g,p.pp,p.am||0,p.co||0,p.gk||0].filter(x=>x>0).length;
@@ -906,14 +955,13 @@ function renderPitch(){
     let fit; if(p.f&&nFirst<3){ nFirst++; fit=["first","Pitch first"]; } else if(p.f) fit=["good","Good fit"]; else if(p.t>=3) fit=["later","Later"]; else fit=["low","Low priority"];
     const key=plKey+"|"+p.p, isOpen=preview.has(key);
     const eng=[["aio","AI Overviews",p.a],["chatgpt","ChatGPT",p.c],["gemini","Gemini",p.g],["perplexity","Perplexity",p.pp]].filter(x=>x[2]>0).map(x=>`<span class="eb eb-${x[0]}">${x[1]} ${x[2]}</span>`).join("");
-    let r=`<tr><td class="num">${i+1}</td>`
-      +`<td><a href="${PRE}${esc(p.p)}" target="_blank" rel="noopener"><b>${esc(p.n)}</b></a><span class="q-page">${esc(p.p)}</span></td>`
-      +`<td class="num">${fmt(p.t)}${p.s?' <span class="chg stale" title="Not in the 16 Oct Ahrefs report, so the 19 Sep number is shown">19 Sep</span>':""}<div class="eng-mini">${eng}</div></td>`
-      +`<td><span class="fit fit-${fit[0]}">${fit[1]}</span><div class="why">${esc(whyText(p))}</div></td>`
-      +`<td>${p.w?`<a href="https://${esc(p.w)}" target="_blank" rel="noopener">${esc(p.w)}</a>`:'<span class="q-page muted">not saved</span>'}</td>`
-      +`<td><div class="pitch-acts col"><button type="button" class="prop-open" data-p="${esc(p.p)}" data-slug="${esc(plKey)}">View proposal</button><button type="button" class="prop-open" data-pdf="1" data-p="${esc(p.p)}" data-slug="${esc(plKey)}">Save as PDF</button></div></td>`
-      +`<td><div class="pitch-acts col"><button type="button" class="pitch-copy" data-p="${esc(p.p)}" data-slug="${esc(plKey)}">Copy email</button><button type="button" class="pl-subj" data-p="${esc(p.p)}" data-slug="${esc(plKey)}">Copy subject</button><button type="button" class="pitch-prev" data-key="${esc(key)}">${isOpen?"Hide":"Preview"}</button></div></td></tr>`;
-    if(isOpen){ const m=pitchEmail(p,sel.name,c); r+=`<tr><td></td><td colspan="6"><div class="email-preview"><div class="lbl">Subject</div><div>${esc(m.subject)}</div><div class="lbl">Draft</div><div>${m.html}</div></div></td></tr>`; }
+    let r=`<tr class="pl-row${fit[0]==="first"?" is-first":""}"><td class="pl-rank"><span class="rank-badge">${i+1}</span></td>`
+      +`<td class="pl-prod"><a class="pl-name" href="${PRE}${esc(p.p)}" target="_blank" rel="noopener">${esc(p.n)}</a><span class="q-page">${esc(p.p)}</span>${p.w?`<a class="pl-site" href="https://${esc(p.w)}" target="_blank" rel="noopener">${ICO.link}${esc(p.w)}</a>`:'<span class="q-page muted">website not saved</span>'}</td>`
+      +`<td class="pl-cites"><div class="pl-total">${fmt(p.t)}${p.s?' <span class="chg stale" title="Not in the 16 Oct Ahrefs report, so the 19 Sep number is shown">19 Sep</span>':""}</div><div class="eng-mini">${eng}</div></td>`
+      +`<td class="pl-fit"><span class="fit fit-${fit[0]}">${fit[1]}</span><div class="why">${esc(whyText(p))}</div></td>`
+      +`<td class="pl-act"><div class="btn-row"><button type="button" class="btn-s prop-open" data-p="${esc(p.p)}" data-slug="${esc(plKey)}" title="Open the proposal in a new tab">${ICO.file}Proposal</button><button type="button" class="btn-s prop-open" data-pdf="1" data-p="${esc(p.p)}" data-slug="${esc(plKey)}" title="Open the proposal ready to save as a PDF">${ICO.dl}PDF</button></div></td>`
+      +`<td class="pl-act"><div class="btn-row"><button type="button" class="btn-s btn-p pitch-copy" data-p="${esc(p.p)}" data-slug="${esc(plKey)}" title="Copy the email with its links and bold text">${ICO.copy}Copy email</button><button type="button" class="btn-s pl-subj" data-p="${esc(p.p)}" data-slug="${esc(plKey)}" title="Copy just the subject line">${ICO.mail}Subject</button><button type="button" class="btn-s pitch-prev" data-key="${esc(key)}" title="Read the email before copying">${ICO.eye}${isOpen?"Hide":"Preview"}</button></div></td></tr>`;
+    if(isOpen){ const m=pitchEmail(p,sel.name,c); r+=`<tr class="pl-preview"><td></td><td colspan="5"><div class="email-preview"><div class="lbl">Subject</div><div>${esc(m.subject)}</div><div class="lbl">Draft</div><div>${m.html}</div></div></td></tr>`; }
     return r;
   }).join("");
   $("cat-kpis").innerHTML=kpiCards([["Products to pitch",fmt(ranked.length),`in ${sel.name}`],["Category page",c?fmt(c.total)+" citations":"not cited yet",c?"AI engines cite it":"lead with each product's citations"],["Questions found",fmt(info.q.length),"real questions behind the citations"],["Pitch first",ranked[0]?ranked[0].n:"—",ranked[0]?whyText(ranked[0]):"",true]]);
@@ -922,9 +970,9 @@ function renderPitch(){
   $("cat-result").innerHTML=`<b>${fmt(ranked.length)}</b> product${ranked.length===1?"":"s"}`;
   $("pitch-view").innerHTML=
     `<div class="pl-bar"><label class="pl-sel"><span>Category</span><select id="pl-cat"><optgroup label="Categories AI engines cite (${cited.length})">${cited.map(opt).join("")}</optgroup><optgroup label="Other categories (${other.length})">${other.map(opt).join("")}</optgroup></select></label>`
-    +`<ol class="pl-steps"><li><b>Pick a category.</b> Start with the products marked “Pitch first”.</li><li><b>Check the Opportunities tab</b> so you don't email a company that was already contacted.</li><li><b>Open the proposal</b> and save it as a PDF. It uses the company's real numbers${c?" and the questions AI engines asked in this category":""}.</li><li><b>Copy the email</b>, paste it into your mail, add the contact's name, attach the PDF and send.</li></ol></div>`
+    +`<ol class="pl-steps"><li><b>Pick a category</b>Start with the products marked “Pitch first”.</li><li><b>Check Opportunities</b>Make sure the company hasn't already been contacted.</li><li><b>Open the proposal</b>Save it as a PDF. It uses the company's real numbers${c?" and the questions AI engines asked in this category":""}.</li><li><b>Copy the email</b>Paste it into your mail, add the contact's name, attach the PDF and send.</li></ol></div>`
     +`<div class="pitch-hook">${c?hookText(c):`This category's own page is not being cited yet, so the email leads with each product's own citations.`}</div>`
-    +`<div class="tablewrap"><table class="cat-table pitch-list"><thead><tr><th class="num">#</th><th>Product</th><th class="num">Citations</th><th>Fit and why</th><th>Website</th><th>Proposal</th><th>Email</th></tr></thead><tbody>${rows}</tbody></table></div>`;
+    +`<div class="tablewrap"><table class="cat-table pitch-list"><thead><tr><th class="pl-rank">#</th><th>Product</th><th>Citations</th><th>Fit and why</th><th>Proposal</th><th>Email</th></tr></thead><tbody>${rows}</tbody></table></div>`;
 }
 function pitchClick(e){
   const po=e.target.closest(".prop-open"); if(po){ const p=prodByPath(po.dataset.p); if(p) openProposal(toLead(p),proposalCtx(p,po.dataset.slug),!!po.dataset.pdf); return true; }
