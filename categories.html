@@ -495,6 +495,7 @@ td.draft-cell{min-width:268px;max-width:320px}
 .why{margin-top:5px;font-size:12px;line-height:1.45;color:var(--ink-3)}
 @media (max-width:900px){.pl-bar{grid-template-columns:1fr}}
 </style>
+<script>try{if(!/[?&]lock=1(&|$)/.test(location.search)&&(localStorage.getItem("ss_ai_unlocked_v1")==="1"||/[?&]key=aeogeo(&|$)/.test(location.search)))document.write("<style>#pw-gate{display:none!important}</style>")}catch(e){}</script>
 </head>
 <body>
 
@@ -567,14 +568,35 @@ td.draft-cell{min-width:268px;max-width:320px}
 </div>
 <script>
 (function(){
-  var CORRECT = "aeogeo";
+  var CORRECT = "aeogeo", FLAG = "ss_ai_unlocked_v1";
   var gate = document.getElementById("pw-gate");
   var input = document.getElementById("pw-input");
   var err = document.getElementById("pw-error");
   var btn = document.getElementById("pw-submit");
+  function unlock(remember){
+    gate.style.display = "none";
+    try{ if(remember) localStorage.setItem(FLAG, "1"); }catch(e){}
+  }
+  function cleanUrl(){   // take ?key=... / ?lock=... out of the address bar
+    try{
+      var q = location.search.replace(/([?&])(key|lock)=[^&]*&?/g, "$1").replace(/[?&]$/, "");
+      history.replaceState(null, "", location.pathname + q + location.hash);
+    }catch(e){}
+  }
+  var qs = location.search;
+  if(/[?&]lock=1(&|$)/.test(qs)){                       // ?lock=1  ->  ask for the password again
+    try{ localStorage.removeItem(FLAG); }catch(e){}
+    cleanUrl();
+  } else {
+    var m = /[?&]key=([^&#]*)/.exec(qs);
+    if(m && decodeURIComponent(m[1]) === CORRECT){      // link with the key  ->  open straight in, and remember
+      unlock(true); cleanUrl(); return;
+    }
+    try{ if(localStorage.getItem(FLAG) === "1"){ unlock(false); return; } }catch(e){}   // already entered on this browser
+  }
   function tryUnlock(){
     if(input.value === CORRECT){
-      gate.style.display = "none";
+      unlock(true);
       input.blur();
     } else {
       err.style.display = "block";
