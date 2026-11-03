@@ -450,6 +450,69 @@ td.draft-cell{min-width:268px;max-width:320px}
 .q-page.muted{font-style:italic}
 .cat-table td .q-badges{justify-content:flex-start}
 .cat-table td .q-page a{display:inline-block}
+.q-date{display:block;font-size:11px;color:var(--ink-3);margin-top:2px}
+.eb-st-a{background:#EBEDF1;color:#4B566A}.eb-st-c{background:#E8EDFD;color:#3552D6}.eb-st-d{background:#E2F4EB;color:#127A56}
+.q-country{height:26px;border:1px solid var(--line);border-radius:999px;background:var(--surface);color:var(--ink-2);font:inherit;font-size:12px;font-weight:600;padding:0 10px;max-width:220px}
+
+/* ===== category progress ===== */
+.st-sel{height:28px;border-radius:999px;border:1px solid var(--line-2);padding:0 26px 0 12px;font:inherit;font-size:12px;font-weight:700;cursor:pointer;background:var(--sunken);color:var(--ink-2);max-width:170px}
+.st-ns{background:#EBEDF1;color:#4B566A}.st-re{background:#E8EDFD;color:#3552D6;border-color:#C9D3F8}.st-os{background:#EEE9FE;color:#6D3FD0;border-color:#D9CCFB}
+.st-ic{background:#FDF3E3;color:#B45309;border-color:#F6DDB2}.st-won{background:#E2F4EB;color:#127A56;border-color:#BFE3D2}.st-hold{background:#FCE9E7;color:#B42318;border-color:#F4C7C2}
+.st-filter{height:38px;border:1px solid var(--line-2);border-radius:var(--r);background:var(--surface);color:var(--ink);font:inherit;font-size:13px;padding:0 10px}
+.st-bar{display:grid;grid-template-columns:minmax(260px,auto) 1fr;gap:14px;align-items:start;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin:0 0 12px}
+.st-left{display:flex;flex-direction:column;gap:6px;align-items:flex-start}
+.st-lbl{font-size:12.5px;font-weight:700;color:var(--ink)}
+.st-meta{font-size:11.5px;color:var(--ink-3)}
+.cat-note{width:100%;min-height:54px;resize:vertical;border:1px solid var(--line-2);border-radius:var(--r);padding:8px 10px;font:inherit;font-size:12.5px;line-height:1.45;color:var(--ink);background:var(--surface)}
+.cat-note:focus{outline:2px solid var(--accent-line);border-color:var(--accent)}
+.sync-note{margin:0 0 8px;font-size:11.5px;line-height:1.45;color:#9AA3B5}
+.sync-note.ok{color:#7ED3AE}.sync-note.warn{color:#F5C77A}
+@media (max-width:900px){.st-bar{grid-template-columns:1fr}}
+
+/* ===== overview dashboard ===== */
+.dash{margin:0 0 16px}
+.dash-head{display:flex;align-items:baseline;gap:10px;margin:0 0 10px;flex-wrap:wrap}
+.dash-head h2{margin:0;font-size:15px;color:var(--ink)}
+.dash-sub{font-size:12.5px;color:var(--ink-3)}
+.dash-btn{margin-left:auto;height:30px;padding:0 12px;border:1px solid var(--line-2);border-radius:9px;background:var(--surface);color:var(--ink-2);font:inherit;font-size:12px;font-weight:600;cursor:pointer;white-space:nowrap}
+.dash-btn:hover{background:var(--sunken)}
+.dash-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.dash-card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:14px 16px;min-width:0}
+.dash-card.wide{grid-column:span 2}
+.dash-card h3{margin:0 0 10px;font-size:12.5px;font-weight:700;color:var(--ink-2)}
+.pipebar{display:flex;height:12px;border-radius:999px;overflow:hidden;background:var(--sunken)}
+.pseg{display:block;height:100%}
+.dash-line{margin:10px 0;font-size:12.5px;color:var(--ink-2)}
+.dash-note{margin:10px 0 0;font-size:11.5px;color:var(--ink-3);line-height:1.45}
+.legs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.leg{display:flex;align-items:center;gap:8px;border:1px solid var(--line);border-radius:10px;padding:8px 10px;background:var(--surface);cursor:pointer;font:inherit;text-align:left}
+.leg:hover{background:var(--sunken)}
+.ldot{display:inline-block;width:9px;height:9px;border-radius:50%;flex:none}
+.lnum{font-size:18px;font-weight:700;color:var(--ink);min-width:20px}
+.llab{font-size:12px;color:var(--ink-3)}
+.mrow{display:grid;grid-template-columns:96px 1fr 34px;gap:8px;align-items:center;font-size:12.5px;margin-bottom:7px;color:var(--ink-2)}
+.mrow b,.trow b{text-align:right;color:var(--ink)}
+.mtrack{display:block;height:8px;background:var(--sunken);border-radius:999px;overflow:hidden}
+.mfill{display:block;height:100%;background:var(--accent);border-radius:999px}
+.trow{display:grid;grid-template-columns:minmax(90px,1.3fr) 1fr 28px 112px;gap:8px;align-items:center;font-size:12.5px;margin-bottom:7px}
+.tname{border:0;background:none;padding:0;font:inherit;font-weight:600;color:var(--accent);cursor:pointer;text-align:left;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.tname:hover{text-decoration:underline}
+.stpill{display:inline-block;font-size:10.5px;font-weight:700;border-radius:999px;padding:2px 8px;white-space:nowrap;margin-left:6px}
+.trow .stpill{margin-left:0}
+.srow{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:7px 0;border-bottom:1px solid var(--line);font-size:12.5px}
+.srow:last-of-type{border-bottom:0}
+.smeta{display:block;font-size:11.5px;color:var(--ink-3);margin-top:2px}
+.srow .dash-btn{margin-left:0}
+.stg-a{background:#C4CAD6}.stg-c{background:#4F6BE8}.stg-d{background:#16A34A}
+.stlegs{display:flex;gap:12px;flex-wrap:wrap;font-size:12px;color:var(--ink-2);margin:8px 0}
+.stleg{display:inline-flex;align-items:center;gap:6px}
+.ctry{display:flex;flex-wrap:wrap;gap:6px}
+.ctag{font-size:11.5px;background:var(--sunken);border:1px solid var(--line);border-radius:999px;padding:3px 9px;color:var(--ink-2)}
+.rrow{display:flex;justify-content:space-between;gap:10px;font-size:12.5px;padding:6px 0;border-bottom:1px solid var(--line)}
+.rrow:last-child{border-bottom:0}
+.rtime{font-size:11.5px;color:var(--ink-3);white-space:nowrap}
+@media (max-width:1180px){.dash-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.dash-card.wide{grid-column:span 2}}
+@media (max-width:720px){.dash-grid{grid-template-columns:1fr}.dash-card.wide{grid-column:auto}.legs{grid-template-columns:repeat(2,minmax(0,1fr))}}
 </style>
 <style>${PROP_CSS}
 .noprint{position:sticky;top:0;z-index:9;display:flex;gap:14px;align-items:center;justify-content:center;flex-wrap:wrap;padding:10px;background:#0E1424;color:#fff;font:500 13px Inter,sans-serif}
@@ -565,7 +628,7 @@ td.draft-cell{min-width:268px;max-width:320px}
       <a href="./opportunity.html"><svg class="ic" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="4"/><path d="M12 12h.01"/></svg>Opportunities</a>
       <a href="./categories.html" class="active" aria-current="page"><svg class="ic" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="13.5" width="7" height="7" rx="1.5"/></svg>Categories</a>
     </nav>
-  <div class="side-foot"><p class="data-note">Category pages: Ahrefs, 2 Nov 2026. Google AI Overview keywords: Ahrefs export, 2 Nov 2026. Questions and product citations: Ahrefs, 16 Oct 2026 (154 pages that were not in that report show their 19 Sep numbers).</p></div>
+  <div class="side-foot"><p class="sync-note" id="sync-note">Connecting…</p><p class="data-note">Category pages: Ahrefs, 2 Nov 2026. Google AI Overview keywords: Ahrefs export, 2 Nov 2026. Full citation records (15 categories): Ahrefs, up to 2 Nov 2026. Other questions and product citations: Ahrefs, 16 Oct 2026 (154 pages that were not in that report show their 19 Sep numbers).</p></div>
   </aside>
 
   <main class="main">
@@ -580,6 +643,7 @@ td.draft-cell{min-width:268px;max-width:320px}
         </div>
       </header>
       <section class="kpis" id="cat-kpis" aria-label="Category numbers"></section>
+      <section class="dash" id="cat-dash" aria-label="Overview"></section>
       <section class="tablecard" aria-label="Categories">
         <div class="toolbar">
           <div class="toolbar-row">
@@ -587,13 +651,14 @@ td.draft-cell{min-width:268px;max-width:320px}
               <button type="button" role="tab" data-tab="pitch" aria-selected="true">Pitch list</button>
               <button type="button" role="tab" data-tab="pages" aria-selected="false">Category pages</button>
               <button type="button" role="tab" data-tab="products" aria-selected="false">Products by category</button>
-              <button type="button" role="tab" data-tab="prompts" aria-selected="false">All prompts</button>
+              <button type="button" role="tab" data-tab="prompts" aria-selected="false">All citations</button>
               <button type="button" role="tab" data-tab="aio" aria-selected="false">Google AI Overview</button>
             </div>
             <div class="search">
               <svg class="ic" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="m20 20-4-4"/></svg>
               <input id="cat-q" type="search" placeholder="Search categories, pages or products" autocomplete="off" aria-label="Search">
             </div>
+            <select id="cat-status-filter" class="st-filter" aria-label="Filter by status"></select>
             <span class="resultbar" id="cat-result"></span>
           </div>
           <p class="cat-help" id="cat-help"></p>
@@ -687,6 +752,62 @@ function aioPanel(c){
   return `<tr class="cat-detail"><td></td><td colspan="6"><div class="q-panel"><div class="q-head"><strong>Google searches whose AI Overview cites this category</strong><span class="q-src">${esc(AIOKW.source)}, ${esc(AIOKW.as_of)}</span></div><ul class="q-list">${items}</ul><div class="q-foot">${more}</div>`
     +`<p class="q-note">${fmt(c.kw)} keyword${c.kw===1?"":"s"} where Google's AI Overview cites ${c.npages===1?"a page":fmt(c.npages)+" pages"} of this category. Searches a month are added up across the countries shown. This covers Google AI Overviews only: AI Mode, ChatGPT, Gemini, Perplexity and Copilot are not in this export.</p></div></td></tr>`;
 }
+/* ---- progress tracking: one status and a note per category, shared with the team through the same storage as the Opportunities page ---- */
+const WORKER_URL="https://apollo-proxy.aeogeo.workers.dev", DASH_KEY="aeogeo", CAT_NS="/s2/cat";
+const HDRS={"Content-Type":"application/json","X-Auth":DASH_KEY};
+const CAT_STATUSES=[["Not started","ns"],["Researching","re"],["Outreach started","os"],["In conversation","ic"],["Won","won"],["On hold","hold"]];
+const stCls=s=>(CAT_STATUSES.find(x=>x[0]===s)||CAT_STATUSES[0])[1];
+const LS_STATE="ss_cat_state_v1", LS_PEND="ss_cat_pending_v1";
+let catState={}, pendingCat={}, syncMode="loading", syncAt=null, flushTimer=null, warned=false, statusFilter="";
+try{ catState=JSON.parse(localStorage.getItem(LS_STATE)||"{}")||{}; pendingCat=JSON.parse(localStorage.getItem(LS_PEND)||"{}")||{}; }catch(e){ catState={}; pendingCat={}; }
+const persistCat=()=>{ try{ localStorage.setItem(LS_STATE,JSON.stringify(catState)); localStorage.setItem(LS_PEND,JSON.stringify(pendingCat)); }catch(e){} };
+const catStatus=k=>(catState[k]&&catState[k].status)||"Not started";
+const catNote=k=>(catState[k]&&catState[k].notes)||"";
+const catUpdated=k=>(catState[k]&&catState[k].updated_at)||"";
+const stIndex=k=>Math.max(0,CAT_STATUSES.findIndex(x=>x[0]===catStatus(k)));
+const fmtUpdated=iso=>{ const d=new Date(iso); return isNaN(d)?"":d.toLocaleString("en-GB",{day:"numeric",month:"short",hour:"2-digit",minute:"2-digit"}); };
+function statusSelect(k){ const s=catStatus(k); return `<select class="st-sel st-${stCls(s)}" data-key="${esc(k)}" aria-label="Status">${CAT_STATUSES.map(x=>`<option value="${esc(x[0])}"${x[0]===s?" selected":""}>${esc(x[0])}</option>`).join("")}</select>`; }
+function statusBar(k,label){
+  const up=catUpdated(k);
+  return `<div class="st-bar"><div class="st-left"><span class="st-lbl">Progress on ${esc(label)}</span>${statusSelect(k)}<span class="st-meta">${up?"Updated "+esc(fmtUpdated(up)):"Not updated yet"}</span></div>`
+    +`<textarea class="cat-note" data-key="${esc(k)}" maxlength="1000" rows="2" placeholder="Notes for the team: who is pitching, what was agreed, next step (saved automatically)">${esc(catNote(k))}</textarea></div>`;
+}
+function updateSyncNote(){
+  const el=$("sync-note"); if(!el) return; const pend=Object.keys(pendingCat).length;
+  el.className="sync-note "+((syncMode==="ok"&&!pend)?"ok":syncMode==="loading"?"":"warn");
+  el.textContent=syncMode==="loading"?"Connecting to the shared team storage…":((syncMode==="ok"&&!pend)?"Progress is shared with your team"+(syncAt?" · updated "+fmtUpdated(syncAt):""):"Saved on this computer. Will share when it reconnects.");
+}
+async function loadCat(initial){
+  try{
+    const r=await fetch(WORKER_URL+"/state",{headers:HDRS,cache:"no-store"}); if(!r.ok) throw new Error("HTTP "+r.status);
+    const d=await r.json(), st=(d&&d.state)||{};
+    Object.keys(st).forEach(full=>{ if(full.indexOf(CAT_NS+"/")!==0) return; const key=full.slice(CAT_NS.length+1); if(pendingCat[key]) return; catState[key]={status:st[full].status||"",notes:st[full].notes||"",updated_at:st[full].updated_at||""}; });
+    syncMode="ok"; syncAt=new Date().toISOString(); warned=false;
+  }catch(e){ syncMode="offline"; }
+  persistCat(); updateSyncNote();
+  if(initial||!document.activeElement||!document.activeElement.matches||!document.activeElement.matches(".cat-note")) render();
+  if(Object.keys(pendingCat).length) flushCat();
+}
+async function flushCat(){
+  const keys=Object.keys(pendingCat); if(!keys.length) return;
+  const entries={}; keys.forEach(k=>{ entries[CAT_NS+"/"+k]=pendingCat[k]; });
+  try{
+    const r=await fetch(WORKER_URL+"/state",{method:"POST",headers:HDRS,body:JSON.stringify({entries})}); if(!r.ok) throw new Error("HTTP "+r.status);
+    keys.forEach(k=>{ if(pendingCat[k]===entries[CAT_NS+"/"+k]) delete pendingCat[k]; }); syncMode="ok"; syncAt=new Date().toISOString(); warned=false;
+    setTimeout(()=>loadCat(false),1200);
+  }catch(e){
+    syncMode="offline";
+    if(!warned){ warned=true; toast("Couldn't reach the shared team storage. Your change is saved on this computer and will be shared when it reconnects.","warn"); }
+  }
+  persistCat(); updateSyncNote();
+}
+function setCat(key,patch){
+  const now=new Date().toISOString(), cur=catState[key]||{};
+  catState[key]={status:cur.status||"",notes:cur.notes||"",updated_at:now,...patch};
+  pendingCat[key]={...(pendingCat[key]||{}),...patch,updated_at:now}; persistCat(); updateSyncNote();
+  clearTimeout(flushTimer); flushTimer=setTimeout(flushCat,(patch.notes!==undefined&&patch.status===undefined)?900:50);
+}
+
 /* ---- state ---- */
 let tab="pitch", q="", engine="", panelEngine="";
 const sorts={pages:{k:"total",dir:"desc"},products:{k:"total",dir:"desc"},prompts:{k:"v",dir:"desc"},aio:{k:"vol",dir:"desc"}};
@@ -695,8 +816,12 @@ const open=new Set(), showAll=new Set(), preview=new Set();
 /* ---- questions (prompts) ---- */
 function allPrompts(){
   const out=[];
-  CATS.categories.forEach(c=>{ const info=(QD.by_category||{})[c.slug]; if(!info) return; const cp=(QP.by_category||{})[c.slug];
-    info.q.forEach(x=>out.push({cat:c.name,slug:c.slug,t:x.t,e:x.e,v:x.v,checked:!!cp,pages:(cp&&cp[x.t])?cp[x.t]:[]})); });
+  CATS.categories.forEach(c=>{
+    const cp=(QP.by_category||{})[c.slug], recs=citRows(c.slug);
+    if(recs.length){ recs.forEach(x=>out.push({cat:c.name,slug:c.slug,t:x.t,e:[x.e],v:x.v,cc:x.cc,d:x.d,f:x.f,checked:!!cp,pages:(cp&&cp[x.t])?cp[x.t]:[]})); return; }
+    const info=(QD.by_category||{})[c.slug]; if(!info) return;
+    info.q.forEach(x=>out.push({cat:c.name,slug:c.slug,t:x.t,e:x.e,v:x.v,cc:"",d:"",f:"",checked:!!cp,pages:(cp&&cp[x.t])?cp[x.t]:[]}));
+  });
   return out;
 }
 function pageTags(slug,t){
@@ -711,10 +836,10 @@ function promptPageCell(r){
   return r.pages.map(p=>`<a href="${PRE}${esc(p)}" target="_blank" rel="noopener">${esc(p)}</a>`).join("<br>");
 }
 const Q_FIRST=12;
-function questionsPanel(c){
+function legacyQuestionsPanel(c){
   const info=(QD.by_category||{})[c.slug];
   const head=`<div class="q-head"><strong>Questions that made AI engines cite this category</strong><span class="q-src">${esc(QD.source)}, ${esc(QD.as_of)}</span></div>`;
-  if(!info||!info.q.length) return `<tr class="cat-detail"><td></td><td colspan="10"><div class="q-panel">${head}<p class="q-none">Ahrefs has not recorded any questions that cited this category's pages.</p></div></td></tr>`;
+  if(!info||!info.q.length) return `<tr class="cat-detail"><td></td><td colspan="11"><div class="q-panel">${head}<p class="q-none">Ahrefs has not recorded any questions that cited this category's pages.</p></div></td></tr>`;
   const counts={}; info.q.forEach(x=>x.e.forEach(k=>{ counts[k]=(counts[k]||0)+1; }));
   const chips=`<button class="q-eng${panelEngine?"":" on"}" data-eng="" type="button">All <span>${info.q.length}</span></button>`
     +Object.keys(ENG_LABEL).filter(k=>counts[k]).map(k=>`<button class="q-eng${panelEngine===k?" on":""}" data-eng="${k}" type="button">${ENG_LABEL[k]} <span>${counts[k]}</span></button>`).join("");
@@ -722,10 +847,39 @@ function questionsPanel(c){
   const isOpen=showAll.has(c.slug), shown=isOpen?list:list.slice(0,Q_FIRST);
   const items=shown.map(x=>`<li><span class="q-text">${esc(x.t)}${pageTags(c.slug,x.t)}</span><span class="q-badges">${x.e.map(k=>`<span class="eb eb-${k}">${ENG_LABEL[k]}</span>`).join("")}</span><span class="q-vol"${x.v?"":' title="Ahrefs has no search-volume estimate for this question"'}>${x.v?fmt(x.v)+" a month":"no estimate"}</span></li>`).join("");
   const more=list.length>Q_FIRST?`<button class="q-more" data-slug="${esc(c.slug)}" type="button">${isOpen?"Show fewer":"Show all "+list.length+" questions"}</button>`:"";
-  return `<tr class="cat-detail"><td></td><td colspan="10"><div class="q-panel">${head}<div class="q-chips" role="group" aria-label="Filter by AI engine">${chips}</div>`
+  return `<tr class="cat-detail"><td></td><td colspan="11"><div class="q-panel">${head}<div class="q-chips" role="group" aria-label="Filter by AI engine">${chips}</div>`
     +(list.length?`<ul class="q-list">${items}</ul>`:`<p class="q-none">No questions for ${esc(ENG_LABEL[panelEngine]||"this engine")} in this category.</p>`)
     +`<div class="q-foot">${more}<button class="q-csv" data-slug="${esc(c.slug)}" type="button">Download these questions (CSV)</button></div>`
-    +`<p class="q-note">${fmt(info.n)} AI responses in ${esc(QD.source)} cited pages in this category. A question asked on several engines is shown once, with each engine. This comes from a different Ahrefs report than the table above, so the totals don't match.${(QP.by_category||{})[c.slug]?"":" Which page was cited has not been checked for this category yet."}</p></div></td></tr>`;
+    +`<p class="q-note">${fmt(info.n)} AI responses in ${esc(QD.source)} cited pages in this category. A question asked on several engines is shown once, with each engine. This comes from a different Ahrefs report than the table above, so the totals don't match. Country, date and funnel stage are not available for this category.${(QP.by_category||{})[c.slug]?"":" Which page was cited has not been checked for this category yet."}</p></div></td></tr>`;
+}
+
+
+const CIT={"as_of":"2026-11-02","source":"Ahrefs Brand Radar","by_category":{"accounting-software":[["aimode","IN","2026-10-06","c",700,"Which accounting software is best in India?"],["perplexity","CO","2026-10-01","c",600,"What is the most used accounting software?"],["perplexity","PL","2026-09-28","a",450,"Which software is mostly used in accounting?"],["perplexity","CO","2026-09-23","a",350,"Which software is mostly used in accounting?"],["perplexity","CO","2026-09-28","c",350,"What are the top 10 accounting software?"],["perplexity","GR","2026-09-15","a",250,"Which software is mostly used in accounting?"],["perplexity","MX","2026-09-06","a",150,"What are the three accounting software?"],["aio","PK","2026-10-04","c",150,"What is the best software for accountants?"],["aio","ZA","2026-10-24","a",150,"Which software is mostly used in accounting?"],["aio","US","2026-09-04","c",100,"Which accounting software is used in the USA?"],["perplexity","CA","2026-09-05","c",100,"What is the most used accounting software in Canada?"],["aio","PH","2026-10-16","c",100,"What is the most used accounting software in the Philippines?"],["perplexity","PH","2026-09-20","c",80,"What is the accounting software for small business in the Philippines?"],["perplexity","ID","2026-09-28","d",60,"Apakah MYOB gratis?"],["perplexity","NL","2026-09-23","c",40,"What is the most commonly used accounting software?"],["perplexity","NL","2026-09-29","c",40,"Which accounting software is used in the Netherlands?"],["perplexity","CA","2026-09-05","a",30,"Which software is mostly used in accounting?"],["perplexity","PH","2026-09-25","c",30,"What are the top 10 accounting software?"],["perplexity","EG","2026-09-27","c",30,"What is the most used accounting software?"],["perplexity","PH","2026-10-01","a",30,"What is an example of accounting software in the Philippines?"],["aio","US","2026-08-29","c",20,"Which accounting software do banks use?"],["perplexity","IN","2026-09-09","c",20,"Which company is best for accounting?"],["perplexity","NP","2026-09-18","d",20,"What is the cost of tigg software?"],["perplexity","MY","2026-09-24","a",20,"Which software is mostly used in accounting?"],["perplexity","SE","2026-09-25","c",20,"What is the most used accounting software?"],["perplexity","SA","2026-09-25","c",20,"Which accounting software is mostly used in Saudi Arabia?"],["perplexity","SA","2026-09-27","c",20,"What are the top 10 accounting software?"],["perplexity","VN","2026-09-28","a",20,"Which software is mostly used in accounting?"],["perplexity","SA","2026-09-29","c",20,"What is the best accounting software in Saudi Arabia?"],["perplexity","AR","2026-09-29","a",20,"What are the 5 accounting software?"],["aio","AU","2026-10-24","c",20,"What is the best invoicing software in Australia?"],["gemini","IN","2026-10-30","c",20,"Which software is best for accounting?"],["perplexity","AU","2026-09-05","c",10,"What accounting software is used in Australia?"],["perplexity","BR","2026-09-08","a",10,"Which software is mostly used in accounting?"],["perplexity","LT","2026-09-15","a",10,"Which software is mostly used in accounting?"],["perplexity","NZ","2026-09-20","c",10,"What is the most widely used accounting software?"],["perplexity","NZ","2026-09-21","c",10,"Which accounting software is used in New Zealand?"],["perplexity","AE","2026-09-23","c",10,"What are the top 3 accounting softwares?"],["perplexity","ZA","2026-09-24","d",10,"How much is Sage accounting per month?"],["perplexity","PH","2026-09-24","c",10,"What is the most used accounting software in the Philippines?"],["perplexity","PK","2026-09-26","c",10,"Which is the best ERP in Pakistan?"],["perplexity","ZA","2026-09-28","a",10,"Which software is mostly used in accounting?"],["perplexity","US","2026-09-29","c",10,"Which accounting software is used in the USA?"],["perplexity","AU","2026-10-01","c",10,"Which is the best accounting software?"],["aio","IN","2026-10-17","c",10,"What is the best accounting software in India?"],["gemini","IN","2026-10-31","c",10,"What apps are best for mobile bookkeeping?"],["perplexity","US","2026-08-09","c",0,"What is the best accounting software for manufacturing?"],["perplexity","US","2026-08-11","c",0,"Which ready-made accounting software is most popular and widely used?"],["perplexity","IN","2026-08-28","c",0,"What is the best accounting software in India?"],["perplexity","US","2026-09-01","c",0,"Which software is mostly used for accounting?"],["perplexity","NL","2026-09-05","a",0,"Which software is mostly used in accounting?"],["perplexity","AU","2026-09-07","c",0,"Which accounting software is best?"],["perplexity","CA","2026-09-07","c",0,"Which accounting software is used in Canada?"],["perplexity","NL","2026-09-09","c",0,"What are the top 5 accounting softwares?"],["perplexity","US","2026-09-15","c",0,"Which is the most used accounting software?"],["perplexity","US","2026-09-17","c",0,"What Microsoft program is like QuickBooks?"],["perplexity","SA","2026-09-18","d",0,"What is the price of tally prime in Saudi Arabia?"],["perplexity","NZ","2026-09-22","c",0,"What is the best accounting software in New Zealand?"],["perplexity","ID","2026-09-22","c",0,"What is the best accounting software in Indonesia?"],["perplexity","SG","2026-09-24","a",0,"Which software is mostly used in accounting?"],["perplexity","UA","2026-09-25","a",0,"Which software is mostly used in accounting?"],["perplexity","ZA","2026-09-27","a",0,"What are the 5 accounting software?"],["perplexity","PK","2026-09-28","c",0,"Which is the best accounting software in Pakistan?"],["perplexity","US","2026-10-01","c",0,"Which software is best for accounting?"],["copilot","IT","2026-11-02","c",0,"Which is better, QuickBooks or Zoho Books?"]],"payroll-software":[["aio","ZA","2026-10-26","c",150,"Which software is mostly used for payroll?"],["perplexity","KE","2026-09-20","c",60,"What is the best payroll software in Kenya?"],["perplexity","TH","2026-09-20","d",20,"โปรแกรมเงินเดือน Payroll ราคาเท่าไหร่?"],["perplexity","IE","2026-09-24","c",20,"What is the most popular payroll software in Ireland?"],["perplexity","MY","2026-09-25","c",20,"Is Panda payroll a good payroll option?"],["copilot","KE","2026-10-06","c",20,"What apps can I use to pay employees?"],["perplexity","PH","2026-09-18","c",10,"What is the payroll software in the Philippines?"],["perplexity","DE","2026-09-21","c",10,"Welche Payroll-Anbieter gibt es?"],["perplexity","SG","2026-09-21","c",10,"What are common payroll softwares?"],["perplexity","TH","2026-09-25","c",10,"โปรแกรม HR ที่ดีที่สุดมีอะไรบ้าง?"],["perplexity","PH","2026-10-01","a",10,"Can I run payroll from my phone?"],["perplexity","PH","2026-10-04","d",10,"How much is a payroll system in the Philippines?"],["perplexity","NZ","2026-09-20","c",0,"Which software is mostly used for payroll?"],["perplexity","BD","2026-09-23","c",0,"Which payroll software is free in Bangladesh?"],["perplexity","PK","2026-09-28","c",0,"Which payroll software is free in Pakistan?"]],"simulation-software":[["aimode","IN","2026-10-21","c",1100,"What is the best simulation software?"],["perplexity","IN","2026-09-09","a",200,"What are the two types of simulation software?"],["perplexity","IN","2026-09-11","c",200,"Which software is best for simulation?"],["perplexity","IN","2026-09-11","c",200,"What is the best simulation software?"],["copilot","US","2026-10-08","a",200,"What is an example of a simulation software?"],["perplexity","US","2026-08-08","c",50,"What is the best software for manufacturing simulation?"],["perplexity","PH","2026-09-15","c",10,"What is the best simulation software?"],["perplexity","PH","2026-09-23","a",10,"What is a simulation software?"],["perplexity","CO","2026-09-23","d",10,"¿FlexSim es gratis?"],["perplexity","TW","2026-09-29","a",0,"What are some examples of simulation software?"],["copilot","IN","2026-10-01","a",0,"What is an example of a simulation software?"],["perplexity","TW","2026-10-01","c",0,"What is the best simulation software?"],["perplexity","TW","2026-10-02","c",0,"Which software is best for simulation?"],["perplexity","TW","2026-10-02","a",0,"What is an example of a simulation software?"],["perplexity","TW","2026-10-03","c",0,"Is there any free simulation software?"]],"erp-software":[["aio","SA","2026-10-08","c",4400,"Which ERP companies are the best in KSA?"],["aio","US","2026-10-10","c",300,"Which ERP is mostly used in the USA?"],["aio","PK","2026-10-29","c",300,"Which is the best ERP in Pakistan?"],["chatgpt","IN","2026-10-30","c",250,"Which billing software is free?"],["aimode","PK","2026-10-17","c",70,"Which is the best ERP in Pakistan?"],["perplexity","PH","2026-09-23","d",60,"How much is ERP in the Philippines?"],["aimode","US","2026-10-05","d",40,"What is the cheapest ERP system?"],["aio","US","2026-08-24","c",20,"Which ERP is mostly used in Australia?"],["perplexity","AR","2026-09-26","c",20,"¿Cuál es el ERP más usado en Argentina?"],["chatgpt","IN","2026-10-30","c",20,"Which is the best billing software in India?"],["perplexity","IN","2026-09-10","c",10,"Which ERP is mostly used in UAE?"],["perplexity","AE","2026-09-24","c",10,"Which ERP is used in UAE?"],["perplexity","PK","2026-09-26","c",10,"Which is the best ERP in Pakistan?"],["perplexity","US","2026-08-11","c",0,"Which ERP is best for real estate?"],["perplexity","US","2026-09-18","c",0,"Which ERP is most used in the USA?"],["perplexity","AE","2026-09-27","c",0,"Which ERP is mostly used in UAE?"]],"pharmacy-software":[["perplexity","IN","2026-08-28","c",30,"Which software is best for pharmacy?"],["aimode","US","2026-10-05","c",30,"What is the best pharmacy software?"],["perplexity","US","2026-09-18","c",10,"What is the most common pharmacy software?"],["perplexity","CA","2026-10-02","c",10,"What software do pharmacies use in Canada?"],["aio","PK","2026-10-26","c",10,"Which software is best for pharmacy?"],["aio","US","2026-08-25","a",0,"Which software is used in pharmacy?"],["aio","NP","2026-10-19","a",0,"Which software is used in pharmacy?"],["aimode","NP","2026-10-19","a",0,"Which software is used in pharmacy?"],["copilot","CA","2026-10-30","c",0,"What software do pharmacies use in Canada?"]],"crm-software":[["aio","NG","2026-10-23","c",500,"Which CRM tool is the best?"],["aio","NG","2026-10-20","c",200,"What is the most used CRM software?"],["aio","CA","2026-10-10","c",150,"What is the best CRM for automotive?"],["aio","KE","2026-10-18","c",100,"Which CRM is used in Kenya?"],["perplexity","MY","2026-09-27","c",70,"Which CRM is best for Malaysia?"],["aimode","KE","2026-10-19","c",30,"Which CRM is used in Kenya?"],["perplexity","IN","2026-08-30","c",10,"Which CRM is best for EdTech?"],["perplexity","VN","2026-09-19","d",10,"Phần mềm CRM giá bao nhiêu?"],["perplexity","KE","2026-09-19","c",10,"Which CRM is used in Kenya?"],["perplexity","CA","2026-10-08","c",10,"Which CRM software is based in Canada?"],["copilot","KE","2026-10-19","c",0,"Which CRM is used in Kenya?"]],"property-management-software":[["chatgpt","ZA","2026-10-23","c",1100,"What is the best property management software in South Africa?"],["aio","PH","2026-10-07","c",250,"What are the 5 property management systems in the Philippines?"],["gemini","ZA","2026-10-22","c",100,"What is the best property management software in South Africa?"],["perplexity","ZA","2026-09-25","c",90,"What is the best property management software in South Africa?"],["copilot","ZA","2026-10-29","c",30,"What is the best property management software in South Africa?"],["aio","IN","2026-10-16","c",20,"What is the best free property management software?"],["perplexity","GB","2026-08-26","a",10,"What is the property management software in the UK?"],["perplexity","GB","2026-09-03","c",10,"What is the best property management software in the UK?"],["perplexity","PH","2026-09-23","c",10,"What are the 5 property management systems in the Philippines?"]],"billing-software":[["chatgpt","BD","2026-10-26","c",250,"Which software is best for billing?"],["perplexity","IN","2026-09-17","c",150,"What are the top 5 billing software in India?"],["aio","IN","2026-10-08","c",100,"What is the most popular billing software?"],["aio","PK","2026-11-02","c",60,"Which is the best billing software in Pakistan?"],["perplexity","IN","2026-08-08","c",30,"Which billing software is best in India?"],["aimode","PK","2026-10-29","-",20,"Which is the best billing software in Pakistan?"],["perplexity","IN","2026-09-17","c",10,"Which software is used for billing in India?"],["perplexity","IN","2026-08-10","c",0,"Which is the best billing software in India?"],["perplexity","US","2026-08-11","a",0,"What is an inventory invoice?"],["perplexity","PK","2026-09-26","c",0,"Which is the best billing software in Pakistan?"],["gemini","IN","2026-10-07","c",0,"What is the software for hotel billing?"],["copilot","PK","2026-10-15","c",0,"Which is the best billing software in Pakistan?"]],"point-of-sale-pos-software":[["aimode","PK","2026-10-16","a",80,"What is the POS software in Pakistan?"],["perplexity","CA","2026-09-19","a",10,"What is an example of a point-of-sale system?"],["perplexity","PK","2026-09-20","a",0,"What is a point of sale software?"],["perplexity","CA","2026-09-20","a",0,"What are the four types of point-of-sale systems?"],["perplexity","PK","2026-09-29","a",0,"Is POS available in Pakistan?"],["perplexity","IN","2026-09-30","a",0,"What is an example of a point of sale software?"],["copilot","IN","2026-10-08","a",0,"What is an example of a point of sale software?"]],"gst-software":[["perplexity","IN","2026-09-30","c",150,"What is the best software for GST?"],["perplexity","IN","2026-09-06","c",50,"Which GST software is best?"],["perplexity","IN","2026-08-12","c",10,"Which is the best software for GST?"],["perplexity","IN","2026-09-01","c",10,"Which is the best software for GST billing?"],["perplexity","IN","2026-09-04","c",10,"Which is the best accounting software for GST?"],["perplexity","IN","2026-08-06","c",0,"Which software is best for GST?"],["perplexity","IN","2026-09-11","c",0,"What is the best software for GST return filing?"],["perplexity","IN","2026-09-12","c",0,"Which is the best GST software for CA?"],["perplexity","IN","2026-09-18","c",0,"What are the benefits of using GSTpad?"]],"hr-software":[["aio","SG","2026-10-13","c",1100,"Which is the best HR software?"],["aio","PK","2026-10-19","c",50,"What is the best HR software?"],["aio","PK","2026-10-22","c",40,"Which is the best HR software?"],["perplexity","JO","2026-09-18","c",20,"What is the best HR system in Egypt?"],["perplexity","TH","2026-09-20","d",20,"โปรแกรมเงินเดือน Payroll ราคาเท่าไหร่?"],["perplexity","PK","2026-09-18","c",0,"Which HR software is used in Pakistan?"]],"supply-chain-management-software":[["perplexity","ID","2026-09-02","c",10,"Which software is best for Supply Chain Management?"],["perplexity","US","2026-09-04","c",10,"Which SCM software is best?"],["perplexity","IN","2026-08-10","c",0,"Which software is best for supply chain management?"],["perplexity","BR","2026-08-29","c",0,"Which software is best for Supply Chain Management?"],["perplexity","BR","2026-09-08","c",0,"What is the best supply chain management software?"],["perplexity","BR","2026-09-17","c",0,"Which software is best for supply chain management?"],["perplexity","US","2026-09-26","a",0,"What are the examples of SCM software?"],["perplexity","GB","2026-10-05","c",0,"Which software is best for supply chain management?"]],"real-estate-software":[["perplexity","AU","2026-09-06","c",20,"What is the best real estate software in Australia?"],["perplexity","US","2026-08-09","a",10,"What software does real estate use?"],["perplexity","IN","2026-09-18","c",10,"What is the best real estate software?"],["perplexity","US","2026-09-28","c",10,"Which is the best software for real estate?"],["perplexity","GB","2026-09-29","c",10,"What is the best software for real estate?"],["perplexity","US","2026-08-07","c",0,"Which software is best for real estate business?"],["perplexity","US","2026-09-02","c",0,"What is the best software for real estate?"]],"practice-management-software":[["perplexity","AU","2026-09-07","c",200,"What is the best practice management software in Australia?"],["perplexity","AU","2026-09-04","c",20,"What is the best practice management software?"],["perplexity","AU","2026-09-16","c",20,"Which is the best practice management software?"],["perplexity","GB","2026-09-07","c",10,"What practice management software is the best?"],["perplexity","IN","2026-09-07","c",10,"What practice management software is the best?"],["perplexity","GB","2026-09-18","c",10,"What is the best practise software?"],["perplexity","AU","2026-10-08","c",10,"What is the best practice management software for psychologists in Australia?"],["perplexity","US","2026-09-04","c",0,"Which is the best practice management software?"]],"cheque-printing-software":[["perplexity","LK","2026-09-18","c",30,"What is the free Cheque writer software?"],["perplexity","US","2026-08-08","c",10,"What is the best software for printing Cheques?"],["perplexity","US","2026-09-18","c",0,"What is the free software to print checks?"]]}};
+const STAGE_LABEL={a:"Awareness",c:"Consideration",d:"Decision"};
+const REGION=(()=>{ try{ return new Intl.DisplayNames(["en"],{type:"region"}); }catch(e){ return null; } })();
+const countryName=cc=>{ try{ return REGION?(REGION.of(cc)||cc):cc; }catch(e){ return cc; } };
+const shortDate=iso=>{ const m=/^(\d{4})-(\d{2})-(\d{2})/.exec(iso||""); return m?new Date(+m[1],+m[2]-1,+m[3]).toLocaleDateString("en-GB",{day:"numeric",month:"short"}):""; };
+const citRows=slug=>((CIT.by_category||{})[slug]||[]).map(a=>({e:a[0],cc:a[1],d:a[2],f:a[3],v:a[4],t:a[5]}));
+let panelStage="", panelCountry="";
+const Q_ALL_FIRST=20;
+const countBy=(arr,k)=>{ const o={}; arr.forEach(x=>{ o[x[k]]=(o[x[k]]||0)+1; }); return o; };
+const stagePill=f=>STAGE_LABEL[f]?`<span class="eb eb-st-${f}">${STAGE_LABEL[f]}</span>`:"";
+function questionsPanel(c){
+  const recs=citRows(c.slug);
+  if(!recs.length) return legacyQuestionsPanel(c);
+  const head=`<div class="q-head"><strong>Every citation for this category</strong><span class="q-src">${esc(CIT.source)}, up to ${esc(CIT.as_of)}</span></div>`;
+  const ec=countBy(recs,"e"), sc=countBy(recs,"f"), cc=countBy(recs,"cc");
+  const list=recs.filter(x=>(!panelEngine||x.e===panelEngine)&&(!panelStage||x.f===panelStage)&&(!panelCountry||x.cc===panelCountry));
+  const engChips=`<button class="q-eng${panelEngine?"":" on"}" data-eng="" type="button">All <span>${recs.length}</span></button>`+Object.keys(ENG_LABEL).filter(k=>ec[k]).map(k=>`<button class="q-eng${panelEngine===k?" on":""}" data-eng="${k}" type="button">${ENG_LABEL[k]} <span>${ec[k]}</span></button>`).join("");
+  const stageChips=["a","c","d"].filter(k=>sc[k]).map(k=>`<button class="q-eng q-stage${panelStage===k?" on":""}" data-stage="${k}" type="button">${STAGE_LABEL[k]} <span>${sc[k]}</span></button>`).join("");
+  const countrySel=`<select class="q-country" aria-label="Filter by country"><option value="">All countries (${Object.keys(cc).length})</option>${Object.entries(cc).sort((a,b)=>b[1]-a[1]||a[0].localeCompare(b[0])).map(([k,n])=>`<option value="${esc(k)}"${panelCountry===k?" selected":""}>${esc(countryName(k))} (${n})</option>`).join("")}</select>`;
+  const isOpen=showAll.has("cit-"+c.slug), shown=isOpen?list:list.slice(0,Q_ALL_FIRST);
+  const items=shown.map(x=>`<li><span class="q-text">${esc(x.t)}${pageTags(c.slug,x.t)}</span><span class="q-badges"><span class="eb eb-${x.e}">${ENG_LABEL[x.e]}</span><span class="eb eb-grok" title="${esc(countryName(x.cc))}">${esc(x.cc)}</span>${stagePill(x.f)}</span><span class="q-vol"${x.v?"":' title="Ahrefs has no search-volume estimate for this question"'}>${x.v?fmt(x.v)+" a month":"no estimate"}<span class="q-date">seen ${esc(shortDate(x.d))}</span></span></li>`).join("");
+  const more=list.length>Q_ALL_FIRST?`<button class="q-more" data-slug="${esc("cit-"+c.slug)}" type="button">${isOpen?"Show fewer":"Show all "+list.length+" citations"}</button>`:"";
+  return `<tr class="cat-detail"><td></td><td colspan="11"><div class="q-panel">${head}<div class="q-chips" role="group" aria-label="Filter citations">${engChips}</div><div class="q-chips" role="group" aria-label="Filter by funnel stage">${stageChips}${countrySel}</div>`
+    +(list.length?`<ul class="q-list">${items}</ul>`:`<p class="q-none">No citations match these filters.</p>`)
+    +`<div class="q-foot">${more}<button class="q-csv" data-slug="${esc(c.slug)}" type="button">Download all ${recs.length} citations (CSV)</button></div>`
+    +`<p class="q-note">${fmt(recs.length)} citations. Each line is one AI answer that cited a page of this category, so the same question can appear once per AI engine and per country. This comes from a different Ahrefs report than the table above, so the totals don't match.${(QP.by_category||{})[c.slug]?"":" Which page was cited has not been checked for this category yet."}</p></div></td></tr>`;
 }
 
 /* ---- the pitch ---- */
@@ -782,57 +936,105 @@ function pitchPanel(c){
     `What we offer: targeted content creation, buyer prompt research, competitor analysis and ongoing visibility tracking. Ask for a quick 15-minute call.`];
   const table=items.length?`<table class="pitch-table"><thead><tr><th>Product</th><th class="num">Citations</th><th>Cited by</th><th>Tier</th><th></th></tr></thead><tbody>${productRows(items,c.name,c,c.slug)}</tbody></table>`
     :`<p class="page-note">Category page: <a href="${PRE}/${esc(c.slug)}" target="_blank" rel="noopener">${esc("/"+c.slug)}</a></p>`;
-  return `<tr class="cat-detail"><td></td><td colspan="10"><div class="pitch-panel"><h4>How to pitch the products in ${esc(c.name)}</h4><p class="pitch-sub">Start from what AI engines already do with this category, then pitch each product.</p>`
+  return `<tr class="cat-detail"><td></td><td colspan="11"><div class="pitch-panel"><h4>How to pitch the products in ${esc(c.name)}</h4><p class="pitch-sub">Start from what AI engines already do with this category, then pitch each product.</p>`
     +`<div class="pitch-hook">${hookText(c)}</div><ul class="pitch-points">${points.map(x=>`<li>${x}</li>`).join("")}</ul>${table}</div></td></tr>`;
 }
 
+/* ---- overview dashboard ---- */
+const DASH_HIDE_KEY="ss_cat_dash_hidden_v1";
+const ST_COLOR={ns:"#C4CAD6",re:"#4F6BE8",os:"#8B5CF6",ic:"#F59E0B",won:"#16A34A",hold:"#EF4444"};
+const dashHidden=()=>{ try{ return localStorage.getItem(DASH_HIDE_KEY)==="1"; }catch(e){ return false; } };
+const catNameOf=key=>{ const c=CATS.categories.find(x=>x.slug===key); if(c) return c.name; const g=PBY.get(key); return g?g.name:key; };
+function renderDash(){
+  const el=$("cat-dash"); if(!el) return;
+  const hidden=dashHidden();
+  const head=`<div class="dash-head"><h2>Overview</h2><span class="dash-sub">How the category pitching is going, and where to start</span><button id="dash-toggle" class="dash-btn" type="button">${hidden?"Show overview":"Hide overview"}</button></div>`;
+  if(hidden){ el.innerHTML=head; return; }
+  const cats=CATS.categories, n=cats.length;
+  /* 1. progress */
+  const counts={}; CAT_STATUSES.forEach(x=>{ counts[x[0]]=0; }); cats.forEach(c=>{ counts[catStatus(c.slug)]++; });
+  const started=n-counts["Not started"];
+  const bar=CAT_STATUSES.filter(x=>counts[x[0]]).map(x=>`<span class="pseg" style="width:${Math.max(2,counts[x[0]]/n*100)}%;background:${ST_COLOR[x[1]]}" title="${esc(x[0])}: ${counts[x[0]]}"></span>`).join("");
+  const legend=CAT_STATUSES.map(x=>`<button type="button" class="leg" data-dash-status="${esc(x[0])}"><span class="ldot" style="background:${ST_COLOR[x[1]]}"></span><span class="lnum">${counts[x[0]]}</span><span class="llab">${esc(x[0])}</span></button>`).join("");
+  const c1=`<div class="dash-card wide"><h3>Pitch progress</h3><div class="pipebar">${bar}</div><p class="dash-line"><b>${started}</b> of ${n} categories started (${Math.round(started/n*100)}%). Click a stage to see those categories.</p><div class="legs">${legend}</div></div>`;
+  /* 2. citations by AI engine */
+  const eng=["aio","aimode","chatgpt","gemini","perplexity","copilot","grok"].map(k=>[k,cats.reduce((a,c)=>a+(c[k]||0),0)]).filter(x=>x[1]>0).sort((a,b)=>b[1]-a[1]);
+  const emax=Math.max(1,...eng.map(x=>x[1]));
+  const c2=`<div class="dash-card"><h3>Citations by AI engine</h3>${eng.map(x=>`<div class="mrow"><span>${esc(ENG_LABEL[x[0]])}</span><span class="mtrack"><span class="mfill" style="width:${Math.round(x[1]/emax*100)}%"></span></span><b>${x[1]}</b></div>`).join("")}</div>`;
+  /* 3. top categories */
+  const top=cats.slice().sort((a,b)=>b.total-a.total).slice(0,6), tmax=Math.max(1,top[0]?top[0].total:1);
+  const c3=`<div class="dash-card"><h3>Most cited categories</h3>${top.map(c=>`<div class="trow"><button type="button" class="tname" data-dash-open="${esc(c.slug)}">${esc(c.name)}</button><span class="mtrack"><span class="mfill" style="width:${Math.round(c.total/tmax*100)}%"></span></span><b>${c.total}</b><span class="stpill st-${stCls(catStatus(c.slug))}">${esc(catStatus(c.slug))}</span></div>`).join("")}</div>`;
+  /* 4. where to start */
+  const cand=cats.filter(c=>catStatus(c.slug)==="Not started").map(c=>{ const pr=productsFor(c), fund=pr.filter(p=>p.f).length; return {c,pr:pr.length,fund,score:c.total+fund}; }).sort((a,b)=>b.score-a.score||a.c.name.localeCompare(b.c.name)).slice(0,5);
+  const c4=`<div class="dash-card"><h3>Where to start</h3>${cand.length?cand.map(x=>`<div class="srow"><div><b>${esc(x.c.name)}</b><span class="smeta">${x.c.total} citations · ${x.pr} cited product${x.pr===1?"":"s"}${x.pr?` (${x.fund} can pay $2k+)`:""}</span></div><button type="button" class="dash-btn" data-dash-pitch="${esc(x.c.slug)}">Open pitch list</button></div>`).join(""):`<p class="dash-line">Every category has been started. Nice work.</p>`}<p class="dash-note">Ranked by citations plus the products that look able to pay. Only categories still at “Not started”.</p></div>`;
+  /* 5. buyer stage and countries (from the full citation records) */
+  const recs=[]; Object.keys(CIT.by_category||{}).forEach(s=>citRows(s).forEach(r=>recs.push(r)));
+  const st=countBy(recs,"f"), tot=recs.length||1;
+  const stBar=["a","c","d"].filter(k=>st[k]).map(k=>`<span class="pseg stg-${k}" style="width:${st[k]/tot*100}%" title="${STAGE_LABEL[k]}: ${st[k]}"></span>`).join("");
+  const stLeg=["a","c","d"].map(k=>`<span class="stleg"><span class="ldot stg-${k}"></span>${STAGE_LABEL[k]} <b>${st[k]||0}</b></span>`).join("");
+  const cc=Object.entries(countBy(recs,"cc")).sort((a,b)=>b[1]-a[1]||a[0].localeCompare(b[0])).slice(0,5);
+  const c5=`<div class="dash-card"><h3>Who is asking</h3><div class="pipebar">${stBar}</div><div class="stlegs">${stLeg}</div><div class="ctry">${cc.map(x=>`<span class="ctag">${esc(countryName(x[0]))} <b>${x[1]}</b></span>`).join("")}</div><p class="dash-note">From the ${recs.length} full citation records (${Object.keys(CIT.by_category||{}).length} categories), up to ${esc(CIT.as_of)}.</p></div>`;
+  /* 6. recent updates */
+  const rec=Object.entries(catState).filter(([k,v])=>v&&v.updated_at&&(v.status||v.notes)).sort((a,b)=>String(b[1].updated_at).localeCompare(String(a[1].updated_at))).slice(0,5);
+  const c6=`<div class="dash-card"><h3>Recent updates</h3>${rec.length?rec.map(([k,v])=>`<div class="rrow"><span><b>${esc(catNameOf(k))}</b><span class="stpill st-${stCls(v.status||"Not started")}">${esc(v.status||"Not started")}</span></span><span class="rtime">${esc(fmtUpdated(v.updated_at))}</span></div>`).join(""):`<p class="dash-line">No updates yet. Change a category's status and it shows up here for the whole team.</p>`}</div>`;
+  el.innerHTML=head+`<div class="dash-grid">${c1}${c2}${c3}${c4}${c5}${c6}</div>`;
+}
+$("cat-dash").addEventListener("click",e=>{
+  if(e.target.closest("#dash-toggle")){ try{ localStorage.setItem(DASH_HIDE_KEY,dashHidden()?"0":"1"); }catch(x){} renderDash(); return; }
+  const s=e.target.closest("[data-dash-status]"); if(s){ statusFilter=s.dataset.dashStatus; tab="pages"; $("cat-q").value=""; q=""; render(); $("cat-table").scrollIntoView({behavior:"smooth",block:"start"}); return; }
+  const o=e.target.closest("[data-dash-open]"); if(o){ tab="pages"; statusFilter=""; q=""; $("cat-q").value=""; open.add("pages:"+o.dataset.dashOpen); render(); const row=document.querySelector(`#cat-rows tr.cat-row[data-cat="${o.dataset.dashOpen}"]`); if(row) row.scrollIntoView({behavior:"smooth",block:"center"}); return; }
+  const p=e.target.closest("[data-dash-pitch]"); if(p){ const c=CATS.categories.find(x=>x.slug===p.dataset.dashPitch); if(c){ plKey=normKey(c.name); tab="pitch"; render(); $("pitch-view").scrollIntoView({behavior:"smooth",block:"start"}); } }
+});
+
 /* ---- the table ---- */
 function render(){
+  renderDash();
   const isP=tab==="pitch";
   $("pitch-view").hidden=!isP; $("tablewrap").hidden=isP; document.querySelector(".toolbar .search").style.display=isP?"none":"";
+  const sf=$("cat-status-filter"); if(sf){ sf.style.display=(tab==="pages"||tab==="products")?"":"none"; sf.value=statusFilter; }
   if(isP){ renderPitch(); document.querySelectorAll("#cat-tabs button").forEach(b=>b.setAttribute("aria-selected",b.dataset.tab===tab)); return; }
   const body=$("cat-rows"), qk=normKey(q), s=sorts[tab];
   const th=(k,label,cls)=>`<th class="${cls||""}" data-ck="${k}"${s.k===k?' data-active="true"':""}>${label}<span class="arrow">${s.k===k?(s.dir==="asc"?"▲":"▼"):""}</span></th>`;
   const cats=CATS.categories; let head="", html="", count=0, unit="categor";
   if(tab==="pages"){
-    const rows=sortRows(cats.filter(c=>!qk||normKey(c.name).includes(qk)||c.pages.some(p=>normKey(p.path).includes(qk))||productsFor(c).some(p=>normKey(p.n).includes(qk))).map(c=>({...c,npages:c.pages.length,prods:productsFor(c).length})),s);
+    const rows=sortRows(cats.filter(c=>(!statusFilter||catStatus(c.slug)===statusFilter)&&(!qk||normKey(c.name).includes(qk)||c.pages.some(p=>normKey(p.path).includes(qk))||productsFor(c).some(p=>normKey(p.n).includes(qk)))).map(c=>({...c,npages:c.pages.length,prods:productsFor(c).length,stIdx:stIndex(c.slug)})),s);
     count=rows.length;
     const totalAll=cats.reduce((a,c)=>a+c.total,0), pagesAll=cats.reduce((a,c)=>a+c.pages.length,0), prodAll=cats.reduce((a,c)=>a+productsFor(c).length,0), top=cats[0];
-    $("cat-kpis").innerHTML=kpiCards([["Categories cited",fmt(cats.length),"SoftwareSuggest category pages that AI engines cite"],["Citations",fmt(totalAll),`on ${fmt(pagesAll)} category pages`],["Products to pitch",fmt(prodAll),`cited products in ${cats.filter(c=>productsFor(c).length).length} of these categories`],["Most cited category",top?top.name:"—",top?fmt(top.total)+" citations":"",true]]);
+    $("cat-kpis").innerHTML=kpiCards([["Categories cited",fmt(cats.length),"SoftwareSuggest category pages that AI engines cite"],["Citations",fmt(totalAll),`on ${fmt(pagesAll)} category pages`],["Products to pitch",fmt(prodAll),`cited products in ${cats.filter(c=>productsFor(c).length).length} of these categories`],["Pitch progress",`${cats.filter(c=>catStatus(c.slug)!=="Not started").length} of ${cats.length}`,"categories past 'Not started'"]]);
     $("cat-lede").textContent=`AI engines cite ${fmt(pagesAll)} SoftwareSuggest category pages in ${fmt(cats.length)} categories. Open a category to see the questions behind the citations and how to pitch the products in it.`;
     $("cat-help").textContent="Each category adds up its main page and its country and industry pages. Click a row to see its pages, the questions that made AI engines cite it, and a pitch for each cited product.";
-    head=`<tr><th class="tg"></th>${th("name","Category")}${th("total","Citations","num")}${th("aio","AI Overviews","num")}${th("aimode","AI Mode","num")}${th("chatgpt","ChatGPT","num")}${th("gemini","Gemini","num")}${th("perplexity","Perplexity","num")}${th("copilot","Copilot","num")}${th("npages","Pages cited","num")}${th("prods","Products","num")}</tr>`;
+    head=`<tr><th class="tg"></th>${th("name","Category")}${th("total","Citations","num")}${th("aio","AI Overviews","num")}${th("aimode","AI Mode","num")}${th("chatgpt","ChatGPT","num")}${th("gemini","Gemini","num")}${th("perplexity","Perplexity","num")}${th("copilot","Copilot","num")}${th("npages","Pages cited","num")}${th("prods","Products","num")}${th("stIdx","Status")}</tr>`;
     const mx=Math.max(1,...cats.map(c=>c.total));
     html=rows.map(c=>{
       const isOpen=open.has("pages:"+c.slug);
       let r=`<tr class="cat-row" data-cat="${esc(c.slug)}"><td class="tg"><button class="cat-toggle" type="button" aria-expanded="${isOpen}" aria-label="Open ${esc(c.name)}">›</button></td>`
         +`<td><span class="cat-name">${esc(c.name)}</span><span class="cat-sub-slug">${esc(c.slug)}</span></td>`
         +`<td class="num"><span class="cite"><span class="track"><span class="fillc" style="width:${Math.round(c.total/mx*100)}%"></span></span><span class="n">${fmt(c.total)}</span></span></td>`
-        +`<td class="num">${numCell(c.aio)}</td><td class="num">${numCell(c.aimode)}</td><td class="num">${numCell(c.chatgpt)}</td><td class="num">${numCell(c.gemini)}</td><td class="num">${numCell(c.perplexity)}</td><td class="num">${numCell(c.copilot)}</td><td class="num">${fmt(c.npages)}</td><td class="num">${numCell(c.prods)}</td></tr>`;
+        +`<td class="num">${numCell(c.aio)}</td><td class="num">${numCell(c.aimode)}</td><td class="num">${numCell(c.chatgpt)}</td><td class="num">${numCell(c.gemini)}</td><td class="num">${numCell(c.perplexity)}</td><td class="num">${numCell(c.copilot)}</td><td class="num">${fmt(c.npages)}</td><td class="num">${numCell(c.prods)}</td><td>${statusSelect(c.slug)}</td></tr>`;
       if(isOpen) r+=c.pages.map(p=>`<tr class="cat-sub"><td></td><td><a href="${PRE}${esc(p.path)}" target="_blank" rel="noopener">${esc(p.path)}</a><span class="tag">${esc(p.label)}</span></td>`
-        +`<td class="num">${fmt(p.total)}</td><td class="num">${numCell(p.aio)}</td><td class="num">${numCell(p.aimode)}</td><td class="num">${numCell(p.chatgpt)}</td><td class="num">${numCell(p.gemini)}</td><td class="num">${numCell(p.perplexity)}</td><td class="num">${numCell(p.copilot)}</td><td></td><td></td></tr>`).join("")+questionsPanel(c)+pitchPanel(c);
+        +`<td class="num">${fmt(p.total)}</td><td class="num">${numCell(p.aio)}</td><td class="num">${numCell(p.aimode)}</td><td class="num">${numCell(p.chatgpt)}</td><td class="num">${numCell(p.gemini)}</td><td class="num">${numCell(p.perplexity)}</td><td class="num">${numCell(p.copilot)}</td><td></td><td></td><td></td></tr>`).join("")+`<tr class="cat-detail"><td></td><td colspan="11">${statusBar(c.slug,c.name)}</td></tr>`+questionsPanel(c)+pitchPanel(c);
       return r;
     }).join("");
-    if(!rows.length) html=`<tr><td colspan="11"><div class="empty"><strong>No categories match</strong>Clear the search to see them all.</div></td></tr>`;
+    if(!rows.length) html=`<tr><td colspan="12"><div class="empty"><strong>No categories match</strong>Clear the search to see them all.</div></td></tr>`;
   } else if(tab==="products"){
     const groups=[...PBY.values()].map(g=>{ const sum=k=>g.items.reduce((a,p)=>a+(p[k]||0),0); const page=CAT_BY_NORM[normKey(g.name)];
-      return {name:g.name,items:g.items,products:g.items.length,total:sum("t"),a:sum("a"),c:sum("c"),g:sum("g"),pp:sum("pp"),fund:g.items.filter(p=>p.f).length,page,hasPage:page?1:0}; });
-    const rows=sortRows(groups.filter(g=>!qk||normKey(g.name).includes(qk)||g.items.some(p=>normKey(p.n).includes(qk))),s);
+      return {name:g.name,items:g.items,products:g.items.length,total:sum("t"),a:sum("a"),c:sum("c"),g:sum("g"),pp:sum("pp"),fund:g.items.filter(p=>p.f).length,page,hasPage:page?1:0,sk:page?page.slug:normKey(g.name),stIdx:stIndex(page?page.slug:normKey(g.name))}; });
+    const rows=sortRows(groups.filter(g=>(!statusFilter||catStatus(g.sk)===statusFilter)&&(!qk||normKey(g.name).includes(qk)||g.items.some(p=>normKey(p.n).includes(qk)))),s);
     count=rows.length;
     $("cat-kpis").innerHTML=kpiCards([["Categories",fmt(groups.length),"that your cited products belong to"],["Products matched",fmt(META.mapped),`of ${fmt(META.tracked)} tracked products`],["Citations",fmt(groups.reduce((a,g)=>a+g.total,0)),"summed across these products"],["With a cited category page",fmt(groups.filter(g=>g.page).length),"so the pitch can use real questions",true]]);
     $("cat-lede").textContent=`${fmt(META.mapped)} of your ${fmt(META.tracked)} tracked products are matched to ${fmt(groups.length)} categories. Where a category page is also cited by AI engines, the pitch email quotes the questions behind it.`;
     $("cat-help").textContent="Categories come from your product database (url_categories.json). Click a row to see its products and copy a pitch email for each.";
-    head=`<tr><th class="tg"></th>${th("name","Category")}${th("products","Products","num")}${th("total","Citations","num")}${th("a","AI Overviews","num")}${th("c","ChatGPT","num")}${th("g","Gemini","num")}${th("pp","Perplexity","num")}${th("fund","$2k+/mo","num")}${th("hasPage","Category page cited","num")}</tr>`;
+    head=`<tr><th class="tg"></th>${th("name","Category")}${th("products","Products","num")}${th("total","Citations","num")}${th("a","AI Overviews","num")}${th("c","ChatGPT","num")}${th("g","Gemini","num")}${th("pp","Perplexity","num")}${th("fund","$2k+/mo","num")}${th("hasPage","Category page cited","num")}${th("stIdx","Status")}</tr>`;
     html=rows.map(g=>{
       const k=normKey(g.name), isOpen=open.has("products:"+k);
       let r=`<tr class="cat-row" data-cat="${esc(k)}"><td class="tg"><button class="cat-toggle" type="button" aria-expanded="${isOpen}" aria-label="Open ${esc(g.name)}">›</button></td>`
         +`<td><span class="cat-name">${esc(g.name)}</span>${g.page?'<span class="cat-flag">category page cited</span>':""}</td><td class="num">${fmt(g.products)}</td><td class="num"><span class="n">${fmt(g.total)}</span></td>`
-        +`<td class="num">${numCell(g.a)}</td><td class="num">${numCell(g.c)}</td><td class="num">${numCell(g.g)}</td><td class="num">${numCell(g.pp)}</td><td class="num">${numCell(g.fund)}</td><td class="num">${g.page?fmt(g.page.total):"–"}</td></tr>`;
-      if(isOpen) r+=`<tr class="cat-detail"><td></td><td colspan="9"><div class="pitch-panel">${g.page?`<div class="pitch-hook">${hookText(g.page)}</div>`:`<p class="page-note">This category's own page is not being cited yet, so the email leads with the product's citations.</p>`}`
+        +`<td class="num">${numCell(g.a)}</td><td class="num">${numCell(g.c)}</td><td class="num">${numCell(g.g)}</td><td class="num">${numCell(g.pp)}</td><td class="num">${numCell(g.fund)}</td><td class="num">${g.page?fmt(g.page.total):"–"}</td><td>${statusSelect(g.sk)}</td></tr>`;
+      if(isOpen) r+=`<tr class="cat-detail"><td></td><td colspan="10"><div class="pitch-panel">${statusBar(g.sk,g.name)}${g.page?`<div class="pitch-hook">${hookText(g.page)}</div>`:`<p class="page-note">This category's own page is not being cited yet, so the email leads with the product's citations.</p>`}`
         +`<table class="pitch-table"><thead><tr><th>Product</th><th class="num">Citations</th><th>Cited by</th><th>Tier</th><th></th></tr></thead><tbody>${productRows(g.items,g.name,g.page||null,k)}</tbody></table></div></td></tr>`;
       return r;
     }).join("");
-    if(!rows.length) html=`<tr><td colspan="10"><div class="empty"><strong>No categories match</strong>Clear the search to see them all.</div></td></tr>`;
+    if(!rows.length) html=`<tr><td colspan="11"><div class="empty"><strong>No categories match</strong>Clear the search to see them all.</div></td></tr>`;
   } else if(tab==="aio"){
     const all=AIOKW.categories;
     const rows=sortRows(all.filter(c=>!qk||normKey(c.name).includes(qk)||c.items.some(x=>normKey(x.k).includes(qk))).map(c=>({...c})),s);
@@ -858,17 +1060,17 @@ function render(){
     const rows=sortRows(list.map(r=>({...r,name:r.t,ne:r.e.length,pg:r.pages.join(" ")})),s);
     count=rows.length;
     const vol=all.reduce((a,r)=>a+r.v,0), cWith=new Set(all.map(r=>r.cat)).size, top=all.slice().sort((a,b)=>b.v-a.v)[0];
-    $("cat-kpis").innerHTML=kpiCards([["Prompts",fmt(all.length),"questions people asked AI that led to a citation"],["Categories with prompts",fmt(cWith),`of ${fmt(cats.length)} categories`],["Estimated searches a month",fmt(vol),"added up across all prompts"],["Most searched prompt",top?top.t:"—",top?`${fmt(top.v)} a month · ${top.cat}`:"",true]]);
-    $("cat-lede").textContent=`${fmt(all.length)} prompts across ${fmt(cWith)} categories made AI engines cite a SoftwareSuggest category page. Data from ${QD.source}, ${QD.as_of}.`;
+    $("cat-kpis").innerHTML=kpiCards([["Citations",fmt(all.length),"each time an AI answer cited a category page"],["Categories",fmt(cWith),`of ${fmt(cats.length)} have citations`],["Estimated searches a month",fmt(vol),"added up across all prompts"],["Most searched prompt",top?top.t:"—",top?`${fmt(top.v)} a month · ${top.cat}`:"",true]]);
+    $("cat-lede").textContent=`${fmt(all.length)} citations in ${fmt(cWith)} categories. Every AI answer that cited a category page is listed, with its engine, country and date. Full records for ${Object.keys(CIT.by_category).length} categories (up to ${CIT.as_of}); the rest show the unique questions from 16 Oct.`;
     const ec={}; all.forEach(r=>r.e.forEach(k=>{ ec[k]=(ec[k]||0)+1; }));
     $("cat-help").innerHTML=`<span class="q-chips" role="group" aria-label="Filter by AI engine"><button class="q-eng${engine?"":" on"}" data-eng="" type="button">All <span>${all.length}</span></button>`
       +Object.keys(ENG_LABEL).filter(k=>ec[k]).map(k=>`<button class="q-eng${engine===k?" on":""}" data-eng="${k}" type="button">${ENG_LABEL[k]} <span>${ec[k]}</span></button>`).join("")+`</span>`;
-    head=`<tr>${th("cat","Category")}${th("name","Prompt")}${th("ne","AI engines")}${th("v","Searches a month","num")}${th("pg","Page cited")}</tr>`;
-    html=rows.map(r=>`<tr><td><span class="cat-name">${esc(r.cat)}</span></td><td>${esc(r.t)}</td><td><span class="q-badges">${r.e.map(k=>`<span class="eb eb-${k}">${ENG_LABEL[k]}</span>`).join("")}</span></td><td class="num">${r.v?fmt(r.v):'<span class="n zero" title="Ahrefs has no search-volume estimate for this question">–</span>'}</td><td>${promptPageCell(r)}</td></tr>`).join("");
-    if(!rows.length) html=`<tr><td colspan="5"><div class="empty"><strong>No prompts match</strong>Clear the search or the engine filter.</div></td></tr>`;
+    head=`<tr>${th("cat","Category")}${th("name","Question")}${th("ne","AI engine")}${th("cc","Country")}${th("d","Last seen")}${th("f","Stage")}${th("v","Searches a month","num")}${th("pg","Page cited")}</tr>`;
+    html=rows.map(r=>`<tr><td><span class="cat-name">${esc(r.cat)}</span></td><td>${esc(r.t)}</td><td><span class="q-badges">${r.e.map(k=>`<span class="eb eb-${k}">${ENG_LABEL[k]}</span>`).join("")}</span></td><td>${r.cc?`<span class="eb eb-grok" title="${esc(countryName(r.cc))}">${esc(r.cc)}</span>`:'<span class="n zero">–</span>'}</td><td>${r.d?esc(shortDate(r.d)):'<span class="n zero">–</span>'}</td><td>${stagePill(r.f)||'<span class="n zero">–</span>'}</td><td class="num">${r.v?fmt(r.v):'<span class="n zero" title="Ahrefs has no search-volume estimate for this question">–</span>'}</td><td>${promptPageCell(r)}</td></tr>`).join("");
+    if(!rows.length) html=`<tr><td colspan="8"><div class="empty"><strong>No citations match</strong>Clear the search or the engine filter.</div></td></tr>`;
   }
   $("cat-head").innerHTML=head; body.innerHTML=html;
-  $("cat-result").innerHTML=unit==="prompt"?`<b>${fmt(count)}</b> prompt${count===1?"":"s"}`:`<b>${fmt(count)}</b> categor${count===1?"y":"ies"}`;
+  $("cat-result").innerHTML=unit==="prompt"?`<b>${fmt(count)}</b> citation${count===1?"":"s"}`:`<b>${fmt(count)}</b> categor${count===1?"y":"ies"}`;
   document.querySelectorAll("#cat-tabs button").forEach(b=>b.setAttribute("aria-selected",b.dataset.tab===tab));
 }
 
@@ -994,10 +1196,10 @@ function renderPitch(){
   }).join("");
   $("cat-kpis").innerHTML=kpiCards([["Products to pitch",fmt(ranked.length),`in ${sel.name}`],["Category page",c?fmt(c.total)+" citations":"not cited yet",c?"AI engines cite it":"lead with each product's citations"],["Questions found",fmt(info.q.length),"real questions behind the citations"],["Pitch first",ranked[0]?ranked[0].n:"—",ranked[0]?whyText(ranked[0]):"",true]]);
   $("cat-lede").textContent=`Pick a category and the products AI engines already cite are ranked for outreach, each with a proposal and a ready email.`;
-  $("cat-help").textContent="Ranked by citations, how many AI engines cite the product, and whether it looks able to pay. Statuses and notes are kept on the Opportunities tab.";
+  $("cat-help").textContent="Ranked by citations, how many AI engines cite the product, and whether it looks able to pay. Track each category's progress here; every company's own status and notes stay on the Opportunities tab.";
   $("cat-result").innerHTML=`<b>${fmt(ranked.length)}</b> product${ranked.length===1?"":"s"}`;
   $("pitch-view").innerHTML=
-    `<div class="pl-bar"><label class="pl-sel"><span>Category</span><select id="pl-cat"><optgroup label="Categories AI engines cite (${cited.length})">${cited.map(opt).join("")}</optgroup><optgroup label="Other categories (${other.length})">${other.map(opt).join("")}</optgroup></select></label>`
+    `<div class="pl-bar"><label class="pl-sel"><span>Category</span><select id="pl-cat"><optgroup label="Categories AI engines cite (${cited.length})">${cited.map(opt).join("")}</optgroup><optgroup label="Other categories (${other.length})">${other.map(opt).join("")}</optgroup></select></label>${statusBar(c?c.slug:plKey,sel.name)}`
     +`<ol class="pl-steps"><li><b>Pick a category</b>Start with the products marked “Pitch first”.</li><li><b>Check Opportunities</b>Make sure the company hasn't already been contacted.</li><li><b>Open the proposal</b>Save it as a PDF. It uses the company's real numbers${c?" and the questions AI engines asked in this category":""}.</li><li><b>Copy the email</b>Paste it into your mail, add the contact's name, attach the PDF and send.</li></ol></div>`
     +`<div class="pitch-hook">${c?hookText(c):`This category's own page is not being cited yet, so the email leads with each product's own citations.`}</div>`
     +`<div class="tablewrap"><table class="cat-table pitch-list"><thead><tr><th class="pl-rank">#</th><th>Product</th><th>Citations</th><th>Fit and why</th><th>Proposal</th><th>Email</th></tr></thead><tbody>${rows}</tbody></table></div>`;
@@ -1028,30 +1230,37 @@ function exportCsv(){
   let head, rows=[];
   if(tab==="pitch"){
     const g=PBY.get(plKey), c=CAT_BY_NORM[plKey]; const ranked=plRank(g?g.items:[]); let nf=0;
-    head=["Rank","Product","SoftwareSuggest page","Category","Citations","AI engines citing","Tier","Fit","Why","Website","Email subject","Email"];
+    head=["Rank","Product","SoftwareSuggest page","Category","Citations","AI engines citing","Tier","Fit","Why","Website","Email subject","Email","Category status"];
     ranked.forEach((p,i)=>{ let fit; if(p.f&&nf<3){ nf++; fit="Pitch first"; } else if(p.f) fit="Good fit"; else if(p.t>=3) fit="Later"; else fit="Low priority";
-      const m=pitchEmail(p,g.name,c||null); rows.push([i+1,p.n,PRE+p.p,g.name,p.t,p.eng,p.tier,fit,whyText(p),p.w||"",m.subject,m.body]); });
+      const m=pitchEmail(p,g.name,c||null); rows.push([i+1,p.n,PRE+p.p,g.name,p.t,p.eng,p.tier,fit,whyText(p),p.w||"",m.subject,m.body,catStatus(c?c.slug:plKey)]); });
   } else if(tab==="aio"){
     head=["Category","Keyword","Countries","Searches a month","Best position","Cited pages","Last updated","Source"];
     AIOKW.categories.forEach(c=>c.items.forEach(x=>rows.push([c.name,x.k,x.cc.join("; "),x.v,x.p,x.u.map(p=>PRE+p).join("; "),x.d,AIOKW.source+", "+AIOKW.as_of])));
   } else if(tab==="pages"){
-    head=["Category","Page","Page type","Citations","AI Overviews","AI Mode","ChatGPT","Gemini","Perplexity","Copilot","Grok"];
-    CATS.categories.forEach(c=>c.pages.forEach(p=>rows.push([c.name,PRE+p.path,p.label,p.total,p.aio,p.aimode,p.chatgpt,p.gemini,p.perplexity,p.copilot,p.grok])));
+    head=["Category","Page","Page type","Citations","AI Overviews","AI Mode","ChatGPT","Gemini","Perplexity","Copilot","Grok","Status","Notes","Status updated"];
+    CATS.categories.forEach(c=>c.pages.forEach(p=>rows.push([c.name,PRE+p.path,p.label,p.total,p.aio,p.aimode,p.chatgpt,p.gemini,p.perplexity,p.copilot,p.grok,catStatus(c.slug),catNote(c.slug),catUpdated(c.slug)])));
   } else if(tab==="products"){
     head=["Category","Product","SoftwareSuggest page","Citations","AI Overviews","ChatGPT","Gemini","Perplexity","Tier","Can pay $2000+/mo","Category page cited"];
     PRODUCTS.slice().sort((a,b)=>a.cat.localeCompare(b.cat)||b.t-a.t).forEach(p=>rows.push([p.cat,p.n,PRE+p.p,p.t,p.a,p.c,p.g,p.pp,p.tier,p.f?"Yes":"No",CAT_BY_NORM[normKey(p.cat)]?"Yes":"No"]));
   } else {
     const k=normKey(q);
-    head=["Category","Prompt","AI engines","Estimated searches a month","Cited pages","Source"];
+    head=["Category","Question","AI engines","Country","Last seen","Funnel stage","Estimated searches a month","Cited pages","Source"];
     allPrompts().filter(r=>(!engine||r.e.includes(engine))&&(!k||normKey(r.cat).includes(k)||normKey(r.t).includes(k)))
-      .forEach(r=>rows.push([r.cat,r.t,r.e.map(x=>ENG_LABEL[x]).join("; "),r.v||"",r.checked?(r.pages.length?r.pages.map(p=>PRE+p).join("; "):"Another page in this category"):"",QD.source+", "+QD.as_of]));
+      .forEach(r=>rows.push([r.cat,r.t,r.e.map(x=>ENG_LABEL[x]).join("; "),r.cc?countryName(r.cc):"",r.d||"",STAGE_LABEL[r.f]||"",r.v||"",r.checked?(r.pages.length?r.pages.map(p=>PRE+p).join("; "):"Another page in this category"):"",QD.source+", "+QD.as_of]));
   }
   download(`categories-${tab==='pitch'?'pitch-list-'+plKey:tab}_${stamp()}.csv`,[head.map(h=>csvCell(h)).join(",")].concat(rows.map(r=>r.map(v=>csvCell(v,typeof v==="string")).join(","))));
 }
 function exportQuestionsCsv(slug){
-  const c=CATS.categories.find(x=>x.slug===slug), info=(QD.by_category||{})[slug]; if(!c||!info) return;
+  const c=CATS.categories.find(x=>x.slug===slug); if(!c) return;
+  const recs=citRows(slug), pg=(QP.by_category||{})[slug]||{};
+  if(recs.length){
+    const head=["Category","Question","AI engine","Country","Last seen","Funnel stage","Estimated searches a month","Cited pages","Source"];
+    download(`citations-${slug}_${stamp()}.csv`,[head.map(h=>csvCell(h)).join(",")].concat(recs.map(x=>[c.name,x.t,ENG_LABEL[x.e],countryName(x.cc),x.d,STAGE_LABEL[x.f]||"",x.v||"",(pg[x.t]||[]).map(p=>PRE+p).join("; "),CIT.source+", up to "+CIT.as_of].map(v=>csvCell(v,typeof v==="string")).join(","))));
+    return;
+  }
+  const info=(QD.by_category||{})[slug]; if(!info) return;
   const head=["Category","Question","AI engines","Estimated searches a month","Cited pages","Source"];
-  download(`questions-${slug}_${stamp()}.csv`,[head.map(h=>csvCell(h)).join(",")].concat(info.q.map(x=>[c.name,x.t,x.e.map(k=>ENG_LABEL[k]).join("; "),x.v||"",((((QP.by_category||{})[slug]||{})[x.t])||[]).map(p=>PRE+p).join("; "),QD.source+", "+QD.as_of].map(v=>csvCell(v,typeof v==="string")).join(","))));
+  download(`questions-${slug}_${stamp()}.csv`,[head.map(h=>csvCell(h)).join(",")].concat(info.q.map(x=>[c.name,x.t,x.e.map(k=>ENG_LABEL[k]).join("; "),x.v||"",(pg[x.t]||[]).map(p=>PRE+p).join("; "),QD.source+", "+QD.as_of].map(v=>csvCell(v,typeof v==="string")).join(","))));
 }
 
 /* ---- events ---- */
@@ -1063,10 +1272,13 @@ function pitchFor(pth,slugKey){
 $("cat-tabs").addEventListener("click",e=>{ const b=e.target.closest("button[data-tab]"); if(!b) return; tab=b.dataset.tab; $("cat-q").placeholder=tab==="pages"?"Search categories, pages or products":tab==="prompts"?"Search prompts or categories":tab==="aio"?"Search categories or keywords":"Search categories or products"; render(); });
 $("cat-q").addEventListener("input",e=>{ q=e.target.value; render(); });
 $("cat-csv").addEventListener("click",exportCsv);
+$("cat-table").addEventListener("change",e=>{ if(e.target.classList.contains("q-country")){ panelCountry=e.target.value; render(); } });
 $("pitch-view").addEventListener("click",e=>{ pitchClick(e); });
 $("pitch-view").addEventListener("change",e=>{ if(e.target.id==="pl-cat"){ plKey=e.target.value; render(); } });
 $("cat-help").addEventListener("click",e=>{ const b=e.target.closest(".q-eng"); if(!b) return; engine=b.dataset.eng||""; render(); });
 $("cat-table").addEventListener("click",e=>{
+  if(e.target.closest(".st-sel,.cat-note")) return;
+  const sb=e.target.closest(".q-stage"); if(sb){ panelStage=(panelStage===sb.dataset.stage)?"":sb.dataset.stage; render(); return; }
   const eb=e.target.closest(".q-eng"); if(eb){ panelEngine=eb.dataset.eng||""; render(); return; }
   const mb=e.target.closest(".q-more"); if(mb){ const k=mb.dataset.slug; if(showAll.has(k)) showAll.delete(k); else showAll.add(k); render(); return; }
   const cb=e.target.closest(".q-csv"); if(cb){ exportQuestionsCsv(cb.dataset.slug); return; }
@@ -1076,7 +1288,16 @@ $("cat-table").addEventListener("click",e=>{
   const row=e.target.closest("tr.cat-row[data-cat]");
   if(row){ const key=tab+":"+row.dataset.cat; if(open.has(key)) open.delete(key); else open.add(key); render(); }
 });
+document.addEventListener("change",e=>{ const s=e.target.closest&&e.target.closest(".st-sel"); if(!s) return; setCat(s.dataset.key,{status:s.value}); render(); });
+document.addEventListener("input",e=>{ const t=e.target; if(t&&t.classList&&t.classList.contains("cat-note")) setCat(t.dataset.key,{notes:t.value.slice(0,1000)}); });
+(function(){ const sf=$("cat-status-filter"); sf.innerHTML=`<option value="">All statuses</option>`+CAT_STATUSES.map(x=>`<option value="${esc(x[0])}">${esc(x[0])}</option>`).join(""); sf.addEventListener("change",e=>{ statusFilter=e.target.value; render(); }); })();
+setInterval(()=>{ if(Object.keys(pendingCat).length) flushCat(); },30000);
+setInterval(()=>loadCat(false),60000);
+document.addEventListener("visibilitychange",()=>{ if(!document.hidden) loadCat(false); });
+window.addEventListener("focus",()=>loadCat(false));
 render();
+updateSyncNote();
+loadCat(true);
 </script>
 </body>
 </html>
